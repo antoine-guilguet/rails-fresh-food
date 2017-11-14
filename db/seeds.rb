@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Product.create(title:"Salade", description:"Salade fraîche et délicieuse", price: 1.5, producer:"Jean-Michel", origin:"France", rating:5, quantity: 200, measure: "g", category:"Légumes" )
+Product.create(title:"Tomate", description:"Tomate du jardin", price: 2, producer:"Jean-Guy", origin:"France", rating:4, quantity: 100, measure: "g", category:"Légumes" )
+Product.create(title:"Concombre", description:"Grand concombre délicieux", price: 2.4, producer:"Jean-Michel", origin:"France", rating:5, quantity: 200, measure: "g", category:"Légumes" )
+Product.create(title:"Orange", description:"Orange juteuse", price: 1.5, producer:"Jean-Michel", origin:"France", rating:5, quantity: 200, measure: "g", category:"Fruits" )
+Product.create(title:"Banane", description:"Banane savoureuse", price: 1.5, producer:"Jean-Michel", origin:"France", rating:5, quantity: 200, measure: "g", category:"Fruits" )
+Product.create(title:"Steak", description:"Steak française 100% pur boeuf", price: 3, producer:"Jean-Michel", origin:"Espagne", rating:3, quantity: 200, measure: "g", category:"Viandes" )
+Product.create(title:"Fromage de chèvre", description:"Savoureux et onctueux", price: 5, producer:"Jean-Michel", origin:"Espagne", rating:5, quantity: 200, measure: "g", category:"Fromage" )
+Product.create(title:"Saucisson", description:"Délicieux sauce-back", price: 4, producer:"Jean-Claude", origin:"Espagne", rating:4, quantity: 300, measure: "g", category:"Viandes" )
+Product.create(title:"Sole", description:"Sole fraîchement pêchée", price: 15, producer:"Jean-Claude", origin:"Espagne", rating:2, quantity: 400, measure: "g", category:"Poisson" )
+Product.create(title:"Thon", description:"Gros thon de méditerranée", price: 12, producer:"Jean-Claude", origin:"Espagne", rating:5, quantity: 1, measure: "kg", category:"Poisson" )
