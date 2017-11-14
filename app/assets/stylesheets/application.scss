@@ -1,0 +1,11 @@
+// External libraries
+@import "materialize/extras/nouislider";
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow", "base") !default;
+@import "materialize";
+
+// Your CSS partials
+@import "layouts/index";
+@import "components/index";
+@import "pages/index";
