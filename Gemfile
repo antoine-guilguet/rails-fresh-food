@@ -5,12 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+ruby '2.4.2'
 
 gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
-
-# Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -30,7 +28,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'materialize-sass'
-gem 'material_icons'
 gem 'jquery-rails'
 
 # Use Capistrano for deployment
