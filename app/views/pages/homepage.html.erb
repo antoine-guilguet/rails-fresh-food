@@ -1,1 +1,16 @@
-<h1>Pages#homepage</h1>
+<div class="home-banner" style="background-image: url('<%= image_path 'home_1.jpeg'%>')">
+
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $('.home-arrow').mouseenter(function(){
+        $('.material-icons').first().css("color", "black");
+        });
+        $('.home-arrow').mouseleave(function(){
+        $('.material-icons').first().css("color", "white");
+        });
+
+    <% end %>
+<% end %>
+
