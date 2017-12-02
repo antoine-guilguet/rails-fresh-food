@@ -1,8 +1,8 @@
 // External libraries
 @import "materialize/extras/nouislider";
 @import "materialize/components/color";
-$primary-color: #27AE60 !default;
-$dark-green: #019875 !default;
+$primary-color: #27AE60 !default; // light-green
+$secondary-color: #019875 !default; // dark green
 $dark-blue: #2C3E50 !default;
 $orange: #E67E22 !default;
 $secondary-color: color("yellow", "base") !default;
@@ -14,3 +14,6 @@ $secondary-color: color("yellow", "base") !default;
 @import "pages/index";
 
 // HTML Elements
+body {
+  font-family: Montserrat, 'open-sans';
+}

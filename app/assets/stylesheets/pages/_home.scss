@@ -62,7 +62,6 @@
   width: 80%;
   text-align: center;
   padding-top: 220px;
-  font-family: Montserrat, 'open-sans';
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -95,6 +94,12 @@
   justify-content: center;
   background-color: $primary-color;
   color: white;
+  &:hover {
+    cursor: pointer;
+    background-color: $secondary-color;
+    transition-property: background-color;
+    transition-duration: 300ms;
+  }
 }
 
 #home-email-form > input[type=text] {
@@ -106,16 +111,28 @@
 #explanation-banner {
   padding-bottom: 30px;
   padding-top: 30px;
-  background-color: $primary-color;
+  background-color: whitesmoke;
+}
+
+.explanation-container {
+  width: 80%;
 }
 
 .explanation-box {
-  background-color: whitesmoke;
-  border-radius: 2px;
+  background-color: white;
+  border: 1px solid $primary-color;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.icon-box {
+  margin: 0 auto;
+  width: 65px;
 }
 
 .explanation-box-title {
-
+  text-align: center;
 }
 
 .homepage-icons {
