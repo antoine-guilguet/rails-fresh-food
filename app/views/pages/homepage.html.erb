@@ -29,6 +29,7 @@
 </div>
 
 <div id="explanation-banner">
+  <h3 class="center">Comment ça marche?</h3>
   <div class="container explanation-container">
     <div class="row">
       <div class="col s10 offset-s1 m3">
@@ -83,6 +84,35 @@
   </div>
 </div>
 
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <p class="grey-text text-lighten-4">Fait avec</p>
+
+        <p class="grey-text text-lighten-4">par l'Equipe Chou blanc</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">En savoir plus</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">L'Equipe</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Le Projet</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">La livraison</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2017 Copyright
+      <div class="social-networks">
+
+      </div>
+    </div>
+  </div>
+</footer>
+
 <%= content_for :js do %>
     <%= javascript_tag do %>
         $('.home-arrow').mouseenter(function(){
@@ -91,7 +121,6 @@
         $('.home-arrow').mouseleave(function(){
         $('.material-icons').first().css("color", "white");
         });
-
     <% end %>
 <% end %>
 
