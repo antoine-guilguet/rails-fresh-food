@@ -1,8 +1,125 @@
-.home-banner {
+.home-navbar {
+  background-color: white;
+  height: 75px;
+  position: relative;
+  color: black;
+}
+
+#logo-circle {
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  bottom: -60px;
+  left: 43%;
+}
+
+#logo {
+  width: 90px;
+  height: 50px;
+}
+
+.home-navbar-information {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+}
+
+.home-navbar-information-detail {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 23px;
+  width: 50%;
+  &:hover {
+    background-color: whitesmoke;
+    transition-property: background-color;
+    transition-duration: 300ms;
+    cursor: pointer;
+  }
+}
+
+#home-banner {
+  background-image: linear-gradient(rgba(14, 14, 14, 0.3), rgba(0, 0, 0, 0.2)), url(cabbage_2.png);
   background-size: cover;
-  background-image: image-url('home_photo_1.jpeg');
   height: 100vh;
   color: white;
+}
+
+#home-banner-title {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  padding-top: 220px;
+  font-family: Montserrat, 'open-sans';
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-form {
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  color: black;
+  width: 50%;
+  margin-top: 30px;
+}
+
+#home-email-form {
+  width: 60%;
+  height: 100%;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 10px;
+  display: flex;
+}
+
+#home-email-button {
+  width: 40%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  justify-content: center;
+  background-color: $primary-color;
+  color: white;
+}
+
+#home-email-form > input[type=text] {
+  border-bottom: none;
+  height: 100%;
+  margin: none;
+}
+
+#explanation-banner {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  background-color: $primary-color;
+}
+
+.explanation-box {
+  background-color: whitesmoke;
+  border-radius: 2px;
+}
+
+.explanation-box-title {
+
+}
+
+.homepage-icons {
+  color: $primary-color;
 }
 
 .home-arrow{

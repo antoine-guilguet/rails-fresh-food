@@ -1,5 +1,90 @@
-<div class="home-banner" style="background-image: url('<%= image_path 'home_1.jpeg'%>')">
+<div id="home-banner">
+  <div class="home-navbar">
+    <div id="logo-circle">
+      <%= image_tag 'logo_3.png', alt:"logo", id:"logo" %>
+    </div>
+    <div class="home-navbar-information">
+      <div class="home-navbar-information-detail">
+        <p>Le Projet</p>
+      </div>
+      <div class="home-navbar-information-detail">
+        <p>L'Equipe</p>
+      </div>
+    </div>
+  </div>
 
+  <div id="home-banner-title">
+    <h5>Des produits frais, sélectionnés par nos soins, commandés en moins de 3 minutes.</h5>
+    <form action="/points-relais" method="post" class="home-form">
+      <div id="home-email-form">
+        <i class="material-icons" style="margin-right:7px;">location_on</i>
+        <input type="text" name="name" placeholder="Entrez votre adresse">
+      </div>
+      <div id="home-email-button" type="submit">
+        <p>Voir les Points Relais</p>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div id="explanation-banner">
+  <div class="container">
+    <div class="row">
+      <div class="explanation-box col s10 offset-s1 m3">
+        <div class="explanation-box-title">
+          <div class="icon-box">
+            <i class="material-icons homepage-icons" style="font-size: 100px;">local_shipping</i>
+          </div>
+          <h4>Livraison</h4>
+        </div>
+
+        <div>
+          <p>Nous vous garantissons une livraison pratique, à domicile ou en point relais, toutes les semaines.</p>
+        </div>
+      </div>
+
+      <div class="explanation-box col s10 offset-s1 m3">
+        <div class="explanation-box-title">
+          <div class="icon-box">
+            <i class="material-icons homepage-icons" style="font-size: 100px;">local_shipping</i>
+          </div>
+          <h4>Livraison</h4>
+        </div>
+
+        <div>
+          <p>Nous vous garantissons une livraison pratique, à domicile ou en point relais, toutes les semaines.</p>
+        </div>
+      </div>
+
+      <div class="explanation-box col s10 offset-s1 m3">
+        <div class="explanation-box-title">
+          <div class="icon-box">
+            <i class="material-icons homepage-icons" style="font-size: 100px;">local_shipping</i>
+          </div>
+          <h4>Livraison</h4>
+        </div>
+
+        <div>
+          <p>Nous vous garantissons une livraison pratique, à domicile ou en point relais, toutes les semaines.</p>
+        </div>
+      </div>
+
+      <div class="explanation-box col s10 offset-s1 m3">
+        <div class="explanation-box-title">
+          <div class="icon-box">
+            <i class="material-icons homepage-icons" style="font-size: 100px;">local_shipping</i>
+          </div>
+          <h4>Livraison</h4>
+        </div>
+
+        <div>
+          <p>Nous vous garantissons une livraison pratique, à domicile ou en point relais, toutes les semaines.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <%= content_for :js do %>
