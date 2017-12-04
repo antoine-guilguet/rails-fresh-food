@@ -1,33 +1,3 @@
-.home-navbar-information {
-  position: absolute;
-  right: 0px;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 250px;
-}
-
-.home-navbar-information > a {
-  color: black;
-}
-
-.home-navbar-information-detail {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 10px;
-  padding-right: 23px;
-  width: 50%;
-  &:hover {
-    background-color: whitesmoke;
-    transition-property: background-color;
-    transition-duration: 300ms;
-    cursor: pointer;
-  }
-}
-
 #home-banner {
   background-image: linear-gradient(rgba(14, 14, 14, 0.3), rgba(0, 0, 0, 0.2)), image-url("cabbage_2.png");
   background-size: cover;
