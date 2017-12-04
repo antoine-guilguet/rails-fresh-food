@@ -6555,6 +6555,8 @@ ul.staggered-list li {
   /* line 284, /Users/antoineguilguet/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/components/_global.scss */
   .hide-on-med-and-down {
     display: none !important;
+    display: flex;
+    justify-content:space-between;
   }
 }
 

@@ -1,0 +1,38 @@
+#home-navbar {
+  background-color: white;
+}
+
+.home-navbar-links {
+  color: black;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#logo-circle {
+  background-color: white;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  margin-top: 5px;
+}
+
+#logo {
+  width: 90px;
+  height: 50px;
+}
+
+@media only screen and (max-width: 992px) {
+
+  .home-navbar-mobile {
+    justify-content:space-between;
+    display: flex;
+  }
+
+  .right {
+    float: none !important;
+  }
+}
