@@ -18,6 +18,8 @@
 
   <body>
     <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
     <%= yield %>
+    <%= yield(:js) %>
   </body>
 </html>

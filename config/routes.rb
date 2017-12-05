@@ -2,8 +2,7 @@ Rails.application.routes.draw do
 
   root to:"pages#homepage"
 
-  get 'project', to:"pages#project"
-  get 'team', to:"pages#team"
+  post 'save_address', to:"pages#save_address"
 
   resources :products
 end

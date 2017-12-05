@@ -1,13 +1,11 @@
 #home-banner {
-  background-image: linear-gradient(rgba(14, 14, 14, 0.3), rgba(0, 0, 0, 0.2)), image-url("cabbage_2.png");
+  background: linear-gradient(rgba(14, 14, 14, 0.3), rgba(0, 0, 0, 0.2)), image-url("cabbage_2.png") 50% 50% no-repeat;
   background-size: cover;
   height: 100vh;
   color: white;
 }
 
 #home-banner-title {
-  margin: 0 auto;
-  width: 80%;
   text-align: center;
   padding-top: 220px;
   display: flex;
@@ -16,38 +14,49 @@
   align-items: center;
 }
 
-.home-form {
+.new_lead {
   background-color: white;
   border-radius: 5px;
   display: flex;
   color: black;
-  width: 50%;
+  width: 100%;
   margin-top: 30px;
+  align-items: center;
 }
 
-#home-email-form {
-  width: 60%;
-  height: 100%;
-  padding-top: 15px;
+.address-wrapper {
+  width: 100%;
   padding-left: 15px;
-  padding-right: 10px;
-  display: flex;
+  padding-right: 15px;
 }
 
-#home-email-button {
-  width: 40%;
+#lead_address {
+  height:1rem;
+  border-bottom: none;
+}
+
+#home-form-address {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+#home-form-submit {
+  width: 41%;
+  height: 53px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  background-color: $primary-color;
   display: flex;
   justify-content: center;
+}
+
+#home-form-submit > input[type="submit"] {
   background-color: $primary-color;
+  border: none;
   color: white;
-  &:hover {
-    cursor: pointer;
-    background-color: $secondary-color;
-    transition-property: background-color;
-    transition-duration: 300ms;
-  }
+  width:100%;
 }
 
 #home-email-form > input[type=text] {
@@ -109,4 +118,16 @@
       color: black;
     }
   }
+}
+
+#team-banner {
+  background-color: $secondary-color;
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+#project-banner{
+  padding-top: 20px;
+
 }

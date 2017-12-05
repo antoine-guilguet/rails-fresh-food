@@ -1,17 +1,24 @@
 <div id="home-banner">
 
   <div id="home-banner-title">
-    <h5>Des produits frais, sélectionnés par nos soins, commandés en moins de 3 minutes.</h5>
-    <form action="#" method="post" class="home-form">
-      <div id="home-email-form">
-        <i class="material-icons" style="margin-right:7px;">location_on</i>
-        <input type="text" name="name" placeholder="Entrez votre code postal">
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <h5>Des produits frais, sélectionnés par nos soins, commandés en moins de 3 minutes.</h5>
+        <%= simple_form_for @lead, url: save_address_path, method: :post, remote: true do |f| %>
+            <div id="home-form-address">
+              <i class="material-icons">location_on</i>
+              <%= f.input :address, id:"user_input_autocomplete_address", label: false, placeholder:"Entrez votre addresse", wrapper_html: { class: 'address-wrapper' }, :error => false %>
+              <%= f.hidden_field :street_number, id:"lead_street_number", name:"street_number" %>
+              <%= f.hidden_field :route, id:"lead_route", name:"route" %>
+              <%= f.hidden_field :locality, id:"lead_locality", name:"locality" %>
+              <%= f.hidden_field :country, id:"lead_country", name:"country" %>
+            </div>
+            <div id="home-form-submit">
+              <%= f.submit "Voir les Points Relais" %>
+            </div>
+        <% end %>
       </div>
-      <div id="home-email-button" type="submit">
-        <p>Voir les Points Relais</p>
-      </div>
-
-    </form>
+    </div>
   </div>
   <div class="home-arrow">
     <a href="#explanation-banner" >
@@ -24,7 +31,7 @@
   <h3 class="center">Comment ça marche?</h3>
   <div class="container explanation-container">
     <div class="row">
-      <div class="col s10 offset-s1 m3">
+      <div class="col s10 offset-s1 m6 l3">
         <div class="explanation-box">
           <div class="icon-box">
             <%= image_tag 'delivery-truck.png', style:"width:65px;", alt: "delivery"%>
@@ -36,7 +43,7 @@
         </div>
       </div>
 
-      <div class="col s10 offset-s1 m3">
+      <div class="col s10 offset-s1 m6 l3">
         <div class="explanation-box">
           <div class="icon-box">
             <%= image_tag 'stopwatch.png', style:"width:65px;", alt: "simplicity"%>
@@ -48,7 +55,7 @@
         </div>
       </div>
 
-      <div class="col s10 offset-s1 m3">
+      <div class="col s10 offset-s1 m6 l3">
         <div class="explanation-box">
           <div class="icon-box">
             <%= image_tag 'coins.png', style:"width:65px;", alt: "Price"%>
@@ -60,7 +67,7 @@
         </div>
       </div>
 
-      <div class="col s10 offset-s1 m3">
+      <div class="col s10 offset-s1 m6 l3">
         <div class="explanation-box">
           <div class="icon-box">
             <%= image_tag 'cart.png', style:"width:65px;", alt: "selection"%>
@@ -76,13 +83,50 @@
   </div>
 </div>
 
+<div id="team-banner">
+  <h3 class="center" style="margin-bottom: 30px;">L'Équipe</h3>
+  <div class="team-wrapper">
+    <div class="row">
+      <div class="col m1"></div>
+      <div class="col s12 m2 center">
+          <%= image_tag 'lucile.png', class: "avatar-large" %>
+          <h6>Lucile</h6>
+          <p>Agronome</p>
+      </div>
+      <div class="col s12 m2 center">
+          <%= image_tag 'justine.png', class: "avatar-large" %>
+          <h6>Justine</h6>
+          <p>Designer</p>
+      </div>
+      <div class="col s12 m2 center">
+          <%= image_tag 'antoine.png', class: "avatar-large" %>
+          <h6>Antoine</h6>
+          <p>Développeur Web</p>
+      </div>
+      <div class="col s12 m2 center">
+          <%= image_tag 'baptiste.png', class: "avatar-large" %>
+          <h6>Baptiste</h6>
+          <p>Data-scientist</p>
+      </div>
+      <div class="col s12 m2 center">
+          <%= image_tag 'mathilde.png', class: "avatar-large" %>
+          <h6>Mathilde</h6>
+          <p>Business & Marketing</p>
+      </div>
+      <div class="col m1"></div>
+    </div>
+  </div>
+</div>
+
+<div id="project-banner">
+  <h3 class="center">Le Projet</h3>
+
+</div>
+
 <footer class="page-footer">
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
-        <p class="grey-text text-lighten-4">Fait avec</p>
-
-        <p class="grey-text text-lighten-4">par l'Equipe Chou blanc</p>
       </div>
       <div class="col l4 offset-l2 s12">
         <h5 class="white-text">En savoir plus</h5>
@@ -99,7 +143,9 @@
     <div class="container">
       © 2017 Copyright
       <div class="social-networks">
-
+        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+        <i class="fa fa-twitter-square" aria-hidden="true"></i>
+        <i class="fa fa-instagram" aria-hidden="true"></i>
       </div>
     </div>
   </div>
@@ -107,11 +153,19 @@
 
 <%= content_for :js do %>
     <%= javascript_tag do %>
+        $(document).on('click', 'a[href^="#"]', function (event) {
+          event.preventDefault();
+
+          $('html, body').animate({
+          scrollTop: $($.attr(this, 'href')).offset().top
+          }, 800);
+        });
+
         $('.home-arrow').mouseenter(function(){
-        $('.material-icons').first().css("color", "black");
+          $('#icon-arrow').css("color", "black");
         });
         $('.home-arrow').mouseleave(function(){
-        $('.material-icons').first().css("color", "white");
+            $('#icon-arrow').css("color", "white");
         });
     <% end %>
 <% end %>
