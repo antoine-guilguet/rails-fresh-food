@@ -1,7 +1,11 @@
 function initializeAutocomplete(id) {
+    var options = {
+        componentRestrictions: {country: "FR"}
+    };
+
     var element = document.getElementById(id);
     if (element) {
-        var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
+        var autocomplete = new google.maps.places.Autocomplete(element, options, { types: ['geocode'] });
         google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
     }
 }
