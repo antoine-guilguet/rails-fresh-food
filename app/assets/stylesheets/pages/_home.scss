@@ -14,55 +14,17 @@
   align-items: center;
 }
 
-.new_lead {
+#home-banner-form {
   background-color: white;
-  border-radius: 5px;
-  display: flex;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 20px;
   color: black;
-  width: 100%;
-  margin-top: 30px;
-  align-items: center;
 }
 
-.address-wrapper {
-  width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-#lead_address {
-  height:1rem;
-  border-bottom: none;
-}
-
-#home-form-address {
-  width: 60%;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-}
-
-#home-form-submit {
-  width: 41%;
-  height: 53px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  background-color: $primary-color;
-  display: flex;
-  justify-content: center;
-}
-
-#home-form-submit > input[type="submit"] {
-  background-color: $primary-color;
-  border: none;
-  color: white;
-  width:100%;
-}
-
-#home-email-form > input[type=text] {
-  border-bottom: none;
-  height: 100%;
-  margin: none;
+.alert-danger {
+  color: red;
+  float: left;
 }
 
 #explanation-banner {
