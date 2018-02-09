@@ -1,16 +1,49 @@
 <div id="home-banner">
 
   <div id="home-banner-title">
+    <h5>Le marché en ligne des restaurateurs, en direct des producteurs</h5>
+  </div>
+
+  <div id="explication-bubble-wrapper">
     <div class="row">
-      <h5>Le marché en ligne des restaurateurs, en direct des producteurs</h5>
-      <div class="col s12 m6 offset-m3">
-        <div id="home-banner-form">
-          <%= simple_form_for @sourcing, url: save_sourcing_path, method: :post, remote: true do |f| %>
-              <%= f.input :produit, placeholder:"Entrez le produit recherché" %>
-              <%= f.input :exigence, placeholder:"Décrivez vos Exigences" %>
-              <%= f.input :email, placeholder:"Entrez votre email", required: true %>
-              <%= f.submit "Envoyer", class: "btn" %>
-          <% end %>
+      <div class="col s12 m3 ">
+        <div class="explication-bubble">
+          <div class="explication-bubble-title">
+          Rapidité
+        </div>
+        <p class="center">
+          Commandez vos produits du terroir en seulement quelques clics
+        </p>
+        </div>
+      </div>
+      <div class="col s12 m3 ">
+        <div class="explication-bubble">
+          <div class="explication-bubble-title">
+            Simplicité
+          </div>
+          <p class="center">
+            Accédez à des centaines de produits d'exception en direct des producteurs
+          </p>
+        </div>
+      </div>
+      <div class="col s12 m3 ">
+        <div class="explication-bubble">
+          <div class="explication-bubble-title">
+          Qualité
+        </div>
+        <p class="center">
+          Mettez en valeur des produits d'exception auprès de vos clients
+        </p>
+        </div>
+      </div>
+      <div class="col s12 m3 ">
+        <div class="explication-bubble">
+          <div class="explication-bubble-title">
+          Diversité
+        </div>
+        <p class="center">
+          Centralisez les commandes et les factures de vos différents fournisseurs
+        </p>
         </div>
       </div>
     </div>
@@ -25,127 +58,43 @@
 
 <div id="explanation-banner">
   <h3 class="center">Comment ça marche?</h3>
-  <div class="container explanation-container">
+  <div class="explanation-container">
     <div class="row">
-      <div class="col s10 offset-s1 m6 l3">
-        <div class="explanation-box">
-          <div class="icon-box">
-            <%= image_tag 'delivery-truck.png', style:"width:65px;", alt: "delivery"%>
+      <div class="col s12 m6">
+        <div class="bubble-wrapper">
+          <div class="step-bubble-wrapper">
+            <div class="step-bubble">1</div>
+            <div>Vous précisez votre demande de sourcing (produit, volume, prix, exigences...)</div>
           </div>
-          <div class="explanation-box-title">
-            <h4>Livraison</h4>
-            <p>Nous vous garantissons une livraison pratique, à domicile ou en point relais, toutes les semaines.</p>
+          <div class="step-bubble-wrapper">
+            <div class="step-bubble">2</div>
+            <div>Chou Blanc cherche les meilleurs producteurs qui correspondent à votre demande</div>
           </div>
-        </div>
-      </div>
-
-      <div class="col s10 offset-s1 m6 l3">
-        <div class="explanation-box">
-          <div class="icon-box">
-            <%= image_tag 'stopwatch.png', style:"width:65px;", alt: "simplicity"%>
-          </div>
-          <div class="explanation-box-title">
-            <h4>Simplicité</h4>
-            <p>Une interface rapide et intuitive vous permettant de faire vos courses en moins de 3 minutes.</p>
+          <div class="step-bubble-wrapper">
+            <div class="step-bubble">3</div>
+            <div>Vous recevez sous 2 jours un email avec les 5 meilleurs producteurs et leurs coordonnées</div>
           </div>
         </div>
       </div>
-
-      <div class="col s10 offset-s1 m6 l3">
-        <div class="explanation-box">
-          <div class="icon-box">
-            <%= image_tag 'coins.png', style:"width:65px;", alt: "Price"%>
-          </div>
-          <div class="explanation-box-title">
-            <h4>Prix</h4>
-            <p>Une sélection de produits, permettant des achats groupés et des prix abordables.</p>
-          </div>
+      <div class="col s12 m6">
+        <div id="home-banner-form">
+          <%= simple_form_for @sourcing, url: save_sourcing_path, method: :post, remote: true do |f| %>
+              <%= f.input :produit, placeholder:"Entrez le produit recherché" %>
+              <%= f.input :exigence, placeholder:"Décrivez vos exigences quant au producteur et au produit" %>
+              <%= f.input :email, placeholder:"Entrez votre email", required: true %>
+              <%= f.submit "Envoyer", class: "btn" %>
+          <% end %>
         </div>
       </div>
-
-      <div class="col s10 offset-s1 m6 l3">
-        <div class="explanation-box">
-          <div class="icon-box">
-            <%= image_tag 'cart.png', style:"width:65px;", alt: "selection"%>
-          </div>
-          <div class="explanation-box-title">
-            <h4>Sélection</h4>
-            <p>Les meilleurs produits auprès des meilleurs fournisseurs, pour vous offrir qualité et transparence.</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
 
-<div id="team-banner">
-  <h3 class="center" style="margin-bottom: 30px;">L'Équipe</h3>
-  <div class="team-wrapper">
-    <div class="row">
-      <div class="col m1"></div>
-      <div class="col s12 m2 center">
-          <%= image_tag 'lucile.png', class: "avatar-large" %>
-          <h6>Lucile</h6>
-          <p>Agronome</p>
-      </div>
-      <div class="col s12 m2 center">
-          <%= image_tag 'justine.png', class: "avatar-large" %>
-          <h6>Justine</h6>
-          <p>Designer</p>
-      </div>
-      <div class="col s12 m2 center">
-          <%= image_tag 'antoine.png', class: "avatar-large" %>
-          <h6>Antoine</h6>
-          <p>Développeur Web</p>
-      </div>
-      <div class="col s12 m2 center">
-          <%= image_tag 'baptiste.png', class: "avatar-large" %>
-          <h6>Baptiste</h6>
-          <p>Data-scientist</p>
-      </div>
-      <div class="col s12 m2 center">
-          <%= image_tag 'mathilde.png', class: "avatar-large" %>
-          <h6>Mathilde</h6>
-          <p>Business & Marketing</p>
-      </div>
-      <div class="col m1"></div>
-    </div>
-  </div>
-</div>
+<%= render 'team' %>
 
-<div id="project-banner">
-  <h3 class="center">Le Projet</h3>
+<%= render 'project' %>
 
-</div>
-
-<footer class="page-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col l6 s12">
-      </div>
-      <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">En savoir plus</h5>
-        <ul>
-          <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">L'Equipe</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Le Projet</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">La Livraison</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="footer-copyright">
-    <div class="container">
-      © 2017 Copyright
-      <div class="social-networks">
-        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-        <i class="fa fa-twitter-square" aria-hidden="true"></i>
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-      </div>
-    </div>
-  </div>
-</footer>
+<%= render 'shared/footer' %>
 
 <%= content_for :js do %>
     <%= javascript_tag do %>
