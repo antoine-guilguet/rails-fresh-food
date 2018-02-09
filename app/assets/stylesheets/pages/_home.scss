@@ -22,39 +22,9 @@
   color: black;
 }
 
-.alert-danger {
-  color: red;
-  float: left;
-}
-
-#explanation-banner {
-  padding-bottom: 30px;
-  padding-top: 30px;
-  background-color: whitesmoke;
-}
-
-.explanation-container {
-  width: 80%;
-  margin-top: 40px;
-}
-
-.explanation-box {
-  background-color: white;
-  border: 1px solid $primary-color;
-  padding: 30px;
-  border-radius: 4px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  height:350px;
-  margin-bottom: 20px;
-}
-
 .icon-box {
   margin: 0 auto;
   width: 65px;
-}
-
-.explanation-box-title {
-  text-align: center;
 }
 
 .homepage-icons {
@@ -65,7 +35,6 @@
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  margin-top: 160px;
   border: solid 1px white;
   display: flex;
   align-items: center;
@@ -82,14 +51,43 @@
   }
 }
 
-#team-banner {
-  background-color: $secondary-color;
-  color: white;
-  padding-top: 20px;
-  padding-bottom: 30px;
+.alert-danger {
+  color: red;
+  float: left;
 }
 
-#project-banner{
-  padding-top: 20px;
+#explanation-banner {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  background-color: whitesmoke;
+}
 
+.explanation-container {
+  width: 90%;
+  margin-top: 40px;
+  margin: auto;
+}
+
+.bubble-wrapper {
+  padding: 10px;
+}
+
+.step-bubble-wrapper {
+  margin-top:20px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.step-bubble {
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid black;
+  color: #2C3E50;
+  width: 50px !important;
+  height: 50px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
 }
