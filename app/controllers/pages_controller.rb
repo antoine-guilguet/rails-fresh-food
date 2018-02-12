@@ -5,6 +5,10 @@ class PagesController < ApplicationController
     render layout: 'homepage'
   end
 
+  def landing_page
+    @sourcing = Sourcing.new
+  end
+
   def save_sourcing
     @sourcing = Sourcing.new(lead_params)
     if @sourcing.save

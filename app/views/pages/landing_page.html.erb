@@ -1,0 +1,84 @@
+<div id="landing-wrapper">
+  <div id="landing-navbar">
+    <nav id="landing-navbar">
+      <div class="nav-wrapper">
+        <div class="brand-logo center">
+          <%= image_tag 'logo_3.png', id:"landing_logo" %>
+        </div>
+        <ul class="right home-navbar-mobile">
+          <li><a href="#project-banner">Le Projet</a></li>
+          <li><a href="#team-banner">L'Équipe</a></li>
+        </ul>
+      </div>
+    </nav>
+    <hr class="landing-navbar-line">
+    <div class="landing-navbar-title">
+      <h5>Le marché en ligne des restaurateurs, en direct des producteurs</h5>
+    </div>
+  </div>
+
+
+  <div id="landing-banner">
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="landing-explanation">
+          <ul>
+            <li>
+              <div class="landing-explanation-line">
+                <span>1.</span><div class="landing-explanation-headline">Vous demandez...</div>
+              </div>
+              <p>Précisez votre demande de sourcing (produit, prix, volumes, conditionnement...)</p>
+            </li>
+            <li>
+              <div class="landing-explanation-line">
+                <span>2.</span><div class="landing-explanation-headline">Nous sélectionnons...</div>
+              </div>
+              <p>Les meilleurs producteurs indépendants correspondant à vos besoins</p>
+            </li>
+            <li>
+              <div class="landing-explanation-line">
+                <span>3.</span><div class="landing-explanation-headline">Vous recevez...</div>
+              </div>
+              <p>Sous 2 jours un mail avec les 5 meilleurs producteurs que nous avons identifiés</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <div class="landing-form-wrapper">
+          <h5 class="center">Intéressé?</h5>
+          <%= simple_form_for @sourcing, url: save_sourcing_path, method: :post, remote: true do |f| %>
+              <%= f.input :produit, placeholder:"Entrez le produit recherché" %>
+              <%= f.input :exigence, placeholder:"Décrivez vos exigences quant au producteur et au produit" %>
+              <%= f.input :email, placeholder:"Entrez votre email", required: true %>
+              <div class="landing-form-submit">
+                <%= f.submit "Envoyer", class: "waves-effect waves-light btn" %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="landing-arrow">
+      <a href="#explanation-banner" >
+        <i class="material-icons homepage-icons" style="color: white;" id="icon-arrow">keyboard_arrow_down</i>
+      </a>
+    </div>
+
+    <%= render 'team' %>
+
+    <%= render 'project' %>
+  </div>
+
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $(document).on('click', 'a[href^="#"]', function (event) {
+            event.preventDefault();
+
+          $('html, body').animate({
+          scrollTop: $($.attr(this, 'href')).offset().top
+          }, 800);
+        });
+    <% end %>
+<% end %>

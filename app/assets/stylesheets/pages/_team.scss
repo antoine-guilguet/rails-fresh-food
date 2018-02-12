@@ -3,4 +3,25 @@
   color: white;
   padding-top: 20px;
   padding-bottom: 30px;
+  opacity: 0.9;
+}
+
+.team-wrapper {
+  margin-top: 30px;
+}
+
+.team-banner-title {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.team-banner-title > h3 {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.team-line {
+  width: 50%;
 }
