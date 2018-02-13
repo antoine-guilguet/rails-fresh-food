@@ -1,6 +1,6 @@
 #team-banner {
-  background-color: $secondary-color;
-  color: white;
+  background-color: white;
+  color: $secondary-color;
   padding-top: 20px;
   padding-bottom: 30px;
   opacity: 0.9;
@@ -23,5 +23,8 @@
 }
 
 .team-line {
-  width: 50%;
+  width: 40%;
+  border: none;
+  height: 2px;
+  background-color: $secondary-color;
 }

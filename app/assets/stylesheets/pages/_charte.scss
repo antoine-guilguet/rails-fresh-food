@@ -1,0 +1,66 @@
+#charte-banner {
+  background-color: $secondary-color;
+  opacity: 0.9;
+  color: white;
+}
+
+.charte-banner-title {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.charte-line {
+  border: none;
+  height: 2px;
+  background-color: white;
+  width: 40%;
+  margin-top: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .charte-line {
+    width: 10%;
+  }
+  .team-line {
+    width: 10%;
+  }
+}
+
+.charte-main {
+  padding:  30px;
+  margin-top: 30px;
+  padding-bottom: 60px;
+}
+
+.charte-bubble {
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid white;
+  color: #019875;
+  width: 170px;
+  height: 170px;
+  text-align: center;
+  padding-top: 27px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.charte-bubble-title {
+  width: 70%;
+  margin: auto;
+}
+
+#quality-logo {
+  width: 50px;
+}
+
+#relation-logo {
+  width: 50px;
+}
+
+#environment-logo {
+  width: 50px;
+}
+
