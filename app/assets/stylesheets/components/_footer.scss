@@ -1,0 +1,28 @@
+.page-footer {
+  background-color: $primary-color;
+}
+
+.footer-copyright-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#footer-logo {
+  padding: 25px;
+}
+
+#footer-like {
+  width: 15px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+ &:hover {
+   text-decoration: underline;
+   transition-duration: 300ms;
+   transition-property: text-decoration;
+ }
+}

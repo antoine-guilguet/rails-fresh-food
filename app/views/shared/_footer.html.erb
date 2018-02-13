@@ -1,27 +1,36 @@
 <footer class="page-footer">
   <div class="container">
     <div class="row">
-      <div class="col l6 s12">
+      <div class="col m4 s8 offset-s2">
+        <div id="footer-logo">
+          <%= image_tag 'logo_blanc.png', style:"width: 150px;" %>
+        </div>
       </div>
-      <div class="col l4 offset-l2 s12">
-        <h5 class="white-text">En savoir plus</h5>
+      <div class="col m4 s8 offset-s2">
+        <h5 class="center">En savoir plus</h5>
         <ul>
-          <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">L'Equipe</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Le Projet</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">La Livraison</a></li>
+          <li><a class="grey-text text-lighten-3 contact-link" href="#charte-banner">La Charte</a></li>
+          <li><a class="grey-text text-lighten-3 contact-link" href="#team-banner">L'Equipe</a></li>
+          <li><a class="grey-text text-lighten-3 contact-link" href="#project-banner">Le Projet</a></li>
+        </ul>
+      </div>
+
+      <div class="col m4 s8 offset-s2">
+        <h5 class="center">Contactez-nous</h5>
+        <ul>
+          <li class="contact-link grey-text text-lighten-3"><i style="margin-right: 5px; font-size: 1.5em;" class="far fa-envelope"></i>contact@choublanc.fr</li>
+          <li><a class="contact-link grey-text text-lighten-3" href="https://www.facebook.com/choublanc.fr"><i style="margin-right: 5px; font-size: 1.7em;"class="fab fa-facebook-square sizex3"></i>Facebook</a></li>
+          <li><a class="contact-link grey-text text-lighten-3" href="https://www.instagram.com/chou.blanc/?hl=fr"><i style="margin-right: 5px; font-size: 1.8em;" class="fab fa-instagram"></i>Instagram</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="footer-copyright">
     <div class="container">
-      © 2017 Copyright
-      <div class="social-networks">
-        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-        <i class="fa fa-twitter-square" aria-hidden="true"></i>
-        <i class="fa fa-instagram" aria-hidden="true"></i>
+      <div class="footer-copyright-wrapper">
+        <p>Made with  <span><%= image_tag 'like.png', id:'footer-like' %></span> by Chou Blanc</p>
       </div>
+
     </div>
   </div>
 </footer>
