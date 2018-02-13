@@ -1,0 +1,8 @@
+<%= simple_form_for sourcing, url: save_sourcing_path, method: :post, remote: true do |f| %>
+    <%= f.input :produit, placeholder:"Entrez le produit recherché", input_html: { class: "sourcing-form-input" } %>
+    <%= f.input :exigence, placeholder:"Décrivez vos exigences quant au producteur et au produit", input_html: { class: "sourcing-form-input" } %>
+    <%= f.input :email, placeholder:"Entrez votre email", required: true, input_html: { class: "sourcing-form-input" } %>
+    <div class="landing-form-submit">
+      <%= f.submit "Envoyer", class: "waves-effect waves-light btn" %>
+    </div>
+<% end %>

@@ -47,14 +47,7 @@
       <div class="col s12 m6">
         <div class="landing-form-wrapper">
           <h5 class="center">Intéressé?</h5>
-          <%= simple_form_for @sourcing, url: save_sourcing_path, method: :post, remote: true do |f| %>
-              <%= f.input :produit, placeholder:"Entrez le produit recherché" %>
-              <%= f.input :exigence, placeholder:"Décrivez vos exigences quant au producteur et au produit" %>
-              <%= f.input :email, placeholder:"Entrez votre email", required: true %>
-              <div class="landing-form-submit">
-                <%= f.submit "Envoyer", class: "waves-effect waves-light btn" %>
-              </div>
-          <% end %>
+          <%= render 'sourcing_form', sourcing: @sourcing %>
         </div>
       </div>
     </div>

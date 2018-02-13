@@ -15,8 +15,16 @@ class PagesController < ApplicationController
       flash[:notice] = "Merci!"
       redirect_to root_path
     else
-      render 'homepage', layout: 'homepage'
+      render 'landing_page'
     end
+  end
+
+  def download_charte
+    send_file(
+        "#{Rails.root}/public/charte.pdf",
+        filename: "charte_chou_blanc.pdf",
+        type: "application/pdf"
+    )
   end
 
   private

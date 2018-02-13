@@ -52,6 +52,12 @@
   margin: auto;
 }
 
+.charte-download-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #quality-logo {
   width: 50px;
 }
@@ -62,5 +68,14 @@
 
 #environment-logo {
   width: 50px;
+}
+
+.download-button {
+  margin-top: 20px;
+  background-color: white;
+  color: $secondary-color;
+  &:hover {
+    background-color: #e9e9e9;
+  }
 }
 

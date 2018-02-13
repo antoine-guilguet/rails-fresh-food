@@ -6,7 +6,7 @@
   </div>
   <div class="charte-main">
     <div class="row">
-      <div class="col m2 s8 offset-s2 offset-m1">
+      <div class="col m2 s8 offset-s2">
         <div class="charte-bubble">
           <div class="charte-bubble-title">
             <%= image_tag 'quality.png', id:"quality-logo" %>
@@ -30,10 +30,10 @@
           </div>
         </div>
       </div>
-      <div class="col m2 s8 offset-s2 offset-m1">
-        <h5 class="center">En savoir plus sur notre charte?</h5>
-        <div class="btn">
-          Téléchargez
+      <div class="col m5 s8 offset-s2 offset-m1">
+        <div class="charte-download-wrapper">
+          <h5 class="center">En savoir plus sur notre engagement?</h5>
+          <%= link_to 'Télécharger la Charte', download_charte_url, class: "waves-effect waves-light btn download-button"%>
         </div>
       </div>
     </div>
