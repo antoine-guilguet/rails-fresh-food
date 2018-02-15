@@ -1,0 +1,17 @@
+<%= render 'shared/landing_navbar' %>
+
+<h1 class="center">Merci de votre confiance!</h1>
+
+<p>C'est avec grand plaisir que nous vous confirmons la réception de votre demande de sourcing:</p>
+<ul>
+  <li><%= @sourcing.produit %></li>
+  <li><%= @sourcing.exigence %></li>
+</ul>
+
+<p>Nous vous enverrons sous 2 jours les coordonnées de 5 producteurs indépendants au savoir-faire exceptionnel à l'adresse mail suivante: <%= @sourcing.email %></p>
+
+<%= render 'shared/footer' %>
+
+
+
+
