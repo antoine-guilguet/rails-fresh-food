@@ -3,7 +3,7 @@ class Sourcing < ApplicationRecord
   validates :produit, presence: true
   validates :exigence, presence: true
 
-  # after_create :send_sourcing_notification
+  after_create :send_sourcing_notification
 
   private
 

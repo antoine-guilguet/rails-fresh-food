@@ -12,7 +12,80 @@
 </head>
 
 <body>
-<%= yield %>
+  <div class="header">
+    <div id="email-logo-wrapper">
+      <div class="email-logo">
+        <%= email_image_tag("logo_blanc_mail.png") %>
+      </div>
+    </div>
+    <div class="email-headline">
+      <h3>Le lien direct entre restaurateurs et producteurs indépendants</h3>
+    </div>
+  </div>
+
+  <%= yield %>
+
+  <div class="email-footer">
+    <div class="footer-container">
+      <h5 class="email-headline">Contactez-nous</h5>
+      <div class="footer-wrapper">
+        <a class="email-link"  href="http://choublanc.fr">Choublanc.fr</a>
+        <a class="email-link" href="https://www.facebook.com/choublanc.fr">Facebook</a>
+        <a class="email-link" href="https://www.instagram.com/chou.blanc/?hl=fr">Instagram</a>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
+
+<style>
+  body {
+    font-family: Montserrat, 'open-sans';
+  }
+  .header {
+    background-color: #2C3E50;
+    color: white;
+    padding: 20px;
+  }
+
+  #email-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .email-logo {
+    width: 80px;
+  }
+
+  .email-headline {
+    text-align: center;
+  }
+
+  .email-body {
+    padding: 30px;
+  }
+
+  .email-footer {
+    background-color: #27AE60;
+    color: white;
+    padding: 10px;
+  }
+
+  .footer-container {
+    width: 80%;
+    margin: auto;
+  }
+
+  .footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .email-link {
+    color: white;
+    text-decoration: none;
+  }
+</style>
 
