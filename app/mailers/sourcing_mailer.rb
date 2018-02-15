@@ -1,11 +1,5 @@
 class SourcingMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.sourcing_mailer.sourcing_request.subject
-  #
-
   def sourcing_request(sourcing)
     @sourcing = sourcing
     mail( :to => @sourcing.email,
