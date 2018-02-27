@@ -9,5 +9,6 @@ class Sourcing < ApplicationRecord
 
   def send_sourcing_notification
     SourcingMailer.sourcing_request(self).deliver_now
+    SourcingMailer.sourcing_alarm(self).deliver_now
   end
 end
