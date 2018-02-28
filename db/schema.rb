@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208113451) do
+ActiveRecord::Schema.define(version: 20180228163807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,18 +25,32 @@ ActiveRecord::Schema.define(version: 20180208113451) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.float "price"
-    t.string "producer"
-    t.string "origin"
-    t.integer "rating"
-    t.integer "quantity"
-    t.string "measure"
+  create_table "producers", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.text "description"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "phone_number"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "conditionning"
+    t.float "price"
+    t.text "description"
+    t.string "label"
+    t.float "price_per_kg"
+    t.string "origin"
+    t.boolean "aop"
+    t.text "composition"
+    t.bigint "producer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["producer_id"], name: "index_products_on_producer_id"
   end
 
   create_table "sourcings", force: :cascade do |t|
@@ -47,4 +61,5 @@ ActiveRecord::Schema.define(version: 20180208113451) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "products", "producers"
 end
