@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
   root to:"pages#landing_page"
 
   get 'homepage', to:"pages#homepage"

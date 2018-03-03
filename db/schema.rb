@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228163807) do
+ActiveRecord::Schema.define(version: 20180303154756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.bigint "producer_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_activities_on_category_id"
+    t.index ["producer_id"], name: "index_activities_on_producer_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "leads", force: :cascade do |t|
     t.string "address"
@@ -31,8 +46,7 @@ ActiveRecord::Schema.define(version: 20180228163807) do
     t.text "description"
     t.string "first_name"
     t.string "last_name"
-    t.integer "phone_number"
-    t.string "category"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,14 +57,17 @@ ActiveRecord::Schema.define(version: 20180228163807) do
     t.float "price"
     t.text "description"
     t.string "label"
-    t.float "price_per_kg"
     t.string "origin"
     t.boolean "aop"
     t.text "composition"
     t.bigint "producer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "subcategory_id"
+    t.string "quantity"
+    t.string "unity", default: "g"
     t.index ["producer_id"], name: "index_products_on_producer_id"
+    t.index ["subcategory_id"], name: "index_products_on_subcategory_id"
   end
 
   create_table "sourcings", force: :cascade do |t|
@@ -61,5 +78,17 @@ ActiveRecord::Schema.define(version: 20180228163807) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "subcategories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_subcategories_on_category_id"
+  end
+
+  add_foreign_key "activities", "categories"
+  add_foreign_key "activities", "producers"
   add_foreign_key "products", "producers"
+  add_foreign_key "products", "subcategories"
+  add_foreign_key "subcategories", "categories"
 end

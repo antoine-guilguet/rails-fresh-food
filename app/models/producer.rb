@@ -1,3 +1,7 @@
 class Producer < ApplicationRecord
-  has_many :products
+
+  # RELATIONS
+  has_many :products, dependent: :destroy
+  has_many :activities, dependent: :destroy
+  has_many :categories, through: :activities
 end

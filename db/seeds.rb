@@ -1,10 +1,56 @@
-Product.create(title:"Salade", description:"Salade fraîche et délicieuse", price: 1.5, producer:"Jean-Michel", origin:"France", rating:5, quantity: 200, measure: "g", category:"Légumes" )
-Product.create(title:"Tomate", description:"Tomate du jardin", price: 2, producer:"Jean-Guy", origin:"France", rating:4, quantity: 100, measure: "g", category:"Légumes" )
-Product.create(title:"Concombre", description:"Grand concombre délicieux", price: 2.4, producer:"Jean-Michel", origin:"France", rating:5, quantity: 200, measure: "g", category:"Légumes" )
-Product.create(title:"Orange", description:"Orange juteuse", price: 1.5, producer:"Jean-Michel", origin:"France", rating:5, quantity: 200, measure: "g", category:"Fruits" )
-Product.create(title:"Banane", description:"Banane savoureuse", price: 1.5, producer:"Jean-Michel", origin:"France", rating:5, quantity: 200, measure: "g", category:"Fruits" )
-Product.create(title:"Steak", description:"Steak française 100% pur boeuf", price: 3, producer:"Jean-Michel", origin:"Espagne", rating:3, quantity: 200, measure: "g", category:"Viandes" )
-Product.create(title:"Fromage de chèvre", description:"Savoureux et onctueux", price: 5, producer:"Jean-Michel", origin:"Espagne", rating:5, quantity: 200, measure: "g", category:"Fromage" )
-Product.create(title:"Saucisson", description:"Délicieux sauce-back", price: 4, producer:"Jean-Claude", origin:"Espagne", rating:4, quantity: 300, measure: "g", category:"Viandes" )
-Product.create(title:"Sole", description:"Sole fraîchement pêchée", price: 15, producer:"Jean-Claude", origin:"Espagne", rating:2, quantity: 400, measure: "g", category:"Poisson" )
-Product.create(title:"Thon", description:"Gros thon de méditerranée", price: 12, producer:"Jean-Claude", origin:"Espagne", rating:5, quantity: 1, measure: "kg", category:"Poisson" )
+puts "Destroying models"
+
+Category.destroy_all
+Producer.destroy_all
+
+
+puts "Create Producer"
+# Producteurs
+viltain = Producer.create(name:"Ferme de Viltain", address:"10 rue de la Gare", description: "Maraicher seine et marne", first_name: "Bob", last_name:"Léponge", phone_number:"0909090909")
+fruitiere = Producer.create(name:"Fruitière de Granveaux", address:"10 rue de Saint Laurent", description: "Comté du Jura à foison", first_name: "Monsieur", last_name:"Propre", phone_number:"0707070707")
+
+puts "Create Category"
+# Category
+fro = Category.create(name:"Fromager")
+mar = Category.create(name:"Maraîcher")
+cre = Category.create(name:"Crémier")
+char = Category.create(name:"Charcuterie")
+
+puts "Create Activity"
+# Activities
+Activity.create(category_id: fro.id, producer_id: fruitiere.id)
+Activity.create(category_id: cre.id, producer_id: fruitiere.id)
+Activity.create(category_id: mar.id, producer_id: viltain.id)
+
+puts "Create Subcategory"
+# Subcategories
+vache = Subcategory.create(name: "Lait de Vache", category_id: fro.id)
+chevre = Subcategory.create(name: "Lait de Chèvre", category_id: fro.id)
+brebis = Subcategory.create(name: "Lait de Brebis", category_id: fro.id)
+entier = Subcategory.create(name: "Lait Entier", category_id: cre.id)
+demi = Subcategory.create(name: "Lait demi-écrémé", category_id: cre.id)
+beurre = Subcategory.create(name: "Beurre", category_id: cre.id)
+fruits = Subcategory.create(name: "Fruits", category_id: mar.id)
+legumes = Subcategory.create(name: "Légumes", category_id: mar.id)
+saucisson = Subcategory.create(name: "Saucissons", category_id: char.id)
+
+
+puts "Create Products"
+# Products
+Product.create(conditionning: "Sachet", aop: false, composition:"Nice", name:"Salade", description:"Salade fraîche et délicieuse", price: 1.5, producer_id: viltain.id, origin: "France", quantity: 200, unity: "g", subcategory_id: legumes.id)
+Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"ijifjaijeifj", name:"Tomate", description:"Tomate du jardin", price: 2, producer_id: viltain.id, origin: "France", quantity: 100, unity: "g", subcategory_id: fruits.id)
+Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Concombre", description:"Grand concombre délicieux", price: 2.4, producer_id: viltain.id, origin:"France", quantity: 200, unity: "g", subcategory_id: legumes.id)
+Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Orange", description:"Orange juteuse", price: 1.5, producer_id: viltain.id, origin:"France", quantity: 200, unity: "g", subcategory_id: fruits.id)
+Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Banane", description:"Banane savoureuse", price: 1.5, producer_id: viltain.id, origin:"France", unity:"Fruits", subcategory_id: fruits.id)
+Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Pêche", description:"Pêche du Sud", price: 3, producer_id: viltain.id, origin:"Espagne", quantity: 200, unity: "g", subcategory_id: fruits.id)
+Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Fromage de chèvre", description:"Savoureux et onctueux", price: 5, producer_id: viltain.id, origin:"Espagne", quantity: 200, unity: "g", subcategory_id: chevre.id)
+Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Saucisson", description:"Délicieux sauce-back", price: 4, producer_id: viltain.id, origin:"Espagne", quantity: 300, unity: "g", subcategory_id: saucisson.id)
+Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Courgette", description:"Courgette de la mère bastien", price: 15, producer_id: viltain.id, origin:"Espagne", quantity: 400, unity: "g", subcategory_id: legumes.id)
+Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Poireaux", description:"Le vilain batou", price: 12, producer_id: viltain.id, origin:"Espagne", quantity: 1, unity: "kg", subcategory_id: legumes.id)
+
+Product.create(conditionning: "Papier", label: "Comté du Jura" , aop:true, composition:"blallalijfhauehfuehau", name:"Comté Jeune", description:"12 mois d'affinage", price: 12, producer_id: fruitiere.id, origin:"France", quantity: 1, unity: "kg", subcategory_id: vache.id)
+Product.create(conditionning: "Papier", label: "Comté du Jura" , aop:true, composition:"blallalijfhauehfuehau", name:"Comté Fruité", description:"16 mois d'affinage", price: 16, producer_id: fruitiere.id, origin:"France", quantity: 1, unity: "kg", subcategory_id: vache.id)
+Product.create(conditionning: "Papier", label: "Comté du Jura" , aop:true, composition:"blallalijfhauehfuehau", name:"Comté Vieux", description:"24 mois d'affinage", price: 22, producer_id: fruitiere.id, origin:"France", quantity: 1, unity: "kg", subcategory_id: vache.id)
+Product.create(conditionning: "Papier", label: "Morbier" , aop:true, composition:"blallalijfhauehfuehau", name:"Morbier Jeune", description:"8 mois d'affinage", price: 10, producer_id: fruitiere.id, origin:"France", quantity: 1, unity: "kg", subcategory_id: vache.id)
+Product.create(conditionning: "Papier", label: "Jura" , aop:true, composition:"blallalijfhauehfuehau", name:"Bleu de Gex", description:"10 mois d'affinage", price: 9, producer_id: fruitiere.id, origin:"France", quantity: 1, unity: "kg", subcategory_id: vache.id)
+Product.create(conditionning: "Papier", label: "Jura" , aop:true, composition:"blallalijfhauehfuehau", name:"Tomme de Granveaux", description:"16 mois d'affinage", price: 14, producer_id: fruitiere.id, origin:"France", quantity: 1, unity: "kg", subcategory_id: vache.id)

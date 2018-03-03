@@ -6,8 +6,7 @@ class CreateProducers < ActiveRecord::Migration[5.1]
       t.text :description
       t.string :first_name
       t.string :last_name
-      t.integer :phone_number
-      t.string :category
+      t.string :phone_number
 
       t.timestamps
     end
