@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20180303154756) do
     t.datetime "updated_at", null: false
     t.bigint "subcategory_id"
     t.string "quantity"
-    t.string "unity", default: "g"
+    t.string "unit", default: "g"
     t.index ["producer_id"], name: "index_products_on_producer_id"
     t.index ["subcategory_id"], name: "index_products_on_subcategory_id"
   end
