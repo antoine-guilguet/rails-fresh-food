@@ -1,0 +1,22 @@
+<div class="col s12 m6">
+  <div class="card">
+    <div class="card-image">
+    </div>
+    <div class="card-content">
+      <%= link_to producer.name, producer_path(producer) %>
+      <p><%= producer.address %></p>
+      <p><%= producer.description %></p>
+      <p><%= producer.phone_number %></p>
+    </div>
+    <div class="card-actions">
+      <%= link_to "Modifier", edit_producer_path(producer), class: "btn" %>
+      <%= link_to "Supprimer", producer_path(producer), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce fournisseur?" }, class: "btn" %>
+    </div>
+  </div>
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+
+    <% end %>
+<% end %>

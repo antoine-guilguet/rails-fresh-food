@@ -1,0 +1,32 @@
+<h1> <%= @producer.name %></h1>
+<p><%= @producer.description %></p>
+<p><%= @producer.address %></p>
+<p><%= @producer.first_name %></p>
+<p><%= @producer.last_name %></p>
+<p><%= @producer.description %></p>
+<br>
+<% if @category %>
+  <h3>Catégorie:</h3>
+  <p><%= @category.name %></p>
+<% end %>
+
+<% if !@producer.products.empty? %>
+  <h3>Sous-Catégories:</h3>
+  <ul>
+    <% @producer.find_subcategories.each do |subcategory| %>
+      <li><%= subcategory %></li>
+    <% end %>
+  </ul>
+  <br>
+<% end %>
+
+<%= link_to 'Retour', producers_path %>
+
+<h1>Produits:</h1>
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col s12 l6">
+      <%= render 'products/product_card', product: product %>
+    </div>
+  <% end %>
+</div>

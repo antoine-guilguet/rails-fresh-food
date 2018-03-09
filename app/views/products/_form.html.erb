@@ -12,8 +12,6 @@
               <%= f.input :price %>
               <%= f.input :quantity %>
               <%= f.input :unit %>
-              <%= f.input :producer_id, collection: @producers %>
-              <%= f.input :subcategory_id, collection: @subcategories %>
               <div class="form-actions">
                 <%= f.submit 'Créer', class: "waves-effect waves-light btn" %>
                 <%= link_to 'Retour', products_path, class: "waves-effect waves-light btn" %>

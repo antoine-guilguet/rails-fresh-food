@@ -1,0 +1,6 @@
+<%= link_to 'Créer un Fournisseur', new_producer_path, class:"btn" %>
+<div class="row">
+  <% @producers.each do |producer| %>
+      <%= render 'producer_card', producer: producer %>
+  <% end %>
+</div>
