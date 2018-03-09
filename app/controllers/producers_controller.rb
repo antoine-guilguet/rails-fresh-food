@@ -42,6 +42,7 @@ class ProducersController < ApplicationController
   end
 
   def destroy
+    
     @producer.destroy
     redirect_to producers_path
   end
