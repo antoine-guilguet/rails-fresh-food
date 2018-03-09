@@ -31,6 +31,7 @@ gem 'materialize-sass'
 gem 'jquery-rails'
 gem 'figaro'
 gem 'simple_form'
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

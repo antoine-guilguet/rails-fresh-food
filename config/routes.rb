@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
   root to:"pages#landing_page"
-
-  get 'homepage', to:"pages#homepage"
-
 
   resources :products, only: [:index, :show]
 
   resources :producers
+
+  # Homepage
+  get 'homepage', to:"pages#homepage"
 
   # Landing Page
   get 'welcome', to:"pages#landing_page"
