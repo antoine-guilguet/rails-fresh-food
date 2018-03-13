@@ -3,11 +3,21 @@ puts "Destroying models"
 Category.destroy_all
 Producer.destroy_all
 
+puts "Create User"
+
+ant = User.create(email:"guilguet.antoine@gmail.com", password:"skate1")
+bat = User.create(email:"baptiste.grandclerc@gmail.com", password:"skate2")
 
 puts "Create Producer"
 # Producteurs
 viltain = Producer.create(name:"Ferme de Viltain", address:"10 rue de la Gare", description: "Maraicher seine et marne", first_name: "Bob", last_name:"Léponge", phone_number:"0909090909")
 fruitiere = Producer.create(name:"Fruitière de Granveaux", address:"10 rue de Saint Laurent", description: "Comté du Jura à foison", first_name: "Monsieur", last_name:"Propre", phone_number:"0707070707")
+
+
+puts "Create Supplier"
+Supplier.create(user_id: ant.id, producer_id: viltain.id)
+Supplier.create(user_id: ant.id, producer_id: fruitiere.id)
+Supplier.create(user_id: bat.id, producer_id: viltain.id)
 
 puts "Create Category"
 # Category

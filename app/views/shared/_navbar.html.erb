@@ -1,9 +1,9 @@
 <div id="landing-navbar">
   <nav id="landing-navbar">
     <div class="nav-wrapper">
-      <div class="brand-logo center">
+      <a href="<%= root_path %>" class="brand-logo center">
         <%= image_tag 'logo_blanc.png', id:"landing_logo" %>
-      </div>
+      </a>
       <% if user_signed_in? %>
           <ul class="right home-navbar-mobile">
             <li><%= link_to 'Créer un Fournisseur', new_producer_path, 'data-no-turbolink' => true %></li>

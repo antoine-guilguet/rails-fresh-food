@@ -2,7 +2,7 @@ class ProducersController < ApplicationController
   before_action :find_producer, only:[:show, :edit, :update, :destroy]
 
   def index
-    @producers = Producer.all
+    @producers = current_user.producers
   end
 
   def show
