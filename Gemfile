@@ -33,6 +33,7 @@ gem 'figaro'
 gem 'simple_form'
 gem 'devise'
 gem "administrate"
+gem 'cloudinary'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
