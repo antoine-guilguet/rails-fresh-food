@@ -42,9 +42,34 @@ class ProducersController < ApplicationController
   end
 
   def destroy
-
     @producer.destroy
     redirect_to producers_path
+  end
+
+  def select_producer
+    @producers = Producer.all
+  end
+
+  def upload_producer
+    @producer = Producer.new
+    @categories = Category.all
+  end
+
+  def add_producer_to_favorites
+    @producer = Producer.find(params[:producer_id])
+    @supplier = Supplier.new(user_id: current_user.id, producer_id: @producer.id)
+    if @supplier.save
+      render json: {
+          producer_name: @producer.name,
+          message: "Ajouter aux favoris"
+      }
+    else
+      Supplier.find_by(user_id: current_user.id, producer_id: @producer.id).destroy
+      render json: {
+          producer_name: @producer.name,
+          message: "Retirer des favoris"
+      }
+    end
   end
 
   private

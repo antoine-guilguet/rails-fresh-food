@@ -4,8 +4,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name, label:"Prénom", autofocus: true %>
+    <%= f.input :last_name, label:"Nom", autofocus: true %>
+    <%= f.input :restaurant_name, label:"Nom du Restaurant", autofocus: true %>
     <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    <%= f.input :phone_number, label:"Numéro de téléphone", autofocus: true, input_html: { maxlength: 12 } %>
+    <%= f.input :address, label:"Adresse", autofocus: true %>
+    <%= f.input :siret, label:"Numéro SIRET", autofocus: true, input_html: { maxlength: 14 } %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères minimums" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
   </div>
 
