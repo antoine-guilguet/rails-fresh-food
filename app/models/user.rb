@@ -7,6 +7,7 @@ class User < ApplicationRecord
   # RELATIONS
   has_many :suppliers
   has_many :producers, through: :suppliers
+  has_many :my_producers, class_name: "Producer"
 
   # VALIDATIONS
 =begin
