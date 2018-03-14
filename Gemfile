@@ -32,6 +32,7 @@ gem 'jquery-rails'
 gem 'figaro'
 gem 'simple_form'
 gem 'devise'
+gem "administrate"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

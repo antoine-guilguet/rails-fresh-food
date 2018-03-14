@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314131505) do
+ActiveRecord::Schema.define(version: 20180314171125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,11 +46,11 @@ ActiveRecord::Schema.define(version: 20180314131505) do
     t.text "description"
     t.string "first_name"
     t.string "last_name"
-    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "confirmed", default: false
     t.integer "user_id"
+    t.string "phone_number"
   end
 
   create_table "products", force: :cascade do |t|
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20180314131505) do
     t.bigint "subcategory_id"
     t.string "quantity"
     t.string "unit", default: "g"
+    t.integer "stock"
     t.index ["producer_id"], name: "index_products_on_producer_id"
     t.index ["subcategory_id"], name: "index_products_on_subcategory_id"
   end
@@ -113,9 +114,10 @@ ActiveRecord::Schema.define(version: 20180314131505) do
     t.string "first_name"
     t.string "last_name"
     t.string "restaurant_name"
-    t.integer "phone_number"
     t.string "address"
     t.float "siret"
+    t.string "phone_number"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

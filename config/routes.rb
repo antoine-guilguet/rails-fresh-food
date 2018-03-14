@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'onboarding/select_producer'
+  namespace :admin do
+    resources :users
+    resources :producers
+    resources :products
+    resources :categories
+    resources :subcategories
+    resources :sourcings
 
-  get 'onboarding/upload_producer'
+    root to: "users#index"
+  end
 
   devise_for :users, controllers: {
       registrations: 'users/registrations',
