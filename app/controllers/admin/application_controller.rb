@@ -19,7 +19,7 @@ module Admin
     def logged_and_admin?
       current_user && current_user.admin?
     end
-    
+
     # def records_per_page
     #   params[:per_page] || 20
     # end
