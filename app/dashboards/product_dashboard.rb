@@ -24,6 +24,7 @@ class ProductDashboard < Administrate::BaseDashboard
     quantity: Field::String,
     unit: Field::String,
     stock: Field::Number,
+    photo: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -42,6 +43,7 @@ class ProductDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
+    :photo,
     :producer,
     :subcategory,
     :conditionning,
@@ -63,6 +65,7 @@ class ProductDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :producer,
+    :photo,
     :subcategory,
     :name,
     :conditionning,

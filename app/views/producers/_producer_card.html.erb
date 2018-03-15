@@ -1,16 +1,13 @@
-<div class="col s12 m6">
+<div class="col s12 m4">
   <div class="card">
-    <div class="card-image">
+    <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+        url('<%= producer.photo %>')">
     </div>
     <div class="card-content">
       <%= link_to producer.name, producer_path(producer) %>
       <p><%= producer.address %></p>
       <p><%= producer.description %></p>
       <p><%= producer.phone_number %></p>
-    </div>
-    <div class="card-actions">
-      <%= link_to "Modifier", edit_producer_path(producer), class: "btn" %>
-      <%= link_to "Supprimer", producer_path(producer), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce fournisseur?" }, class: "btn" %>
     </div>
   </div>
 </div>

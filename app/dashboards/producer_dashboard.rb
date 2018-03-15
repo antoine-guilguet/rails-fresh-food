@@ -25,7 +25,7 @@ class ProducerDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     confirmed: Field::Boolean,
     user_id: Field::Number,
-
+    photo: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -71,9 +71,9 @@ class ProducerDashboard < Administrate::BaseDashboard
     :last_name,
     :phone_number,
     :users,
-    :photo,
     :categories,
     :confirmed,
+    :photo,
     :user_id,
   ].freeze
 

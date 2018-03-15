@@ -1,12 +1,12 @@
 puts "Create User"
 
-ant = User.create(email:"guilguet.antoine@gmail.com", password:"skate1")
-bat = User.create(email:"baptiste.grandclerc@gmail.com", password:"skate2")
+ant = User.create(first_name:"Antoine", last_name:"Guilguet", restaurant_name:"La Biche", email:"guilguet.antoine@gmail.com", password:"skate1")
+bat = User.create(first_name:"Batou", last_name:"Granclerc", restaurant_name:"Bateub",email:"baptiste.grandclerc@gmail.com", password:"skate2")
 
 puts "Create Producer"
 # Producteurs
-viltain = Producer.create(name:"Ferme de Viltain", address:"10 rue de la Gare", description: "Maraicher seine et marne", first_name: "Bob", last_name:"Léponge", phone_number:"0909090909", user_id: ant.id)
-fruitiere = Producer.create(name:"Fruitière de Granveaux", address:"10 rue de Saint Laurent", description: "Comté du Jura à foison", first_name: "Monsieur", last_name:"Propre", phone_number:"0707070707", user_id: bat.id)
+viltain = Producer.create(name:"Ferme de Viltain", address:"10 rue de la Gare", description: "Maraicher seine et marne", first_name: "Bob", last_name:"Léponge", phone_number:"0909090909", user_id: ant.id, photo:"http://res.cloudinary.com/dc2sgi2zs/image/upload/v1521051448/e2dt5ah7hm7olgj1d2zs.jpg")
+fruitiere = Producer.create(name:"Fruitière de Granveaux", address:"10 rue de Saint Laurent", description: "Comté du Jura à foison", first_name: "Monsieur", last_name:"Propre", phone_number:"0707070707", user_id: bat.id, photo:"http://res.cloudinary.com/dc2sgi2zs/image/upload/v1521132220/grandveaux_exvnjg.jpg")
 
 
 puts "Create Supplier"

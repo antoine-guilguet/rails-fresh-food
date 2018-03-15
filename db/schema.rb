@@ -30,16 +30,6 @@ ActiveRecord::Schema.define(version: 20180314181234) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "leads", force: :cascade do |t|
-    t.string "address"
-    t.string "street_number"
-    t.string "route"
-    t.string "locality"
-    t.string "country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "producers", force: :cascade do |t|
     t.string "name"
     t.string "address"

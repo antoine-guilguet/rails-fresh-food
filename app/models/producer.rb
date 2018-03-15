@@ -8,8 +8,6 @@ class Producer < ApplicationRecord
   has_many :categories, through: :activities
   belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
 
-  mount_uploader :photo, PhotoUploader
-
   def find_subcategories
     self.products.map{ |product| product.subcategory.name }.uniq
   end
