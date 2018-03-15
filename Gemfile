@@ -34,6 +34,8 @@ gem 'simple_form'
 gem 'devise'
 gem "administrate"
 gem 'cloudinary'
+gem 'carrierwave', '~> 1.2'
+gem 'administrate-field-file_upload'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

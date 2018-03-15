@@ -25,6 +25,7 @@ class ProducerDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     confirmed: Field::Boolean,
     user_id: Field::Number,
+
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -56,23 +57,22 @@ class ProducerDashboard < Administrate::BaseDashboard
     :updated_at,
     :confirmed,
     :user_id,
+    :photo,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :suppliers,
-    :users,
-    :products,
-    :activities,
-    :categories,
     :name,
     :address,
     :description,
     :first_name,
     :last_name,
     :phone_number,
+    :users,
+    :photo,
+    :categories,
     :confirmed,
     :user_id,
   ].freeze

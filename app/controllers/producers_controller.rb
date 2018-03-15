@@ -25,6 +25,7 @@ class ProducersController < ApplicationController
       end
       redirect_to producers_path
     else
+      @categories = Category.all
       render 'new'
     end
   end
@@ -79,6 +80,6 @@ class ProducersController < ApplicationController
   end
 
   def producer_params
-    params.require(:producer).permit(:name, :description, :address, :first_name, :last_name, :phone_number)
+    params.require(:producer).permit(:name, :description, :address, :first_name, :last_name, :phone_number, :photo, :photo_cache)
   end
 end

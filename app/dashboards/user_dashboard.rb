@@ -35,6 +35,7 @@ class UserDashboard < Administrate::BaseDashboard
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
   COLLECTION_ATTRIBUTES = [
+    :id,
     :restaurant_name,
     :first_name,
     :last_name,
