@@ -1,0 +1,19 @@
+<div class="col s12 m4">
+  <div class="card">
+    <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+        url('<%= producer.photo %>')">
+    </div>
+    <div class="card-content">
+      <%= link_to producer.name, producer_path(producer) %>
+      <p><%= producer.address %></p>
+      <p><%= producer.description %></p>
+      <p><%= producer.phone_number %></p>
+    </div>
+  </div>
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+
+    <% end %>
+<% end %>

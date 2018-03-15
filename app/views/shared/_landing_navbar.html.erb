@@ -1,6 +1,34 @@
 <div id="landing-navbar">
   <nav id="landing-navbar">
     <div class="nav-wrapper">
+      <a href="<%= root_path %>" class="brand-logo center">
+        <%= image_tag 'logo_blanc.png', id:"landing_logo" %>
+      </a>
+      <% if user_signed_in? %>
+          <ul class="right home-navbar-mobile">
+            <li><%= link_to 'Créer un Fournisseur', new_producer_path, 'data-no-turbolink' => true %></li>
+            <li><%= link_to 'Se Déconnecter', destroy_user_session_path, method: :delete %></li>
+          </ul>
+      <% else %>
+          <ul class="right home-navbar-mobile">
+            <li><%= link_to 'Se Connecter', new_user_session_path %></li>
+            <li><%= link_to 'Créer un Compte', new_user_registration_path %></li>
+          </ul>
+      <% end %>
+    </div>
+  </nav>
+  <hr class="landing-navbar-line">
+  <div class="landing-navbar-title">
+    <h5>Le lien direct entre restaurateurs et producteurs indépendants</h5>
+  </div>
+</div>
+
+
+
+<!--
+<div id="landing-navbar">
+  <nav id="landing-navbar">
+    <div class="nav-wrapper">
       <div class="brand-logo center">
         <%= image_tag 'logo_blanc.png', id:"landing_logo" %>
       </div>
@@ -14,4 +42,4 @@
   <div class="landing-navbar-title">
     <h5>Le lien direct entre restaurateurs et producteurs indépendants</h5>
   </div>
-</div>
+</div>-->

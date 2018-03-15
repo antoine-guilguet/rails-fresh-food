@@ -1,0 +1,5 @@
+<div class="row">
+  <% @products.each do |product| %>
+      <%= render 'product_card', product: product %>
+  <% end %>
+</div>

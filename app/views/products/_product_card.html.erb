@@ -1,0 +1,14 @@
+<div class="col s12 m6">
+  <div class="card">
+    <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+        url('<%= cl_image_path producer.photo, height: 300, width: 400, crop: :fill %>')">>
+    </div>
+    <div class="card-content">
+      <%= link_to product.name, product_path(product) %>
+      <p><%= product.description %></p>
+      <p><%= product.price %></p>
+      <p><%= product.quantity %></p>
+    </div>
+  </div>
+</div>
+

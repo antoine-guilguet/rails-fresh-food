@@ -1,0 +1,46 @@
+<div id="landing-navbar">
+  <nav id="landing-navbar">
+    <div class="nav-wrapper">
+      <a href="<%= root_path %>" class="brand-logo center">
+        <%= image_tag 'logo_blanc.png', id:"landing_logo" %>
+      </a>
+      <% if user_signed_in? %>
+          <ul class="right home-navbar-mobile">
+            <li>
+              <a class='dropdown-button' href='#' data-activates='dropdown1'>
+                <div>
+                  <%= current_user.render_full_name %>
+                </div>
+              </a>
+              <ul id='dropdown1' class='dropdown-content'>
+                <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
+                <li><%= link_to 'Profil', edit_user_registration_path %></li>
+              </ul>
+            </li>
+          </ul>
+      <% else %>
+          <ul class="right home-navbar-mobile">
+            <li><%= link_to 'Se Connecter', new_user_session_path %></li>
+            <li><%= link_to 'Créer un Compte', new_user_registration_path %></li>
+          </ul>
+      <% end %>
+    </div>
+  </nav>
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $('.dropdown-button').dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrainWidth: false, // Does not change width of dropdown to that of the activator
+          hover: false, // Activate on hover
+          gutter: 0, // Spacing from edge
+          belowOrigin: true, // Displays dropdown below the button
+          alignment: 'left', // Displays dropdown with edge aligned to the left of button
+          stopPropagation: false // Stops event propagation
+          }
+        );
+    <% end %>
+<% end %>
+

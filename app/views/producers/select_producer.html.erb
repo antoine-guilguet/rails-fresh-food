@@ -1,0 +1,25 @@
+<%= link_to 'Passer cette étape', upload_producer_path, class: "btn" %>
+
+<div class="row">
+  <% @producers.each do |producer| %>
+      <%= render 'onboarding_producer_card', producer: producer %>
+  <% end %>
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $('.favorite-button').on("click", function() {
+            $.ajax({
+              type: "POST",
+              url: "<%= add_producer_to_favorites_path %>",
+              data: { producer_id: $(this).children().attr('id') },
+              success: function(data){
+              console.log(data);
+              },
+              error: function(jqXHR) {
+              console.error(jqXHR.responseText);
+              }
+              });
+        });
+    <% end %>
+<% end %>

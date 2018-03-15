@@ -26,3 +26,18 @@ body {
   left: 80%;
   width: 250px;
 }
+
+.success-color {
+  background-color: #27AE60;
+  color: white;
+}
+
+.alert-color {
+  background-color: #E67E22;
+  color: white;
+}
+
+// Form
+select {
+  display: block;
+}

@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user!
 
   def homepage
     @sourcing = Sourcing.new
@@ -7,6 +8,7 @@ class PagesController < ApplicationController
 
   def landing_page
     @sourcing = Sourcing.new
+    render layout: 'landing'
   end
 
   def save_sourcing

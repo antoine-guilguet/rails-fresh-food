@@ -1,0 +1,10 @@
+<h1> <%= @product.name %></h1>
+<p><%= @product.conditionning %></p>
+<p><%= @product.quantity %></p>
+<p><%= @product.price %></p>
+<p><%= @product.unit %></p>
+<p><%= @product.description %></p>
+<p>Producteur: <%= @product.producer.name %></p>
+<p>Catégorie: <%= @product.subcategory.category.name %></p>
+<p>Sous-catégorie: <%= @product.subcategory.name %></p>
+<%= link_to 'Retour', products_path %>
