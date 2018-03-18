@@ -1,3 +1,18 @@
+<form action="<%= products_path %>" method="get">
+  <div class="input-field">
+    <input type="text" name="query" id="query" class="form-control" placeholder="Trouver un produit">
+  </div>
+
+  <% @subcategories.each do |subcategory| %>
+      <input type="checkbox" name="subcategory_<%= subcategory.id %>" id="<%= subcategory.id %>" />
+      <label for="<%= subcategory.id %>"><%= subcategory.name %></label>
+  <% end %>
+  <input type="submit">
+
+</form>
+
+<br>
+
 <div class="row">
   <% @products.each do |product| %>
       <%= render 'product_card', product: product %>
