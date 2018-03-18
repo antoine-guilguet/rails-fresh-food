@@ -1,3 +1,18 @@
+<form action="<%= producers_path %>" method="get">
+  <div class="input-field">
+    <input type="text" name="query" id="query" class="form-control" placeholder="Trouver un producteur">
+  </div>
+
+  <% @categories.each do |category| %>
+    <input type="checkbox" name="category_<%= category.id %>" id="<%= category.id %>" />
+    <label for="<%= category.id %>"><%= category.name %></label>
+  <% end %>
+  <input type="submit">
+
+</form>
+
+<br>
+
 <div class="row">
   <% @producers.each do |producer| %>
       <%= render 'producer_card', producer: producer %>

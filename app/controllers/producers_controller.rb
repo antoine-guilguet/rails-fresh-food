@@ -2,7 +2,22 @@ class ProducersController < ApplicationController
   before_action :find_producer, only:[:show, :edit, :update, :destroy]
 
   def index
-    @producers = current_user.producers
+    @categories = Category.all
+
+    if params[:query].present? && !params.has_value?("on")
+      sql_query = "name ILIKE :query OR description ILIKE :query"
+      @producers = Producer.where(sql_query, query: "%#{params[:query]}%")
+    elsif params.has_value?("on")
+      if params[:query].present?
+        producer_ids = filter_producers_by_category(params, @categories.count).pluck(:id)
+        sql_query = "name ILIKE :query OR description ILIKE :query"
+        @producers = Producer.where(sql_query, query: "%#{params[:query]}%").select { |producer| producer_ids.include?(producer.id) }
+      else
+        @producers = filter_producers_by_category(params, @categories.count)
+      end
+    else
+      @producers = Producer.all
+    end
   end
 
   def show
@@ -81,5 +96,18 @@ class ProducersController < ApplicationController
 
   def producer_params
     params.require(:producer).permit(:name, :description, :address, :first_name, :last_name, :phone_number, :photo, :photo_cache)
+  end
+
+  def filter_producers_by_category(params, number_of_categories)
+    array_producers = Array.new
+    (1..number_of_categories).each do |k|
+      if params.has_key?("category_#{k}")
+        array_associations = Category.find(k).producers
+        array_associations.each do |producer|
+          array_producers << producer
+        end
+      end
+    end
+    array_producers
   end
 end

@@ -1,3 +1,8 @@
+Producer.destroy_all
+User.destroy_all
+
+
+
 puts "Create User"
 
 ant = User.create(first_name:"Antoine", last_name:"Guilguet", restaurant_name:"La Biche", email:"guilguet.antoine@gmail.com", password:"skate1")
@@ -7,7 +12,10 @@ puts "Create Producer"
 # Producteurs
 viltain = Producer.create(name:"Ferme de Viltain", address:"10 rue de la Gare", description: "Maraicher seine et marne", first_name: "Bob", last_name:"Léponge", phone_number:"0909090909", user_id: ant.id, photo:"http://res.cloudinary.com/dc2sgi2zs/image/upload/v1521051448/e2dt5ah7hm7olgj1d2zs.jpg")
 fruitiere = Producer.create(name:"Fruitière de Granveaux", address:"10 rue de Saint Laurent", description: "Comté du Jura à foison", first_name: "Monsieur", last_name:"Propre", phone_number:"0707070707", user_id: bat.id, photo:"http://res.cloudinary.com/dc2sgi2zs/image/upload/v1521132220/grandveaux_exvnjg.jpg")
-
+fr = Producer.create(name:"Fruitière de Mont de marsan", address:"10 rue de Saint Laurent", description: "Fromage de tous le pays de la bas", first_name: "Monsieur", last_name:"Propre", phone_number:"0707070707", user_id: bat.id, photo:"http://res.cloudinary.com/dc2sgi2zs/image/upload/v1521132220/grandveaux_exvnjg.jpg")
+fr1 = Producer.create(name:"Fruitière de Genève", address:"10 rue de La gare", description: "Fromage suis sa mère", first_name: "Monsieur", last_name:"Propre", phone_number:"0707070707", user_id: bat.id, photo:"http://res.cloudinary.com/dc2sgi2zs/image/upload/v1521132220/grandveaux_exvnjg.jpg")
+fr2 = Producer.create(name:"Fruitière de Bordeaux", address:"10 rue de la France", description: "Fromage là ou il y en a pas", first_name: "Monsieur", last_name:"Propre", phone_number:"0707070707", user_id: bat.id, photo:"http://res.cloudinary.com/dc2sgi2zs/image/upload/v1521132220/grandveaux_exvnjg.jpg")
+fr3 = Producer.create(name:"Fruitière de Marseille", address:"10 rue du parking", description: "Et ouiais morray", first_name: "Monsieur", last_name:"Propre", phone_number:"0707070707", user_id: bat.id, photo:"http://res.cloudinary.com/dc2sgi2zs/image/upload/v1521132220/grandveaux_exvnjg.jpg")
 
 puts "Create Supplier"
 Supplier.create(user_id: ant.id, producer_id: viltain.id)
@@ -23,7 +31,10 @@ char = Category.create(name:"Charcuterie")
 
 puts "Create Activity"
 # Activities
-Activity.create(category_id: fro.id, producer_id: fruitiere.id)
+Activity.create(category_id: fro.id, producer_id: fr.id)
+Activity.create(category_id: fro.id, producer_id: fr1.id)
+Activity.create(category_id: fro.id, producer_id: fr2.id)
+Activity.create(category_id: fro.id, producer_id: fr3.id)
 Activity.create(category_id: cre.id, producer_id: fruitiere.id)
 Activity.create(category_id: mar.id, producer_id: viltain.id)
 
