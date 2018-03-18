@@ -1,0 +1,32 @@
+<div id="homepage-banner">
+  <div id="home-navbar-wrapper">
+    <nav id="home-navbar">
+      <div class="nav-wrapper">
+        <a href="<%= root_path %>" class="brand-logo center">
+          <%= image_tag 'logo_blanc.png', id:"home-logo" %>
+        </a>
+        <% if user_signed_in? %>
+            <ul class="right home-navbar-mobile">
+              <li><%= link_to 'Créer un Fournisseur', new_producer_path, 'data-no-turbolink' => true %></li>
+              <li><%= link_to 'Se Déconnecter', destroy_user_session_path, method: :delete %></li>
+            </ul>
+        <% else %>
+            <ul class="right home-navbar-mobile">
+              <li><%= link_to 'Se Connecter', new_user_session_path %></li>
+              <li><%= link_to 'Créer un Compte', new_user_registration_path %></li>
+            </ul>
+        <% end %>
+      </div>
+    </nav>
+    <div class="home-navbar-title">
+      <h5>Le marché en ligne des restaurateurs, en direct des producteurs</h5>
+    </div>
+  </div>
+  <div id="home-search-banner">
+    <%= render 'shared/search_bar' %>
+  </div>
+
+  <%= render 'charte' %>
+  <%= render 'team' %>
+  <%= render 'shared/footer' %>
+</div>
