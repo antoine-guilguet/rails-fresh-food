@@ -36,3 +36,46 @@
 #home-search-banner {
   height: 50vh;
 }
+
+.home-side-title {
+  display: flex;
+  align-items: center;
+  color: $secondary-color;
+  float: left;
+  padding-top: 180px;
+  height: 100%;
+  width: 250px;
+}
+
+.home-side-title-content {
+  width: 150px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.home-side-title-line {
+  width: 20%;
+  background-color: $secondary-color;
+  border: none;
+  height: 2px;
+}
+
+#home-explanation-banner{
+  background-color: white;
+  opacity: 0.89;
+  margin-bottom: -14px;
+  padding: 20px;
+  padding-left: 30px;
+}
+
+.home-explanation-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 25px;
+}
+
+.home-explanation-phrase {
+  margin-left: 20px;
+  color: $primary-color;
+}

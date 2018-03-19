@@ -24,9 +24,60 @@
   </div>
   <div id="home-search-banner">
     <%= render 'shared/search_bar' %>
+    <div class="home-side-title">
+      <hr class="home-side-title-line">
+      <div class="home-side-title-content">Avec Chou Blanc</div>
+      <a href="#home-explanation-banner">
+        <%= image_tag 'move_down.png', class:"picto" %>
+      </a>
+    </div>
   </div>
-
+  <div id="home-explanation-banner">
+    <div class="team-banner-title">
+      <hr class="team-line">
+      <h3>Notre Solution</h3>
+      <hr class="team-line" style="width: 10%;">
+    </div>
+    <ul>
+      <li>
+        <div class="home-explanation-wrapper">
+          <%= image_tag 'loupe.png', class: "picto" %>
+          <div class="home-explanation-phrase">Trouvez les producteurs indépendants adaptés à vos besoins</div>
+        </div>
+      </li>
+      <li>
+        <div class="home-explanation-wrapper">
+          <%= image_tag 'centraliser.png', class: "picto" %>
+          <div class="home-explanation-phrase">Gérer vos commandes et votre suivi sur une seule interface</div>
+        </div>
+      </li>
+      <li>
+        <div class="home-explanation-wrapper">
+          <%= image_tag 'schedule.png', class: "picto" %>
+          <div class="home-explanation-phrase">Plannifiez votre approvisionnement chaque semaine</div>
+        </div>
+      </li>
+      <li>
+        <div class="home-explanation-wrapper">
+          <%= image_tag 'pay.png', class: "picto" %>
+          <div class="home-explanation-phrase">Centralisez vos factures et vos paiements</div>
+        </div>
+      </li>
+    </ul>
+  </div>
   <%= render 'charte' %>
   <%= render 'team' %>
   <%= render 'shared/footer' %>
 </div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $(document).on('click', 'a[href^="#"]', function (event) {
+        event.preventDefault();
+
+        $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top
+        }, 800);
+        });
+    <% end %>
+<% end %>
