@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       sessions: 'users/sessions'
   }
 
-  root to:"pages#landing_page"
+  root to:"pages#homepage"
 
   resources :products, only: [:index, :show]
 

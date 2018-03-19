@@ -6,6 +6,23 @@
   <% end %>
 </div>
 
+<!-- Modal Structure -->
+<div id="onboarding-modal-1" class="modal first">
+  <div class="form-container" style="margin-top: 0px; border-top-left-radius: Opx; border-top-right-radius: 0px;">
+    <div class="form-header">
+      <h4 class="center">Bienvenue <%= current_user.first_name %>!</h4>
+    </div>
+    <div class="form-body">
+      <p>Pour commencer, nous vous proposons d'ajouter des producteurs indépendants avec qui vous souhaiteriez travailler</p>
+      <div class="form-actions">
+        <%= link_to 'Passer cette étape', upload_producer_path, class: "btn btn-warning" %>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Ok</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <%= content_for :js do %>
     <%= javascript_tag do %>
         $('.favorite-button').on("click", function() {
@@ -20,6 +37,14 @@
               console.error(jqXHR.responseText);
               }
               });
+        });
+
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+
+        $(window).on('load', function(){
+          $('#onboarding-modal-1').modal('open');
         });
     <% end %>
 <% end %>
