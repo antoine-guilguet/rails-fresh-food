@@ -1,23 +1,58 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :first_name, label:"Prénom", autofocus: true %>
-    <%= f.input :last_name, label:"Nom", autofocus: true %>
-    <%= f.input :restaurant_name, label:"Nom du Restaurant", autofocus: true %>
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :phone_number, label:"Numéro de téléphone", autofocus: true, input_html: { maxlength: 12 } %>
-    <%= f.input :address, label:"Adresse", autofocus: true %>
-    <%= f.input :siret, label:"Numéro SIRET", autofocus: true, input_html: { maxlength: 14 } %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères minimums" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
+<div class="container">
+  <div class="row">
+    <div class="col l12 m8 offset-m2 s12 ">
+      <div class="form-container">
+        <div class="form-header">
+          <%= image_tag 'user.png', class: "picto-big" %>
+          <h4>Créer un compte</h4>
+        </div>
+        <div class="form-body">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.error_notification %>
+              <div class="form-inputs">
+                <div class="row">
+                  <div class="col m6 s12">
+                    <%= f.input :first_name, label:"Prénom" %>
+                  </div>
+                  <div class="col m6 s12">
+                    <%= f.input :last_name, label:"Nom" %>
+                  </div>
+                  <div class="col m6 s12">
+                    <%= f.input :restaurant_name, label:"Nom du Restaurant" %>
+                  </div>
+                  <div class="col m6 s12">
+                    <%= f.input :address, label:"Adresse" %>
+                  </div>
+                  <div class="col m6 s12">
+                    <%= f.input :email %>
+                  </div>
+                  <div class="col m6 s12">
+                    <%= f.input :phone_number, label:"Numéro de téléphone" , input_html: { maxlength: 12 } %>
+                  </div>
+                  <div class="col m6 s12">
+                    <%= f.input :siret, label:"Numéro SIRET", input_html: { maxlength: 14 } %>
+                  </div>
+                  <div class="col m6 s12">
+                    <%= f.input :rib %>
+                  </div>
+                  <div class="col m6 s12">
+                    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères minimums" if @minimum_password_length) %>
+                  </div>
+                  <div class="col m6 s12">
+                    <%= f.input :password_confirmation %>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-actions">
+                  <%= link_to 'Retour', root_path, class: "btn btn-warning" %>
+                  <%= render "devise/shared/links" %>
+                  <%= f.button :submit, "Valider" %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

@@ -1,5 +1,13 @@
-<div class="row">
-  <% @producers.each do |producer| %>
-      <%= render 'producer_card', producer: producer %>
-  <% end %>
+<form action="<%= producers_path %>" method="get">
+  <%= render 'producer_search_bar' %>
+</form>
+
+<div class="container products-index-container">
+  <div class="row">
+    <% @producers.each do |producer| %>
+        <div class="col s12 m4 l3">
+          <%= render 'producer_card', producer: producer %>
+        </div>
+    <% end %>
+  </div>
 </div>

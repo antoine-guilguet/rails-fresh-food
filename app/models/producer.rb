@@ -12,4 +12,11 @@ class Producer < ApplicationRecord
     self.products.map{ |product| product.subcategory.name }.uniq
   end
 
+  def render_full_name
+    !self.first_name.nil? ? self.first_name.capitalize + " " + self.last_name.capitalize : self.email
+  end
+
+  def provides?(user)
+    self.users.pluck(:user_id).include?(user.id)
+  end
 end

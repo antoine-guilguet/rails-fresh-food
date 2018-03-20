@@ -1,3 +1,38 @@
-// Place all the styles related to the Products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.products-index-container {
+  width: 90%;
+  margin-top: 20px;
+}
+
+.product-producer-title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.product-producer-title > a {
+  color: #E67E22 !important;
+}
+
+.product-wrapper-image {
+  height: 200px;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.product-detail-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.product-informaton-container{
+  padding: 15px;
+}
+
+.product-price {
+  color: #E67E22;
+  font-size: 30px;
+}
+
+.product-price-per-kg {
+  font-style: italic;
+  font-size: 12px;
+}

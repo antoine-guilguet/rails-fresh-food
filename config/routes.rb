@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :subcategories
     resources :sourcings
-
     root to: "users#index"
   end
 
@@ -16,11 +15,11 @@ Rails.application.routes.draw do
       sessions: 'users/sessions'
   }
 
-  root to:"pages#landing_page"
+  root to:"pages#homepage"
 
   resources :products, only: [:index, :show]
 
-  resources :producers
+  resources :producers, except: [:edit, :update, :destroy]
 
   # Onboarding
   get 'onboarding_step_1', to: "producers#select_producer", as: "select_producer"

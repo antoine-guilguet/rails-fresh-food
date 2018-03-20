@@ -1,33 +1,50 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :first_name, label:"Prénom", autofocus: true %>
-    <%= f.input :last_name, label:"Nom", autofocus: true %>
-    <%= f.input :restaurant_name, label:"Nom du Restaurant", autofocus: true %>
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :phone_number, label:"Numéro de téléphone", autofocus: true, input_html: { maxlength: 12 } %>
-    <%= f.input :address, label:"Adresse", autofocus: true %>
-    <%= f.input :siret, label:"Numéro SIRET", autofocus: true, input_html: { maxlength: 14 } %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+<div class="container">
+  <div class="row">
+    <div class="col l12 m8 offset-m2 s12 ">
+      <div class="form-container">
+        <div class="form-header">
+          <%= image_tag 'user.png', class: "picto-big" %>
+          <h4>Modifier votre compte</h4>
+        </div>
+        <div class="form-body">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= f.error_notification %>
+              <div class="form-inputs">
+                <div class="row">
+                  <div class="col m6 s12">
+                    <%= f.input :first_name, label:"Prénom" %>
+                    <%= f.input :restaurant_name, label:"Nom du Restaurant" %>
+                    <%= f.input :email %>
+                    <%= f.input :siret, label:"Numéro SIRET", input_html: { maxlength: 14 } %>
+                    <%= f.input :password, autocomplete: "off", hint: "Laissez ce champ vide si vous ne souhaitez pas modifier le mot de passe", required: false %>
+                    <%= f.input :current_password, hint: "Nous avons besoin de votre mot de passe actuel pour confirmer les modifications", required: true %>
+                  </div>
+                  <div class="col m6 s12">
+                    <%= f.input :last_name, label:"Nom" %>
+                    <%= f.input :address, label:"Adresse" %>
+                    <%= f.input :phone_number, label:"Numéro de téléphone" , input_html: { maxlength: 12 } %>
+                    <%= f.input :rib %>
+                    <%= f.input :password_confirmation, required: false %>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-actions">
+                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                  <% end %>
+                  <%= link_to 'Retour', root_path, class: "btn btn-back" %>
+                  <%= f.button :submit, "Modifier" %>
+                </div>
+              </div>
+              <hr class="form-line">
+              <div class="form-actions">
+                <h6>Vous souhaitez supprimer votre compte?</h6>
+                <%= link_to "Supprimer", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-warning" %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col s12 m6">
+    <div class="landing-explanation">
+      <ul>
+        <li>
+          <div class="landing-explanation-line">
+            <span>1.</span><div class="landing-explanation-headline">Vous demandez...</div>
+          </div>
+          <p>Précisez votre demande de sourcing (produit, prix, volumes, conditionnement...)</p>
+        </li>
+        <li>
+          <div class="landing-explanation-line">
+            <span>2.</span><div class="landing-explanation-headline">Nous sélectionnons...</div>
+          </div>
+          <p>Les meilleurs producteurs indépendants correspondant à vos besoins</p>
+        </li>
+        <li>
+          <div class="landing-explanation-line">
+            <span>3.</span><div class="landing-explanation-headline">Vous recevez...</div>
+          </div>
+          <p>Sous 2 jours un mail avec les 5 meilleurs producteurs que nous avons identifiés</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col s12 m6">
+    <div class="landing-form-wrapper">
+      <h5 class="center">Trouvez vos Producteurs !</h5>
+      <%= render 'sourcing_form', sourcing: @sourcing %>
+    </div>
+  </div>
+</div>
+<div class="landing-arrow">
+  <a href="#explanation-banner" >
+    <i class="material-icons homepage-icons" style="color: white;" id="icon-arrow">keyboard_arrow_down</i>
+  </a>
+</div>

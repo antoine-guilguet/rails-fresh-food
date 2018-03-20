@@ -1,0 +1,26 @@
+<form action="<%= products_path %>" method="get">
+  <div class="index-search-container">
+    <div class="index-search-wrapper">
+      <input type="textarea" name="query" id="query" class="search-term" placeholder="Trouver le produit qu'il vous faut!">
+      <button type="submit" class="search-button" style="right: 10%;">
+        <i class="material-icons" style="margin-top: 8px;">search</i>
+      </button>
+    </div>
+    <div class="index-filter-wrapper">
+      <div class="filter-button-wrapper">
+        <%= image_tag 'move.png', class: "picto", id:"product-filter-button" %>
+        <p style="margin-left: 5px;">Filtres</p>
+      </div>
+      <div id="index-search-product-filter" class="hidden-div">
+        <div class="row">
+          <% @subcategories.each do |subcategory| %>
+              <div class="col l3 m4 s6">
+                <input type="checkbox" name="subcategory_<%= subcategory.id %>" id="<%= subcategory.id %>" />
+                <label for="<%= subcategory.id %>"><%= subcategory.name %></label>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

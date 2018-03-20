@@ -1,92 +1,81 @@
-#home-banner {
-  background: linear-gradient(rgba(14, 14, 14, 0.3), rgba(0, 0, 0, 0.2)), image-url("cabbage_2.png") 50% 50% no-repeat;
-  background-size: cover;
-  height: 100vh;
+#homepage-banner {
+  height: 250vh;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), image-url("carotte.png") 50% 50% no-repeat;
+  background-size: inherit;
+}
+
+#home-navbar-wrapper {
+  height: 50vh;
+  background-color: $dark-blue;
+  color: white;
+  border-bottom: 2px solid $primary-color;
+}
+
+#home-navbar-wrapper > nav {
+  box-shadow: none;
+}
+
+#home-navbar {
+  background-color: $dark-blue;
   color: white;
 }
 
-#home-banner-title {
-  text-align: center;
-  padding-top: 100px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-#home-banner-form {
-  background-color: white;
-  padding: 15px;
-  border-radius: 4px;
-  margin-top: 20px;
-  color: black;
-}
-
-.icon-box {
-  margin: 0 auto;
-  width: 65px;
-}
-
-.homepage-icons {
-  color: $primary-color;
-}
-
-.home-arrow{
-  width: 30px;
-  height: 30px;
-  margin: 0 auto;
-  border: solid 1px white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
-  transition: all 300ms;
-  &:hover {
-    background-color: white;
-    transition-duration: 300ms;
-    transition-property: background-color;
-    #icon-arrow {
-      color: black;
-    }
-  }
-}
-
-.alert-danger {
-  color: red;
-}
-
-#explanation-banner {
-  padding-bottom: 30px;
+#home-logo {
+  width: 150px;
   padding-top: 30px;
-  background-color: whitesmoke;
 }
 
-.explanation-container {
-  width: 90%;
-  margin-top: 40px;
-  margin: auto;
-}
-
-.bubble-wrapper {
-  padding: 10px;
-}
-
-.step-bubble-wrapper {
-  margin-top:20px;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.step-bubble {
-  background-color: white;
-  border-radius: 50%;
-  border: 2px solid black;
-  color: #2C3E50;
-  width: 50px !important;
-  height: 50px !important;
+.home-navbar-title {
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 80%;
+}
+
+#home-search-banner {
+  height: 50vh;
+}
+
+.home-side-title {
+  display: flex;
+  align-items: center;
+  color: $secondary-color;
+  float: left;
+  padding-top: 180px;
+  height: 100%;
+  width: 250px;
+}
+
+.home-side-title-content {
+  width: 150px;
+  margin-left: 20px;
   margin-right: 20px;
+  font-weight: bold;
+}
+
+.home-side-title-line {
+  width: 20%;
+  background-color: $secondary-color;
+  border: none;
+  height: 2px;
+}
+
+#home-explanation-banner{
+  background-color: white;
+  opacity: 0.89;
+  margin-bottom: -14px;
+  padding: 20px;
+  padding-left: 30px;
+}
+
+.home-explanation-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 25px;
+}
+
+.home-explanation-phrase {
+  margin-left: 20px;
+  color: $primary-color;
 }

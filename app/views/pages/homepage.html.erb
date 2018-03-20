@@ -1,0 +1,92 @@
+<div id="homepage-banner">
+  <div id="home-navbar-wrapper">
+    <nav id="home-navbar">
+      <div class="nav-wrapper">
+        <a href="<%= root_path %>" class="brand-logo center">
+          <%= image_tag 'logo_blanc.png', id:"home-logo" %>
+        </a>
+        <% if user_signed_in? %>
+            <ul class="right home-navbar-mobile">
+              <li><%= link_to 'Créer un Fournisseur', new_producer_path, 'data-no-turbolink' => true %></li>
+              <li><%= link_to 'Se Déconnecter', destroy_user_session_path, method: :delete %></li>
+            </ul>
+        <% else %>
+            <ul class="right home-navbar-mobile">
+              <li><%= link_to 'Se Connecter', new_user_session_path %></li>
+              <li><%= link_to 'Créer un Compte', new_user_registration_path %></li>
+            </ul>
+        <% end %>
+      </div>
+    </nav>
+    <div class="home-navbar-title">
+      <h5>Le marché en ligne des restaurateurs, en direct des producteurs</h5>
+    </div>
+  </div>
+  <div id="home-search-banner">
+    <form action="<%= products_path %>" method="get">
+      <div class="search-wrapper">
+        <div class="search-box">
+          <input type="textarea" name="query" id="query" class="search-term" placeholder="Trouver le produit qu'il vous faut!">
+          <button type="submit" class="search-button">
+            <i class="material-icons" style="margin-top: 8px;">search</i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="home-side-title">
+      <hr class="home-side-title-line">
+      <div class="home-side-title-content">Avec Chou Blanc</div>
+      <a href="#home-explanation-banner">
+        <%= image_tag 'move_down.png', class:"picto" %>
+      </a>
+    </div>
+  </div>
+  <div id="home-explanation-banner">
+    <div class="team-banner-title">
+      <hr class="team-line">
+      <h3>Notre Solution</h3>
+      <hr class="team-line" style="width: 10%;">
+    </div>
+    <ul>
+      <li>
+        <div class="home-explanation-wrapper">
+          <%= image_tag 'loupe.png', class: "picto" %>
+          <div class="home-explanation-phrase">Trouvez les producteurs indépendants adaptés à vos besoins</div>
+        </div>
+      </li>
+      <li>
+        <div class="home-explanation-wrapper">
+          <%= image_tag 'centraliser.png', class: "picto" %>
+          <div class="home-explanation-phrase">Gérer vos commandes et votre suivi sur une seule interface</div>
+        </div>
+      </li>
+      <li>
+        <div class="home-explanation-wrapper">
+          <%= image_tag 'schedule.png', class: "picto" %>
+          <div class="home-explanation-phrase">Plannifiez votre approvisionnement chaque semaine</div>
+        </div>
+      </li>
+      <li>
+        <div class="home-explanation-wrapper">
+          <%= image_tag 'pay.png', class: "picto" %>
+          <div class="home-explanation-phrase">Centralisez vos factures et vos paiements</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <%= render 'charte' %>
+  <%= render 'team' %>
+  <%= render 'shared/footer' %>
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $(document).on('click', 'a[href^="#"]', function (event) {
+        event.preventDefault();
+
+        $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top
+        }, 800);
+        });
+    <% end %>
+<% end %>

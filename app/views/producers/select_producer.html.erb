@@ -1,25 +1,62 @@
-<%= link_to 'Passer cette étape', upload_producer_path, class: "btn" %>
+<form action="<%= select_producer_path %>" method="get">
+  <%= render 'producer_search_bar' %>
+</form>
 
+<%= link_to 'Passer cette étape', upload_producer_path, class: "btn" %>
 <div class="row">
   <% @producers.each do |producer| %>
-      <%= render 'onboarding_producer_card', producer: producer %>
+      <div class="col s12 m4 l3">
+        <%= render 'producer_card', producer: producer %>
+      </div>
   <% end %>
+</div>
+
+<div id="onboarding-modal-1" class="modal">
+  <div class="form-container" style="margin-top: 0px; border-top-left-radius: Opx; border-top-right-radius: 0px;">
+    <div class="form-header">
+      <h4 class="center"></h4>
+    </div>
+    <div class="form-body">
+      <p>Pour commencer, nous vous proposons d'ajouter des producteurs indépendants avec qui vous souhaiteriez travailler</p>
+      <div class="form-actions">
+        <%= link_to 'Passer cette étape', upload_producer_path, class: "btn btn-warning" %>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Ok</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%= content_for :js do %>
     <%= javascript_tag do %>
-        $('.favorite-button').on("click", function() {
+        $('.favorite-button-wrapper').on("click", function(e) {
+            e.preventDefault();
+            console.log($(this));
             $.ajax({
               type: "POST",
               url: "<%= add_producer_to_favorites_path %>",
-              data: { producer_id: $(this).children().attr('id') },
+              data: { producer_id: $(this).children().attr('producer_id') },
               success: function(data){
-              console.log(data);
+                var id = data.producer_id;
+                var selector = '[producer_id =' + id + ']';
+                if (data.change) {
+                    $(selector).parent().addClass('gold');
+                } else {
+                    $(selector).parent().removeClass('gold');
+                };
+
               },
               error: function(jqXHR) {
-              console.error(jqXHR.responseText);
+                console.error(jqXHR.responseText);
               }
               });
+        });
+
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+
+        $(window).on('load', function(){
+          $('#onboarding-modal-1').modal('open');
         });
     <% end %>
 <% end %>

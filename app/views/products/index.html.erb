@@ -1,5 +1,25 @@
-<div class="row">
-  <% @products.each do |product| %>
-      <%= render 'product_card', product: product %>
-  <% end %>
+<%= render 'product_search_bar'%>
+<div class="container products-index-container">
+  <div class="row">
+    <% @products.each do |product| %>
+        <div class="col s12 m4 l3">
+          <%= render 'product_card', product: product %>
+        </div>
+    <% end %>
+  </div>
 </div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $('#product-filter-button').on('click', function (event) {
+
+            if ( $('#index-search-product-filter').hasClass("hidden-div")){
+                $('#index-search-product-filter').slideDown().removeClass("hidden-div").addClass("visible-div");
+                $('#product-filter-button').css("transform","rotate(90deg)");
+            } else {
+                $('#index-search-product-filter').slideUp().removeClass("visible-div").addClass("hidden-div");
+                $('#product-filter-button').css("transform","rotate(-90deg)");
+            };
+        });
+    <% end %>
+<% end %>
