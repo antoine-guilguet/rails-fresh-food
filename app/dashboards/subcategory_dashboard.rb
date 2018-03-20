@@ -41,7 +41,6 @@ class SubcategoryDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :category,
-    :products,
   ].freeze
 
   # Overwrite this method to customize how subcategories are displayed
