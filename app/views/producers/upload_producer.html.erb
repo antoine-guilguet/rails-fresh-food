@@ -1,2 +1,32 @@
 <%= link_to 'Passer cette étape', producers_path, class: "btn" %>
+
 <%= render 'form' %>
+
+<div id="onboarding-modal-2" class="modal">
+  <div class="form-container" style="margin-top: 0px; border-top-left-radius: Opx; border-top-right-radius: 0px;">
+    <div class="form-header">
+      <h4 class="center">Hello <%= current_user.first_name %>!</h4>
+    </div>
+    <div class="form-body">
+      <p>Si vous pouvez aussi ajouter des producteurs, avec qui vous travaillez déjà, et qui NE VOUS SERONT PERSONNELLEMENT RESERVÉ.</p>
+      <p>Nous prendrons contact avec eux immédiatement,  et nous vous informerons au plus vite de leur participation à la plateforme.</p>
+      <div class="form-actions">
+        <%= link_to 'PAsser cette étape', producers_path, class: "btn btn-warning" %>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Continuer</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+
+        $(window).on('load', function(){
+            $('#onboarding-modal-2').modal('open');
+        });
+
+    <% end %>
+<% end %>

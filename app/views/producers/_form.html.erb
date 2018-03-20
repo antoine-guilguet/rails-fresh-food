@@ -1,26 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col l6 offset-l3 m8 offset-m2 s12 ">
+    <div class="col l8 offset-l2 m8 offset-m2 s12 ">
       <div class="form-container">
         <div class="form-header">
-          <h3>Créer un Fournisseur</h3>
+          <h4>Ajouter un Fournisseur*</h4>
+
         </div>
         <div class="form-body">
+          <p style="font-size: 10px; font-style: italic;">*Vous souhaitez nous soumettre un producteur afin de centraliser vos démarches?</p>
           <%= simple_form_for @producer do |f| %>
+              <%= f.error_notification %>
               <%= f.input :name %>
               <%= f.input :description %>
               <%= f.input :address %>
               <%= f.input :first_name %>
               <%= f.input :last_name %>
               <%= f.input :phone_number %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
               <select name="category_list" id="category-dropdown">
                 <% @categories.each do |category| %>
                     <option value="<%= category.id %>"><%= category.name %></option>
                 <% end %>
               </select>
               <div class="form-actions">
-                <%= f.submit 'Créer', class: "waves-effect waves-light btn" %>
-                <%= link_to 'Retour', producers_path, class: "waves-effect waves-light btn" %>
+                <%= link_to 'Retour', producers_path, class: "waves-effect waves-light btn btn-back" %>
+                <%= f.submit 'Créer', class: "waves-effect waves-light btn", id:"new-producer-button" %>
               </div>
           <% end %>
 

@@ -16,14 +16,13 @@ class ProducersController < ApplicationController
         @producers = filter_producers_by_category(params, @categories.count)
       end
     else
-      @producers = Producer.all
+      @producers = current_user.producers
     end
   end
 
   def show
     @products = @producer.products
     activities = Activity.where(producer_id: @producer.id)
-    @category = activities.first.category if !activities.empty?
   end
 
   def new
@@ -45,25 +44,23 @@ class ProducersController < ApplicationController
     end
   end
 
-  def edit
-    @categories = Category.all
-  end
-
-  def update
-    if @producer.update(producer_params)
-      redirect_to producers_path
-    else
-      render 'edit'
-    end
-  end
-
-  def destroy
-    @producer.destroy
-    redirect_to producers_path
-  end
-
   def select_producer
-    @producers = Producer.all
+    @categories = Category.all
+
+    if params[:query].present? && !params.has_value?("on")
+      sql_query = "name ILIKE :query OR description ILIKE :query"
+      @producers = Producer.where(sql_query, query: "%#{params[:query]}%")
+    elsif params.has_value?("on")
+      if params[:query].present?
+        producer_ids = filter_producers_by_category(params, @categories.count).pluck(:id)
+        sql_query = "name ILIKE :query OR description ILIKE :query"
+        @producers = Producer.where(sql_query, query: "%#{params[:query]}%").select { |producer| producer_ids.include?(producer.id) }
+      else
+        @producers = filter_producers_by_category(params, @categories.count)
+      end
+    else
+      @producers = Producer.all
+    end
   end
 
   def upload_producer
@@ -74,17 +71,32 @@ class ProducersController < ApplicationController
   def add_producer_to_favorites
     @producer = Producer.find(params[:producer_id])
     @supplier = Supplier.new(user_id: current_user.id, producer_id: @producer.id)
+
     if @supplier.save
-      render json: {
-          producer_name: @producer.name,
-          message: "Ajouter aux favoris"
-      }
+      if params[:redirection]
+        flash[:notice] = "Ajouter aux favoris"
+        redirect_to producers_path
+      else
+        render json: {
+            producer_id: @producer.id,
+            change: true,
+            producer_name: @producer.name,
+            message: "Ajouter aux favoris"
+        }
+      end
     else
       Supplier.find_by(user_id: current_user.id, producer_id: @producer.id).destroy
-      render json: {
-          producer_name: @producer.name,
-          message: "Retirer des favoris"
-      }
+      if params[:redirection]
+        flash[:alert] = "Retirer des favoris"
+        redirect_to producers_path
+      else
+        render json: {
+            producer_id: @producer.id,
+            change: false,
+            producer_name: @producer.name,
+            message: "Retirer des favoris"
+        }
+      end
     end
   end
 
@@ -95,7 +107,7 @@ class ProducersController < ApplicationController
   end
 
   def producer_params
-    params.require(:producer).permit(:name, :description, :address, :first_name, :last_name, :phone_number, :photo, :photo_cache)
+    params.require(:producer).permit(:name, :description, :address, :first_name, :last_name, :phone_number, :user_id)
   end
 
   def filter_producers_by_category(params, number_of_categories)

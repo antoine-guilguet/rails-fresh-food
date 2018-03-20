@@ -1,0 +1,48 @@
+.container-producer {
+  margin-top: 20px;
+  width: 80%;
+}
+
+.producer-wrapper {
+  border: 1px solid $dark-blue;
+  border-radius: 4px;
+  height: 400px;
+  margin-top: 10px;
+}
+
+.producer-btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.producer-name-banner {
+  text-align: center;
+}
+
+.producer-detail-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.producer-wrapper-description {
+  padding: 20px;
+}
+
+.producer-wrapper-image {
+  height: 200px;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.producer-title-banner {
+  color: $dark-blue;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.producer-title-line {
+  width: 30% !important;
+  background-color: $dark-blue !important;
+}

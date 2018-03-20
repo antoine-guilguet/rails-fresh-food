@@ -65,10 +65,7 @@
 
 #product-filter-button {
   transition-duration: 300ms;
-}
-
-#producer-filter-button {
-  transition-duration: 300ms;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {

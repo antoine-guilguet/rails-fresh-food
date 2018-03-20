@@ -1,0 +1,39 @@
+<div class="index-search-container">
+  <div class="index-search-wrapper">
+    <input type="textarea" name="query" id="query" class="search-term" placeholder="Trouver le producteur qu'il vous faut!">
+    <button type="submit" class="search-button" style="right: 10%;">
+      <i class="material-icons" style="margin-top: 8px;">search</i>
+    </button>
+  </div>
+  <div class="index-filter-wrapper">
+    <div class="filter-button-wrapper">
+      <%= image_tag 'move.png', class: "picto", id:"producer-filter-button" %>
+      <p style="margin-left: 5px;">Filtres</p>
+    </div>
+    <div id="index-search-producer-filter" class="hidden-div">
+      <div class="row" style="margin-top: 13px; margin-bottom: 0px;">
+        <% @categories.each do |category| %>
+            <div class="col l3 m4 s6">
+              <input type="checkbox" name="category_<%= category.id %>" id="<%= category.id %>" />
+              <label for="<%= category.id %>"><%= category.name %></label>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $('#producer-filter-button').on('click', function (event) {
+          if ( $('#index-search-producer-filter').hasClass("hidden-div")){
+            $('#index-search-producer-filter').slideDown().removeClass("hidden-div").addClass("visible-div");
+            $('#producer-filter-button').css("transform","rotate(90deg)");
+          } else {
+            $('#index-search-producer-filter').slideUp().removeClass("visible-div").addClass("hidden-div");
+            $('#producer-filter-button').css("transform","rotate(-90deg)");
+          };
+        });
+    <% end %>
+<% end %>

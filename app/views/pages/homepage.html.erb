@@ -23,7 +23,16 @@
     </div>
   </div>
   <div id="home-search-banner">
-    <%= render 'shared/search_bar' %>
+    <form action="<%= products_path %>" method="get">
+      <div class="search-wrapper">
+        <div class="search-box">
+          <input type="textarea" name="query" id="query" class="search-term" placeholder="Trouver le produit qu'il vous faut!">
+          <button type="submit" class="search-button">
+            <i class="material-icons" style="margin-top: 8px;">search</i>
+          </button>
+        </div>
+      </div>
+    </form>
     <div class="home-side-title">
       <hr class="home-side-title-line">
       <div class="home-side-title-content">Avec Chou Blanc</div>

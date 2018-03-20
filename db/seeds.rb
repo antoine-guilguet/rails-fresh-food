@@ -37,6 +37,7 @@ Activity.create(category_id: fro.id, producer_id: fr2.id)
 Activity.create(category_id: fro.id, producer_id: fr3.id)
 Activity.create(category_id: cre.id, producer_id: fruitiere.id)
 Activity.create(category_id: mar.id, producer_id: viltain.id)
+Activity.create(category_id: cre.id, producer_id: viltain.id)
 
 puts "Create Subcategory"
 # Subcategories
@@ -57,7 +58,7 @@ Product.create(conditionning: "Sachet", aop: false, composition:"Nice", name:"Sa
 Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"ijifjaijeifj", name:"Tomate", description:"Tomate du jardin", price: 2, producer_id: viltain.id, origin: "France", quantity: 100, unit: "g", subcategory_id: fruits.id)
 Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Concombre", description:"Grand concombre délicieux", price: 2.4, producer_id: viltain.id, origin:"France", quantity: 200, unit: "g", subcategory_id: legumes.id)
 Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Orange", description:"Orange juteuse", price: 1.5, producer_id: viltain.id, origin:"France", quantity: 200, unit: "g", subcategory_id: fruits.id)
-Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Banane", description:"Banane savoureuse", price: 1.5, producer_id: viltain.id, origin:"France", unit:"Fruits", subcategory_id: fruits.id)
+Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Banane", description:"Banane savoureuse", price: 1.5, producer_id: viltain.id, origin:"France", quantity: 200,unit:"g", subcategory_id: fruits.id)
 Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Pêche", description:"Pêche du Sud", price: 3, producer_id: viltain.id, origin:"Espagne", quantity: 200, unit: "g", subcategory_id: fruits.id)
 Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Fromage de chèvre", description:"Savoureux et onctueux", price: 5, producer_id: viltain.id, origin:"Espagne", quantity: 200, unit: "g", subcategory_id: chevre.id)
 Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Saucisson", description:"Délicieux sauce-back", price: 4, producer_id: viltain.id, origin:"Espagne", quantity: 300, unit: "g", subcategory_id: saucisson.id)
