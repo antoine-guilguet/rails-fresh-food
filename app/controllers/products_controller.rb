@@ -22,6 +22,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @producer = @product.producer
+    @products = @producer.products.reject{ |product| product.id == @product.id }
   end
 
   private

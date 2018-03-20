@@ -1,9 +1,12 @@
 <%= render 'product_search_bar'%>
-
-<div class="row">
-  <% @products.each do |product| %>
-      <%= render 'product_card', product: product %>
-  <% end %>
+<div class="container products-index-container">
+  <div class="row">
+    <% @products.each do |product| %>
+        <div class="col s12 m4 l3">
+          <%= render 'product_card', product: product %>
+        </div>
+    <% end %>
+  </div>
 </div>
 
 <%= content_for :js do %>

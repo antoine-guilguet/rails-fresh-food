@@ -1,10 +1,89 @@
-<h1> <%= @product.name %></h1>
-<p><%= @product.conditionning %></p>
-<p><%= @product.quantity %></p>
-<p><%= @product.price %></p>
-<p><%= @product.unit %></p>
-<p><%= @product.description %></p>
-<p>Producteur: <%= @product.producer.name %></p>
-<p>Catégorie: <%= @product.subcategory.category.name %></p>
-<p>Sous-catégorie: <%= @product.subcategory.name %></p>
-<%= link_to 'Retour', products_path %>
+<div class="container container-producer">
+  <div class="row">
+    <div class="col s12">
+      <div class="producer-btn-wrapper">
+        <%= link_to 'Retour', products_path, class:"btn btn-back" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m8">
+      <div class="producer-wrapper">
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="product-wrapper-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                url('<%= @product.photo %>')">
+            </div>
+            <div class="producer-wrapper-description">
+              <h5>Description</h5>
+              <p><%= @product.description %></p>
+            </div>
+          </div>
+          <div class="col s12 m6">
+            <div class="product-informaton-container">
+              <h5> <%= @product.name %></h5>
+              <div class="product-detail-wrapper">
+                <p>Conditionnement:</p>
+                <div class="card-name-detail"><p><%= @product.conditionning %></p></div>
+              </div>
+              <div class="product-detail-wrapper">
+                <i class="material-icons">flag</i>
+                <div class="card-name-detail"><p><%= @product.origin %></p></div>
+              </div>
+              <div class="product-detail-wrapper">
+                <p>Quantité:</p>
+                <div class="card-name-detail"><%= @product.quantity%><%= @product.unit %></div>
+              </div>
+              <div class="product-detail-wrapper" style="align-items: baseline;justify-content: space-between;">
+                <div class="product-price-per-kg"><%= @product.compute_price_per_kg%></div>
+                <div class="product-price"><%= @product.price_with_currency %></div>
+              </div>
+              <div class="product-detail-wrapper">
+                <div class="card-category card-subcategory"><%= @product.subcategory.name %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
+      <div class="producer-wrapper">
+        <div class="producer-name-banner">
+          <h4 class="product-producer-title""><%= link_to @producer.name, producer_path(@producer) %></h4>
+          <%= image_tag 'user', class: "picto-big" %>
+          <p><%= @producer.render_full_name %></p>
+        </div>
+
+        <div class="producer-detail-banner">
+          <div class="producer-detail-wrapper">
+            <i class="material-icons">location_on</i>
+            <p><%= @producer.address %></p>
+          </div>
+          <% if !@producer.categories.empty? %>
+              <div class="producer-detail-wrapper">
+                <% @producer.categories.each do |category| %>
+                    <div class="card-category"><%= category.name %></div>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="team-banner-title">
+    <hr class="team-line producer-title-line" >
+    <h3 class="producer-title-banner ">Autres Produits</h3>
+    <hr class="team-line producer-title-line">
+  </div>
+
+  <div class="row">
+    <% @products.each do |product| %>
+        <div class="col s6 m4 l3">
+          <%= render 'products/product_card', product: product %>
+        </div>
+    <% end %>
+  </div>
+</div>

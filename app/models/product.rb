@@ -27,4 +27,8 @@ class Product < ApplicationRecord
     "#{self.price.round } / #{self.quantity} #{self.unit}"
   end
 
+  def price_with_currency
+    "#{self.price} €"
+  end
+
 end

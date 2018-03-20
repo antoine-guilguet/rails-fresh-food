@@ -1,5 +1,7 @@
 Producer.destroy_all
 User.destroy_all
+Subcategory.destroy_all
+Category.destroy_all
 
 
 

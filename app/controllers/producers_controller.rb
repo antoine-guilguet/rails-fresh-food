@@ -16,7 +16,7 @@ class ProducersController < ApplicationController
         @producers = filter_producers_by_category(params, @categories.count)
       end
     else
-      @producers = current_user.producers
+      @producers = Producer.all
     end
   end
 
@@ -46,7 +46,6 @@ class ProducersController < ApplicationController
 
   def select_producer
     @categories = Category.all
-
     if params[:query].present? && !params.has_value?("on")
       sql_query = "name ILIKE :query OR description ILIKE :query"
       @producers = Producer.where(sql_query, query: "%#{params[:query]}%")
