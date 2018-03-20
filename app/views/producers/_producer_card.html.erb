@@ -2,9 +2,11 @@
   <div class="card">
     <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
         url('<%= producer.photo %>')">
-      <div class="favorite-button-wrapper tooltipped <%= 'gold' if producer.provides?(current_user) %>" data-position="top" data-delay="50" data-tooltip="Ajouter aux favoris">
-        <i class="material-icons favorite-button" producer_id="<%= producer.id %>">star_rate</i>
-      </div>
+      <% if @favorite %>
+        <div class="favorite-button-wrapper tooltipped <%= 'gold' if producer.provides?(current_user) %>" data-position="top" data-delay="50" data-tooltip="Ajouter aux favoris">
+          <i class="material-icons favorite-button" producer_id="<%= producer.id %>">star_rate</i>
+        </div>
+      <% end %>
     </div>
     <div class="card-content">
       <h6><%= producer.name %></h6>

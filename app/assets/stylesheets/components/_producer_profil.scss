@@ -9,6 +9,7 @@
   height: 400px;
   margin-top: 10px;
   color: $dark-blue;
+  overflow: scroll;
 }
 
 .producer-btn-wrapper {
@@ -19,6 +20,7 @@
 
 .producer-name-banner {
   text-align: center;
+  padding: 15px;
 }
 
 .producer-detail-wrapper {

@@ -3,7 +3,7 @@ class ProducersController < ApplicationController
 
   def index
     @categories = Category.all
-
+    @favorite = false
     if params[:query].present? && !params.has_value?("on")
       sql_query = "name ILIKE :query OR description ILIKE :query"
       @producers = Producer.where(sql_query, query: "%#{params[:query]}%")
@@ -46,6 +46,8 @@ class ProducersController < ApplicationController
 
   def select_producer
     @categories = Category.all
+    @favorite = true
+
     if params[:query].present? && !params.has_value?("on")
       sql_query = "name ILIKE :query OR description ILIKE :query"
       @producers = Producer.where(sql_query, query: "%#{params[:query]}%")
