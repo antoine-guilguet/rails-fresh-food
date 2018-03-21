@@ -1,0 +1,17 @@
+.tabs {
+  height: 70px;
+}
+
+.tab {
+  height: 70px;
+}
+
+.tab > a {
+    height: 70px !important;
+  }
+
+.tab-title {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}

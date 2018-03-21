@@ -10,11 +10,11 @@ class ProductsController < ApplicationController
       @products = Product.where(sql_query, query: "%#{params[:query]}%")
     elsif params.has_value?("on")
       if params[:query].present?
-        product_ids = filter_products_by_subcategory(params, @subcategories.count).pluck(:id).uniq
+        product_ids = filter_products_by_subcategory(params, @subcategories.ids).pluck(:id).uniq
         sql_query = "name ILIKE :query OR description ILIKE :query"
         @products = Product.where(sql_query, query: "%#{params[:query]}%").select { |product| product_ids.include?(product.id) }
       else
-        @products = filter_products_by_subcategory(params, @subcategories.count)
+        @products = filter_products_by_subcategory(params, @subcategories.ids)
       end
     else
       @products = Product.all
@@ -32,9 +32,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def filter_products_by_subcategory(params, number_of_subcategories)
+  def filter_products_by_subcategory(params, subcategory_ids)
     array_products = Array.new
-    (1..number_of_subcategories).each do |k|
+    subcategory_ids.each do |k|
       if params.has_key?("subcategory_#{k}")
         array_associations = Subcategory.find(k).products
         array_associations.each do |producer|

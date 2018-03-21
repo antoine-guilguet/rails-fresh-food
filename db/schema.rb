@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180318224838) do
+ActiveRecord::Schema.define(version: 20180320190855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20180318224838) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_activities_on_category_id"
     t.index ["producer_id"], name: "index_activities_on_producer_id"
+  end
+
+  create_table "agendas", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_agendas_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -74,6 +81,37 @@ ActiveRecord::Schema.define(version: 20180318224838) do
     t.index ["subcategory_id"], name: "index_products_on_subcategory_id"
   end
 
+  create_table "purchase_lists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "producer_id"
+    t.string "name"
+    t.integer "frequency", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["producer_id"], name: "index_purchase_lists_on_producer_id"
+    t.index ["user_id"], name: "index_purchase_lists_on_user_id"
+  end
+
+  create_table "purchase_products", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "purchase_list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_purchase_products_on_product_id"
+    t.index ["purchase_list_id"], name: "index_purchase_products_on_purchase_list_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.bigint "purchase_list_id"
+    t.bigint "user_id"
+    t.boolean "delivered", default: false
+    t.boolean "paid", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["purchase_list_id"], name: "index_schedules_on_purchase_list_id"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
+  end
+
   create_table "sourcings", force: :cascade do |t|
     t.string "produit"
     t.string "exigence"
@@ -124,11 +162,29 @@ ActiveRecord::Schema.define(version: 20180318224838) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "weeks", force: :cascade do |t|
+    t.string "name"
+    t.bigint "schedule_id"
+    t.boolean "past", default: false
+    t.boolean "begin_cycle", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_weeks_on_schedule_id"
+  end
+
   add_foreign_key "activities", "categories"
   add_foreign_key "activities", "producers"
+  add_foreign_key "agendas", "users"
   add_foreign_key "products", "producers"
   add_foreign_key "products", "subcategories"
+  add_foreign_key "purchase_lists", "producers"
+  add_foreign_key "purchase_lists", "users"
+  add_foreign_key "purchase_products", "products"
+  add_foreign_key "purchase_products", "purchase_lists"
+  add_foreign_key "schedules", "purchase_lists"
+  add_foreign_key "schedules", "users"
   add_foreign_key "subcategories", "categories"
   add_foreign_key "suppliers", "producers"
   add_foreign_key "suppliers", "users"
+  add_foreign_key "weeks", "schedules"
 end

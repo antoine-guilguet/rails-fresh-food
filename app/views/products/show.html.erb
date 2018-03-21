@@ -57,12 +57,12 @@
         </div>
 
         <div class="producer-detail-banner">
-          <div class="producer-detail-wrapper">
+          <div class="product-producer-detail-wrapper ">
             <i class="material-icons">location_on</i>
             <p><%= @producer.address %></p>
           </div>
           <% if !@producer.categories.empty? %>
-              <div class="producer-detail-wrapper">
+              <div class="product-producer-detail-wrapper ">
                 <% @producer.categories.each do |category| %>
                     <div class="card-category"><%= category.name %></div>
                 <% end %>

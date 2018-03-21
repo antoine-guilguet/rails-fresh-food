@@ -28,6 +28,10 @@ class PagesController < ApplicationController
     )
   end
 
+  def dashboard
+    @producers = current_user.producers
+  end
+
   private
 
   def lead_params

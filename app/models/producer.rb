@@ -7,6 +7,16 @@ class Producer < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :categories, through: :activities
   belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
+  has_many :purchase_lists
+  has_many :schedules
+
+  # VALIDATIONS
+  validates :name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :address, presence: true
+  validates :description, presence: true
+  validates :phone_number, presence: true
 
   def find_subcategories
     self.products.map{ |product| product.subcategory.name }.uniq
@@ -19,4 +29,5 @@ class Producer < ApplicationRecord
   def provides?(user)
     self.users.pluck(:user_id).include?(user.id)
   end
+
 end
