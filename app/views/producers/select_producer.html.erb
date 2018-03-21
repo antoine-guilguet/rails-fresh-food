@@ -14,10 +14,10 @@
 <div id="onboarding-modal-1" class="modal">
   <div class="form-container" style="margin-top: 0px; border-top-left-radius: Opx; border-top-right-radius: 0px;">
     <div class="form-header">
-      <h4 class="center"></h4>
+      <h4 class="center">Bienvenue <%= current_user.first_name %>!</h4>
     </div>
     <div class="form-body">
-      <p>Pour commencer, nous vous proposons d'ajouter des producteurs indépendants avec qui vous souhaiteriez travailler</p>
+      <p>Pour commencer, nous vous proposons d'ajouter des producteurs indépendants avec qui vous souhaiteriez travailler.</p>
       <div class="form-actions">
         <%= link_to 'Passer cette étape', upload_producer_path, class: "btn btn-warning" %>
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Ok</a>

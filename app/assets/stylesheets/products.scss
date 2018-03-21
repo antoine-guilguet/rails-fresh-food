@@ -13,9 +13,9 @@
 }
 
 .product-wrapper-image {
-  height: 200px;
-  -webkit-background-size: cover;
-  background-size: cover;
+  height: 210px;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .product-detail-wrapper {
