@@ -23,7 +23,11 @@ class Producer < ApplicationRecord
   end
 
   def render_full_name
-    !self.first_name.nil? ? self.first_name.capitalize + " " + self.last_name.capitalize : self.email
+    if !self.first_name.nil?
+      self.first_name + " " + self.last_name
+    else
+      self.email
+    end
   end
 
   def provides?(user)
