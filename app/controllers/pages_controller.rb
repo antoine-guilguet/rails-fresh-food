@@ -29,7 +29,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @producers = current_user.producers
+    @producers = current_user.producers if current_user.producers
   end
 
   private
