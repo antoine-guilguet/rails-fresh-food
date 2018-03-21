@@ -3,6 +3,8 @@ class Product < ApplicationRecord
   # RELATIONS
   belongs_to :producer
   belongs_to :subcategory
+  has_many :purchase_products
+  has_many :purchase_lists, through: :purchase_products
 
   # VALIDATIONS
   validates :price, presence: true

@@ -9,11 +9,11 @@ class ProducersController < ApplicationController
       @producers = Producer.where(sql_query, query: "%#{params[:query]}%")
     elsif params.has_value?("on")
       if params[:query].present?
-        producer_ids = filter_producers_by_category(params, @categories.count).pluck(:id)
+        producer_ids = filter_producers_by_category(params, @categories.ids).pluck(:id)
         sql_query = "name ILIKE :query OR description ILIKE :query"
         @producers = Producer.where(sql_query, query: "%#{params[:query]}%").select { |producer| producer_ids.include?(producer.id) }
       else
-        @producers = filter_producers_by_category(params, @categories.count)
+        @producers = filter_producers_by_category(params, @categories.ids)
       end
     else
       @producers = Producer.all
@@ -53,11 +53,11 @@ class ProducersController < ApplicationController
       @producers = Producer.where(sql_query, query: "%#{params[:query]}%")
     elsif params.has_value?("on")
       if params[:query].present?
-        producer_ids = filter_producers_by_category(params, @categories.count).pluck(:id)
+        producer_ids = filter_producers_by_category(params, @categories.ids).pluck(:id)
         sql_query = "name ILIKE :query OR description ILIKE :query"
         @producers = Producer.where(sql_query, query: "%#{params[:query]}%").select { |producer| producer_ids.include?(producer.id) }
       else
-        @producers = filter_producers_by_category(params, @categories.count)
+        @producers = filter_producers_by_category(params, @categories.ids)
       end
     else
       @producers = Producer.all
@@ -111,9 +111,9 @@ class ProducersController < ApplicationController
     params.require(:producer).permit(:name, :description, :address, :first_name, :last_name, :phone_number, :user_id)
   end
 
-  def filter_producers_by_category(params, number_of_categories)
+  def filter_producers_by_category(params, category_ids)
     array_producers = Array.new
-    (1..number_of_categories).each do |k|
+    category_ids.each do |k|
       if params.has_key?("category_#{k}")
         array_associations = Category.find(k).producers
         array_associations.each do |producer|

@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3">
+        <a class="active" href="#producers">
+          <div class="tab-title">
+            <i class="material-icons">favorite</i>
+            Producteurs
+          </div>
+        </a>
+      </li>
+      <li class="tab col s3">
+        <a href="#products">
+          <div class="tab-title">
+            <i class="material-icons">shopping_cart</i>
+            Produits
+          </div>
+        </a>
+      </li>
+      <li class="tab col s3">
+        <a href="#planning">
+          <div class="tab-title">
+            <i class="material-icons">date_range</i>
+            Planning
+          </div>
+        </a>
+      </li>
+      <li class="tab col s3">
+        <a href="#orders">
+          <div class="tab-title">
+            <i class="material-icons">account_balance</i>
+            Commandes
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="producers" class="col s12">
+    <div class="row">
+      <%= link_to 'Ajouter un Producteur', producers_path, class: "btn" %>
+      <h6>Vos Producteurs</h6>
+      <% @producers.each do |producer | %>
+          <div class="col s12 m6 l3">
+            <%= render 'producers/producer_card', producer: producer %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <div id="products" class="col s12">
+    Produits
+  </div>
+  <div id="planning" class="col s12">
+    Agenda
+  </div>
+  <div id="orders" class="col s12">
+    Commandes
+  </div>
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $(document).ready(function(){
+            $('ul.tabs').tabs();
+        });
+    <% end %>
+<% end %>

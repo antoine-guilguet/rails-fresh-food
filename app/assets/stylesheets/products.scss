@@ -4,7 +4,7 @@
 }
 
 .product-producer-title {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -21,6 +21,13 @@
 .product-detail-wrapper {
   display: flex;
   align-items: center;
+}
+
+.product-producer-detail-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
 }
 
 .product-informaton-container{
