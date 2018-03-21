@@ -39,11 +39,15 @@
   <div id="producers" class="col s12">
     <div class="row">
       <%= link_to 'Ajouter un Producteur', producers_path, class: "btn" %>
-      <h6>Vos Producteurs</h6>
-      <% @producers.each do |producer | %>
-          <div class="col s12 m6 l3">
-            <%= render 'producers/producer_card', producer: producer %>
-          </div>
+      <% if @producers %>
+          <h6>Ajouter des producteurs</h6>
+      <% else %>
+        <h6>Vos Producteurs</h6>
+        <% @producers.each do |producer | %>
+            <div class="col s12 m6 l3">
+              <%= render 'producers/producer_card', producer: producer %>
+            </div>
+        <% end %>
       <% end %>
     </div>
   </div>
