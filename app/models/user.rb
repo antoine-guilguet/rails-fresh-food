@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
   def render_full_name
-    !self.first_name.nil? ? self.first_name.capitalize + " " + self.last_name.capitalize : self.email
+    !self.first_name.nil? ? self.first_name + " " + self.last_name : self.email
   end
 
 end
