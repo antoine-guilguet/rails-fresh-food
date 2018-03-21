@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       sessions: 'users/sessions'
   }
 
-  root to:"pages#dashboard"
+  root to:"pages#homepage"
 
   resources :products, only: [:index, :show]
 
@@ -26,8 +26,9 @@ Rails.application.routes.draw do
   get 'onboarding_step_2', to: "producers#upload_producer", as: "upload_producer"
   post 'add_producer', to: "producers#add_producer_to_favorites", as: "add_producer_to_favorites"
 
-  # Homepage
+  # Pages
   get 'homepage', to:"pages#homepage"
+  get 'dashboard', to:"pages#dashboard"
 
   # Landing Page
   get 'welcome', to:"pages#landing_page"
