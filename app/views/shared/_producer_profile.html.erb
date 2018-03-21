@@ -1,0 +1,21 @@
+<div class="producer-wrapper">
+  <div class="producer-name-banner">
+    <h4 class="product-producer-title""><%= link_to producer.name, producer_path(producer) %></h4>
+    <%= image_tag 'user.png', class: "picto-big" %>
+    <p><%= producer.render_full_name %></p>
+  </div>
+
+  <div class="producer-detail-banner">
+    <div class="product-producer-detail-wrapper ">
+      <i class="material-icons">location_on</i>
+      <p><%= producer.address %></p>
+    </div>
+    <% if !producer.categories.empty? %>
+        <div class="product-producer-detail-wrapper ">
+          <% producer.categories.each do |category| %>
+              <div class="card-category"><%= category.name %></div>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</div>

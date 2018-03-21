@@ -17,16 +17,16 @@ class Product < ApplicationRecord
     price = self.price.to_f
 
     if unit ==  "g"
-      return "#{ (price / quantity * 1000 ).round(1)} / kg"
+      return "#{ (price / quantity * 1000 ).round(1)} €/ kg"
     elsif unit == "kg"
-      return "#{(( 1 / quantity ) * price ).round(1)} / kg"
+      return "#{(( 1 / quantity ) * price ).round(1)} €/ kg"
     else
       self.original_price
     end
   end
 
   def original_price
-    "#{self.price.round } / #{self.quantity} #{self.unit}"
+    "#{self.price.round(1) }€ / #{self.quantity} #{self.unit}"
   end
 
   def price_with_currency

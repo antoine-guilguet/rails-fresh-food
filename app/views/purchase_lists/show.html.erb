@@ -1,0 +1,67 @@
+<%= render 'shared/producer_profile', producer: @producer %>
+
+<h4>Tableaux Récapitulatifs des listes d'achats</h4>
+<table>
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>Nom</th>
+    <th>Quantité</th>
+    <th>Prix unitaire</th>
+    <th>Prix /kg</th>
+    <th>Poids Total</th>
+    <th>Prix Total</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @purchase_list.purchase_products.each_with_index do |purchase_product, index| %>
+      <% product = purchase_product.product %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= product.name %></td>
+        <td><%= "#{product.quantity} #{product.unit}" %></td>
+        <td><%= purchase_product.quantity %></td>
+        <td><%= product.original_price %></td>
+        <td><%= product.compute_price_per_kg %></td>
+        <td><%= purchase_product.compute_total_weight(product) %></td>
+        <td><%= purchase_product.compute_total_price(product) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h4>Ajouter des produits à votre Liste</h4>
+<div class="row">
+  <% @products.each do |product| %>
+      <div class="col s12 m4 l3">
+        <%= render 'products/product_card', product: product %>
+      </div>
+  <% end %>
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $('.favorite-button-wrapper').on("click", function(e) {
+          e.preventDefault();
+          $.ajax({
+            type: "POST",
+            url: "<%= add_producer_to_favorites_path %>",
+            data: { producer_id: $(this).children().attr('producer_id') },
+              success: function(data){
+              var id = data.producer_id;
+              var selector = '[producer_id =' + id + ']';
+              if (data.change) {
+              $(selector).parent().addClass('gold');
+              } else {
+              $(selector).parent().removeClass('gold');
+              };
+            },
+            error: function(jqXHR) {
+            console.error(jqXHR.responseText);
+            }
+            });
+        });
+    <% end %>
+<% end %>
+

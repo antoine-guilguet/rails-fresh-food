@@ -6,4 +6,8 @@ class PurchaseList < ApplicationRecord
   has_one :schedule
   has_many :purchase_products, dependent: :destroy
   has_many :products, through: :purchase_products
+
+  # VALIDATIONS
+  validates :name, presence: true
+  validates :frequency, presence: true, numericality: true
 end

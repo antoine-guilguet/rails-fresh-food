@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320190855) do
+ActiveRecord::Schema.define(version: 20180321180529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20180320190855) do
     t.text "description"
     t.string "label"
     t.string "origin"
-    t.boolean "aop"
     t.text "composition"
     t.bigint "producer_id"
     t.datetime "created_at", null: false
@@ -77,6 +76,7 @@ ActiveRecord::Schema.define(version: 20180320190855) do
     t.string "unit", default: "g"
     t.integer "stock"
     t.string "photo"
+    t.boolean "bio"
     t.index ["producer_id"], name: "index_products_on_producer_id"
     t.index ["subcategory_id"], name: "index_products_on_subcategory_id"
   end
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20180320190855) do
     t.integer "frequency", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "recurrence", default: false
     t.index ["producer_id"], name: "index_purchase_lists_on_producer_id"
     t.index ["user_id"], name: "index_purchase_lists_on_user_id"
   end
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 20180320190855) do
     t.bigint "purchase_list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
     t.index ["product_id"], name: "index_purchase_products_on_product_id"
     t.index ["purchase_list_id"], name: "index_purchase_products_on_purchase_list_id"
   end

@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
 
-  resources :producers, except: [:edit, :update, :destroy]
+  resources :producers, except: [:edit, :update, :destroy] do
+    resources :purchase_lists
+  end
 
   # Onboarding
   get 'onboarding_step_1', to: "producers#select_producer", as: "select_producer"
