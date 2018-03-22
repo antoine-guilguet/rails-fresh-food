@@ -27,8 +27,9 @@ class PurchaseListsController < ApplicationController
     end
     @purchase_list.user = current_user
     @purchase_list.producer = @producer
+
     if @purchase_list.save
-      redirect_to dashboard_path
+      redirect_to producer_purchase_list_path(@producer, @purchase_list)
     else
       raise
       @products = @producer.products
