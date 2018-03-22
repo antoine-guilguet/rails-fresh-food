@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="dashboard-title-wrapper">
+    <h4>Vos Producteurs</h4>
+    <%= link_to 'Rechercher un Producteur', producers_path, class: "btn" %>
+  </div>
+
+  <div class="dashboard-container">
+    <% @producers.each do |producer | %>
+        <div class="row">
+          <div class="col l3 s6">
+            <div class="dashboard-producer-name">
+              <h6><%= link_to producer.name, producer_path(producer) %></h4>
+                <%= image_tag 'user.png', class: "picto-big" %>
+                <p><%= producer.render_full_name %></p>
+            </div>
+          </div>
+          <div class="col l2 s6">
+            <div class="dashboard-status-wrapper" style="justify-content: center;">
+              <% if producer.purchase_lists.empty? %>
+                  <div class="dashboard-producer-status inactif">
+                    Inactif
+                  </div>
+              <% else %>
+                  <div class="dashboard-producer-status actif">
+                    Actif
+                  </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="col l1 s12">
+            <div class="dashboard-status-wrapper">
+              <%= link_to new_producer_purchase_list_path(producer) do %>
+                  <i class="material-icons dashboard-add-list-btn tooltipped" data-position="top" data-delay="40" data-tooltip="Créer une liste d'achat">add_box</i>
+              <% end %>
+            </div>
+          </div>
+          <div class="col l6 s12">
+            <div class="dashboard-status-wrapper">
+              <% if producer.purchase_lists.empty? %>
+                  <p>Créer votre première liste d'achat!</p>
+              <% else %>
+                  <% producer.purchase_lists.each do |purchase_list| %>
+                      <%= link_to purchase_list.name, producer_purchase_list_path(producer, purchase_list), class:"btn btn-back dashboard-list-btn" %>
+                  <% end %>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+</div>

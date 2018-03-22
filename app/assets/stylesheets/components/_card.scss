@@ -52,7 +52,7 @@
 }
 
 .favorite-button-wrapper {
-  color: white;
+  color: $dark-blue;
   position: absolute;
   top: 5px;
   right: 5px;
@@ -62,6 +62,23 @@
     transform: scale(1.2);
     transition: all ease 300ms;
   }
+}
+
+.add-list-button-wrapper {
+  color: $secondary-color;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  &:hover {
+    transform: scale(1.2);
+    transition: all ease 300ms;
+  }
+}
+
+.add-list-button{
+  font-size: 35px !important;
 }
 
 .favorite-button {

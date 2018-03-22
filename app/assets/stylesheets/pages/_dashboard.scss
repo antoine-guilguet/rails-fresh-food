@@ -15,3 +15,51 @@
   flex-direction: column;
   margin-top: 5px;
 }
+
+.dashboard-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  color: $secondary-color;
+}
+
+.dashboard-producer-name {
+  text-align: center;
+}
+
+.dashboard-producer-name > h6 > a {
+  color: #E67E22;
+}
+
+.dashboard-status-wrapper {
+  display: flex;
+  align-items:center;
+  height: 120px;
+}
+
+.dashboard-producer-status {
+  border-radius: 20px;
+  color: white;
+  padding: 5px;
+  width: 65px;
+  text-align: center;
+}
+
+.actif {
+  background-color: $primary-color;
+}
+
+.inactif {
+  background-color: #E67E22;
+}
+
+.dashboard-add-list-btn {
+  font-size: 47px !important;
+  color: $primary-color;
+  margin-top: 6px;
+}
+
+.dashboard-list-btn {
+  margin-left: 20px;
+}
