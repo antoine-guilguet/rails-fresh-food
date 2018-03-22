@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   root to:"pages#homepage"
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    get 'add_product_to_list', on: :member
+  end
 
   resources :producers, except: [:edit, :update, :destroy] do
     resources :purchase_lists do

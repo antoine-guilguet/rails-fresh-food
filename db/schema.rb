@@ -24,13 +24,6 @@ ActiveRecord::Schema.define(version: 20180322151813) do
     t.index ["producer_id"], name: "index_activities_on_producer_id"
   end
 
-  create_table "agendas", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_agendas_on_user_id"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -177,7 +170,6 @@ ActiveRecord::Schema.define(version: 20180322151813) do
 
   add_foreign_key "activities", "categories"
   add_foreign_key "activities", "producers"
-  add_foreign_key "agendas", "users"
   add_foreign_key "products", "producers"
   add_foreign_key "products", "subcategories"
   add_foreign_key "purchase_lists", "producers"

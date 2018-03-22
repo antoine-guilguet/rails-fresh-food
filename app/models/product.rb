@@ -34,12 +34,10 @@ class Product < ApplicationRecord
   end
 
   def convert_quantity_in_kg
-    if self.unit == "g"
-      return self.quantity / 1000
-    elsif self.unit == "kg"
-      return self.quantity
-    else
-      return 0
+    if self.unit.strip == "g"
+      self.quantity.to_f / 1000
+    elsif self.unit.strip == "kg"
+      self.quantity
     end
   end
 end

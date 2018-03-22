@@ -7,8 +7,8 @@ Category.destroy_all
 
 puts "Create User"
 
-ant = User.create(first_name:"Antoine", last_name:"Guilguet", restaurant_name:"La Biche", email:"guilguet.antoine@gmail.com", password:"skate1")
-bat = User.create(first_name:"Batou", last_name:"Granclerc", restaurant_name:"Bateub",email:"baptiste.grandclerc@gmail.com", password:"skate2")
+ant = User.create(first_name:"Antoine", last_name:"Guilguet", restaurant_name:"La Biche", email:"guilguet.antoine@gmail.com", password:"skate1", phone_number:"0808080880", siret:"0009090909090")
+bat = User.create(first_name:"Batou", last_name:"Granclerc", restaurant_name:"Bateub",email:"baptiste.grandclerc@gmail.com", password:"skate2", phone_number:"0808080880", siret:"0009090909090")
 
 puts "Create Producer"
 # Producteurs
@@ -56,20 +56,20 @@ saucisson = Subcategory.create(name: "Saucissons", category_id: char.id)
 
 puts "Create Products"
 # Products
-Product.create(conditionning: "Sachet", aop: false, composition:"Nice", name:"Salade", description:"Salade fraîche et délicieuse", price: 1.5, producer_id: viltain.id, origin: "France", quantity: 200, unit: "g", subcategory_id: legumes.id)
-Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"ijifjaijeifj", name:"Tomate", description:"Tomate du jardin", price: 2, producer_id: viltain.id, origin: "France", quantity: 100, unit: "g", subcategory_id: fruits.id)
-Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Concombre", description:"Grand concombre délicieux", price: 2.4, producer_id: viltain.id, origin:"France", quantity: 200, unit: "g", subcategory_id: legumes.id)
-Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Orange", description:"Orange juteuse", price: 1.5, producer_id: viltain.id, origin:"France", quantity: 200, unit: "g", subcategory_id: fruits.id)
-Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Banane", description:"Banane savoureuse", price: 1.5, producer_id: viltain.id, origin:"France", quantity: 200,unit:"g", subcategory_id: fruits.id)
-Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Pêche", description:"Pêche du Sud", price: 3, producer_id: viltain.id, origin:"Espagne", quantity: 200, unit: "g", subcategory_id: fruits.id)
-Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Fromage de chèvre", description:"Savoureux et onctueux", price: 5, producer_id: viltain.id, origin:"Espagne", quantity: 200, unit: "g", subcategory_id: chevre.id)
-Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Saucisson", description:"Délicieux sauce-back", price: 4, producer_id: viltain.id, origin:"Espagne", quantity: 300, unit: "g", subcategory_id: saucisson.id)
-Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Courgette", description:"Courgette de la mère bastien", price: 15, producer_id: viltain.id, origin:"Espagne", quantity: 400, unit: "g", subcategory_id: legumes.id)
-Product.create(conditionning: "Sac", label: "bio", aop:false, composition:"nice composition", name:"Poireaux", description:"Le vilain batou", price: 12, producer_id: viltain.id, origin:"Espagne", quantity: 1, unit: "kg", subcategory_id: legumes.id)
+Product.create(conditionning: "Sachet", bio: false, composition:"Nice", name:"Salade", description:"Salade fraîche et délicieuse", price: 1.5, producer_id: viltain.id, origin: "France", quantity: 200, unit: "g", subcategory_id: legumes.id)
+Product.create(conditionning: "Sac", label: "bio", bio:false, composition:"ijifjaijeifj", name:"Tomate", description:"Tomate du jardin", price: 2, producer_id: viltain.id, origin: "France", quantity: 100, unit: "g", subcategory_id: fruits.id)
+Product.create(conditionning: "Sac", label: "bio", bio:false, composition:"nice composition", name:"Concombre", description:"Grand concombre délicieux", price: 2.4, producer_id: viltain.id, origin:"France", quantity: 200, unit: "g", subcategory_id: legumes.id)
+Product.create(conditionning: "Sac", label: "bio", bio:false, composition:"nice composition", name:"Orange", description:"Orange juteuse", price: 1.5, producer_id: viltain.id, origin:"France", quantity: 200, unit: "g", subcategory_id: fruits.id)
+Product.create(conditionning: "Sac", label: "bio", bio:false, composition:"nice composition", name:"Banane", description:"Banane savoureuse", price: 1.5, producer_id: viltain.id, origin:"France", quantity: 200,unit:"g", subcategory_id: fruits.id)
+Product.create(conditionning: "Sac", label: "bio", bio:false, composition:"nice composition", name:"Pêche", description:"Pêche du Sud", price: 3, producer_id: viltain.id, origin:"Espagne", quantity: 200, unit: "g", subcategory_id: fruits.id)
+Product.create(conditionning: "Sac", label: "bio", bio:false, composition:"nice composition", name:"Fromage de chèvre", description:"Savoureux et onctueux", price: 5, producer_id: viltain.id, origin:"Espagne", quantity: 200, unit: "g", subcategory_id: chevre.id)
+Product.create(conditionning: "Sac", label: "bio", bio:false, composition:"nice composition", name:"Saucisson", description:"Délicieux sauce-back", price: 4, producer_id: viltain.id, origin:"Espagne", quantity: 300, unit: "g", subcategory_id: saucisson.id)
+Product.create(conditionning: "Sac", label: "bio", bio:false, composition:"nice composition", name:"Courgette", description:"Courgette de la mère bastien", price: 15, producer_id: viltain.id, origin:"Espagne", quantity: 400, unit: "g", subcategory_id: legumes.id)
+Product.create(conditionning: "Sac", label: "bio", bio:false, composition:"nice composition", name:"Poireaux", description:"Le vilain batou", price: 12, producer_id: viltain.id, origin:"Espagne", quantity: 1, unit: "kg", subcategory_id: legumes.id)
 
-Product.create(conditionning: "Papier", label: "Comté du Jura" , aop:true, composition:"blallalijfhauehfuehau", name:"Comté Jeune", description:"12 mois d'affinage", price: 12, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)
-Product.create(conditionning: "Papier", label: "Comté du Jura" , aop:true, composition:"blallalijfhauehfuehau", name:"Comté Fruité", description:"16 mois d'affinage", price: 16, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)
-Product.create(conditionning: "Papier", label: "Comté du Jura" , aop:true, composition:"blallalijfhauehfuehau", name:"Comté Vieux", description:"24 mois d'affinage", price: 22, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)
-Product.create(conditionning: "Papier", label: "Morbier" , aop:true, composition:"blallalijfhauehfuehau", name:"Morbier Jeune", description:"8 mois d'affinage", price: 10, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)
-Product.create(conditionning: "Papier", label: "Jura" , aop:true, composition:"blallalijfhauehfuehau", name:"Bleu de Gex", description:"10 mois d'affinage", price: 9, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)
-Product.create(conditionning: "Papier", label: "Jura" , aop:true, composition:"blallalijfhauehfuehau", name:"Tomme de Granveaux", description:"16 mois d'affinage", price: 14, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)
+Product.create(conditionning: "Papier", label: "Comté du Jura" , bio:true, composition:"blallalijfhauehfuehau", name:"Comté Jeune", description:"12 mois d'affinage", price: 12, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)
+Product.create(conditionning: "Papier", label: "Comté du Jura" , bio:true, composition:"blallalijfhauehfuehau", name:"Comté Fruité", description:"16 mois d'affinage", price: 16, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)
+Product.create(conditionning: "Papier", label: "Comté du Jura" , bio:true, composition:"blallalijfhauehfuehau", name:"Comté Vieux", description:"24 mois d'affinage", price: 22, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)
+Product.create(conditionning: "Papier", label: "Morbier" , bio:true, composition:"blallalijfhauehfuehau", name:"Morbier Jeune", description:"8 mois d'affinage", price: 10, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)
+Product.create(conditionning: "Papier", label: "Jura" , bio:true, composition:"blallalijfhauehfuehau", name:"Bleu de Gex", description:"10 mois d'affinage", price: 9, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)
+Product.create(conditionning: "Papier", label: "Jura" , bio:true, composition:"blallalijfhauehfuehau", name:"Tomme de Granveaux", description:"16 mois d'affinage", price: 14, producer_id: fruitiere.id, origin:"France", quantity: 1, unit: "kg", subcategory_id: vache.id)

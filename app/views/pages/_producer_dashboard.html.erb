@@ -37,7 +37,7 @@
           <div class="col l6 s12">
             <div class="dashboard-status-wrapper">
               <% if producer.purchase_lists.empty? %>
-                  <p>Créer votre première liste d'achat!</p>
+                  <p>Vous n'avez pas encore de liste d'achat avec ce producteur</p>
               <% else %>
                   <% producer.purchase_lists.each do |purchase_list| %>
                       <%= link_to purchase_list.name, producer_purchase_list_path(producer, purchase_list), class:"btn btn-back dashboard-list-btn" %>

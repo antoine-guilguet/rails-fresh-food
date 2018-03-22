@@ -42,6 +42,9 @@
               <div class="product-detail-wrapper">
                 <div class="card-category card-subcategory"><%= @product.subcategory.name %></div>
               </div>
+              <div class="product-detail-wrapper">
+                <%= link_to 'Commander', add_product_to_list_product_path(@product), class:'btn' %>
+              </div>
             </div>
           </div>
         </div>
