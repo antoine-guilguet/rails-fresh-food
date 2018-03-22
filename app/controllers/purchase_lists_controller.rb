@@ -27,7 +27,6 @@ class PurchaseListsController < ApplicationController
     end
     @purchase_list.user = current_user
     @purchase_list.producer = @producer
-
     if @purchase_list.save
       redirect_to producer_purchase_list_path(@producer, @purchase_list)
     else
@@ -48,6 +47,17 @@ class PurchaseListsController < ApplicationController
 
   def update
     @purchase_list.update(purchase_list_params)
+    frequency = params[:frequency_list]
+    if params_is_number?(frequency)
+      frequency = frequency.to_i
+      if frequency == 0
+        @purchase_list.recurrence = false
+      else
+        @purchase_list.recurrence = true
+        @purchase_list.frequency = frequency
+      end
+    end
+    @purchase_list.save
     redirect_to producer_purchase_list_path(@producer, @purchase_list)
   end
 
