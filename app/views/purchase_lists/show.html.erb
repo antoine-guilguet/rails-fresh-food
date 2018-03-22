@@ -1,4 +1,5 @@
 <div class="container purchase-container">
+
   <div class="purchase-list-title">
     <h5><%= @purchase_list.name %></h5>
     <% if @purchase_list.delivery_date %>
@@ -17,6 +18,7 @@
       <% end %>
     </div>
   </div>
+
   <div class="row">
     <div class="col l3 m12">
       <%= render 'shared/producer_profile', producer: @producer %>
@@ -24,41 +26,40 @@
     <div class="col l9 m12">
       <div class="purchase-list-wrapper">
         <div class="purchase-list-table">
-          <table class="centered highlight">
-            <thead>
-            <tr>
-              <th>Nom</th>
-              <th>Conditionnement</th>
-              <th>Quantité</th>
-              <th>Prix /kg</th>
-              <th>Prix Total</th>
-              <th></th>
-            </tr>
-            </thead>
+        <table class="centered highlight">
+          <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Conditionnement</th>
+            <th>Quantité</th>
+            <th>Prix /kg</th>
+            <th>Prix Total</th>
+            <th></th>
+          </tr>
+          </thead>
 
-            <tbody>
-            <% @purchase_list.purchase_products.each do |purchase_product| %>
-                <% product = purchase_product.product %>
-                <tr id="purchase_product_<%= purchase_product.id %>">
-                  <td><%= product.name %></td>
-                  <td><%= "#{product.quantity} #{product.unit}" %></td>
-                  <td><%= purchase_product.quantity %></td>
-                  <td><%= product.compute_price_per_kg %></td>
-                  <td><%= purchase_product.compute_total_price_and_currency %></td>
-                  <td class="purchase-btn-delete"purchase_product_id="<%= purchase_product.id %>">
-                    <i class="material-icons">delete</i>
-                  </td>
-                </tr>
-            <% end %>
-            </tbody>
-          </table>
-          </div>
-          <div class="purchase-list-total-wrapper">
-            <h6 class="purchase-list-total-title">Total</h6>
-            <p><%= @purchase_list.compute_total_items %> items</p>
-            <p><%= @purchase_list.compute_total_weight %> kg</p>
-            <p><%= @purchase_list.compute_total_expense %> €</p>
-          </div>
+          <tbody>
+          <% @purchase_list.purchase_products.each do |purchase_product| %>
+              <% product = purchase_product.product %>
+              <tr id="purchase_product_<%= purchase_product.id %>">
+                <td><%= product.name %></td>
+                <td><%= "#{product.quantity} #{product.unit}" %></td>
+                <td><%= purchase_product.quantity %></td>
+                <td><%= product.compute_price_per_kg %></td>
+                <td><%= purchase_product.compute_total_price_and_currency %></td>
+                <td class="purchase-btn-delete"purchase_product_id="<%= purchase_product.id %>">
+                  <i class="material-icons">delete</i>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        </div>
+        <div class="purchase-list-total-wrapper">
+          <h6 class="purchase-list-total-title">Total</h6>
+          <p><%= @purchase_list.compute_total_items %> items</p>
+          <p><%= @purchase_list.compute_total_weight %> kg</p>
+          <p><%= @purchase_list.compute_total_expense %> €</p>
         </div>
       </div>
     </div>
