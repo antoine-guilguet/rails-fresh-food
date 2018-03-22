@@ -1,66 +1,80 @@
-<%= render 'shared/producer_profile', producer: @producer %>
-
-<h4>Tableaux Récapitulatifs des listes d'achats</h4>
-<table>
-  <thead>
-  <tr>
-    <th>id</th>
-    <th>Nom</th>
-    <th>Quantité</th>
-    <th>Prix unitaire</th>
-    <th>Prix /kg</th>
-    <th>Poids Total</th>
-    <th>Prix Total</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @purchase_list.purchase_products.each_with_index do |purchase_product, index| %>
-      <% product = purchase_product.product %>
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><%= product.name %></td>
-        <td><%= "#{product.quantity} #{product.unit}" %></td>
-        <td><%= purchase_product.quantity %></td>
-        <td><%= product.original_price %></td>
-        <td><%= product.compute_price_per_kg %></td>
-        <td><%= purchase_product.compute_total_weight(product) %></td>
-        <td><%= purchase_product.compute_total_price(product) %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<h4>Ajouter des produits à votre Liste</h4>
-<div class="row">
-  <% @products.each do |product| %>
-      <div class="col s12 m4 l3">
-        <%= render 'products/product_card', product: product %>
+<div class="container purchase-container">
+  <div class="row">
+    <div class="col l3 m12">
+      <%= render 'shared/producer_profile', producer: @producer %>
+    </div>
+    <div class="col l9 m12">
+      <div class="purchase-list-title">
+        <h5><%= @purchase_list.name %></h5>
+        <%= link_to "Modifier", edit_producer_purchase_list_path(@producer, @purchase_list), class: "btn" %>
+        <%= link_to "Supprimer", producer_purchase_list_path(@producer, @purchase_list), method: :delete, class: "btn btn-warning" %>
       </div>
-  <% end %>
+      <table>
+        <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Conditionnement</th>
+          <th>Quantité</th>
+          <th>Prix /kg</th>
+          <th>Prix Total</th>
+          <th>Supprimer</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @purchase_list.purchase_products.each do |purchase_product| %>
+            <% product = purchase_product.product %>
+            <tr id="purchase_product_<%= purchase_product.id %>">
+              <td><%= product.name %></td>
+              <td><%= "#{product.quantity} #{product.unit}" %></td>
+              <td><%= purchase_product.quantity %></td>
+              <td><%= product.compute_price_per_kg %></td>
+              <td><%= purchase_product.compute_total_price(product) %></td>
+              <td class="purchase-btn-delete tooltipped"purchase_product_id="<%= purchase_product.id %>" data-position="top" data-delay="40" data-tooltip="Retirer de la liste">
+                <i class="material-icons">delete</i>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <h4>Ajouter des produits à votre Liste</h4>
+    <div class="row">
+      <% @products.each do |product| %>
+          <div class="col s12 m4 l3">
+            <%= render 'product_card', product: product %>
+          </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <%= content_for :js do %>
     <%= javascript_tag do %>
-        $('.favorite-button-wrapper').on("click", function(e) {
-          e.preventDefault();
-          $.ajax({
-            type: "POST",
-            url: "<%= add_producer_to_favorites_path %>",
-            data: { producer_id: $(this).children().attr('producer_id') },
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+
+        $('.purchase-btn-delete').on("click", function(){
+            alert('Êtes-vous sûr de vouloir retire ce produit de votre liste?');
+            var purchase_product_id = $(this).attr('purchase_product_id');
+            console.log("Hello");
+            $.ajax({
+              type: "POST",
+              url: "<%= remove_product_from_list_producer_purchase_list_path(@producer, @purchase_list) %>",
+              data: { purchase_product_id: purchase_product_id },
               success: function(data){
-              var id = data.producer_id;
-              var selector = '[producer_id =' + id + ']';
-              if (data.change) {
-              $(selector).parent().addClass('gold');
-              } else {
-              $(selector).parent().removeClass('gold');
-              };
-            },
-            error: function(jqXHR) {
-            console.error(jqXHR.responseText);
-            }
-            });
+                  var purchase_product = "#purchase_product_" + data.purchase_product_id;
+                  $(purchase_product).slideUp();
+                    $(purchase_product).remove();
+              },
+              error: function(jqXHR) {
+              console.error(jqXHR.responseText);
+              }
+              });
         });
     <% end %>
 <% end %>

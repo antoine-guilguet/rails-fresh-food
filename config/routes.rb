@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
 
   resources :producers, except: [:edit, :update, :destroy] do
-    resources :purchase_lists
+    resources :purchase_lists do
+      get 'add_product_to_list', on: :member
+      post 'remove_product_from_list', on: :member
+    end
   end
 
   # Onboarding

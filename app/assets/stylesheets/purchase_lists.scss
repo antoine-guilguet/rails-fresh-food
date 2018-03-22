@@ -1,3 +1,15 @@
-// Place all the styles related to the PurchaseLists controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.purchase-container {
+  margin-top: 20px;
+  width: 90%;
+}
+
+.purchase-list-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.purchase-btn-delete {
+  cursor: pointer;
+  color: #E67E22;
+}

@@ -2,9 +2,7 @@
     <div class="card">
       <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)),
           url('<%= product.photo %>')">
-        <div class="add-list-button-wrapper tooltipped" data-position="top" data-delay="40" data-tooltip="Ajouter à la liste">
-          <i class="material-icons add-list-button" producer_id="<%= product.id %>">star_rate</i>
-        </div>
+
       </div>
       <div class="card-content">
         <h6 class="card-product-name"><%= product.name %></h6>
@@ -18,5 +16,3 @@
       </div>
     </div>
 <% end %>
-
-

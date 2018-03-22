@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col l8 offset-l2 m8 offset-m2 s12 ">
+      <div class="form-container">
+        <div class="form-header">
+          <h4>Modifier liste d'achat</h4>
+
+        </div>
+        <div class="form-body">
+          <%= simple_form_for [@producer, @purchase_list] do |f| %>
+              <%= f.input :name, label:"Nom de la Liste d'Achat", autofocus: true %>
+              <div class="form-select">
+                <label class="form-label" for="frequency-dropdown">Souhaitez-vous répéter cette commande?</label>
+                <br>
+                <select name="frequency_list" id="frequency-dropdown">
+                  <% @frequencies.each do |frequency| %>
+                      <option value="<%= frequency[0] %>"><%= frequency[1] %></option>
+                  <% end %>
+                </select>
+              </div>
+              <div class="form-actions">
+                <%= link_to 'Retour', dashboard_path, class: "waves-effect waves-light btn btn-back" %>
+                <%= f.submit 'Créer', class: "waves-effect waves-light btn" %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $(document).ready(function(){
+
+        });
+    <% end %>
+<% end %>
