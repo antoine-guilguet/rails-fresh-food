@@ -37,21 +37,7 @@
   </div>
 
   <div id="producers" class="col s12">
-    <div class="row">
-      <%= link_to 'Ajouter un Producteur', producers_path, class: "btn" %>
-      <h6>Vos Producteurs</h6>
-      <% @producers.each do |producer | %>
-          <div class="col s12 m6 l3">
-            <div class="dash-producer-wrapper">
-              <%= render 'producers/producer_card', producer: producer %>
-              <%= link_to "Créer une liste d'achat", new_producer_purchase_list_path(producer), class: "btn" %>
-              <% producer.purchase_lists.each do |purchase_list| %>
-                <%= link_to purchase_list.name, producer_purchase_list_path(producer, purchase_list), class:"btn btn-back" %>
-              <% end %>
-            </div>
-          </div>
-      <% end %>
-    </div>
+    <%= render 'producer_dashboard' %>
   </div>
   <div id="products" class="col s12">
     Produits

@@ -76,7 +76,7 @@ class ProducersController < ApplicationController
     if @supplier.save
       if params[:redirection]
         flash[:notice] = "Ajouter aux favoris"
-        redirect_to producers_path
+        redirect_to dashboard_path
       else
         render json: {
             producer_id: @producer.id,
@@ -89,7 +89,7 @@ class ProducersController < ApplicationController
       Supplier.find_by(user_id: current_user.id, producer_id: @producer.id).destroy
       if params[:redirection]
         flash[:alert] = "Retirer des favoris"
-        redirect_to producers_path
+        redirect_to dashboard_path
       else
         render json: {
             producer_id: @producer.id,

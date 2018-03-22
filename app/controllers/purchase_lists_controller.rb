@@ -1,6 +1,6 @@
 class PurchaseListsController < ApplicationController
-  before_action :find_producer, only: [:new, :edit, :create, :show, :add_product_to_list]
-  before_action :find_purchase_list, only: [:show, :edit, :add_product_to_list, :destroy]
+  before_action :find_producer
+  before_action :find_purchase_list, except: [:new, :index, :create]
   include PurchaseListsHelper
 
   def index
@@ -46,7 +46,8 @@ class PurchaseListsController < ApplicationController
   end
 
   def update
-
+    @purchase_list.update(purchase_list_params)
+    redirect_to producer_purchase_list_path(@producer, @purchase_list)
   end
 
   def destroy
@@ -92,6 +93,6 @@ class PurchaseListsController < ApplicationController
   end
 
   def purchase_list_params
-    params.require(:purchase_list).permit(:name)
+    params.require(:purchase_list).permit(:name, :delivery_date)
   end
 end

@@ -7,11 +7,18 @@ class PurchaseProduct < ApplicationRecord
   # VALIDATIONS
   validates :quantity, presence: true, numericality: true
 
-  def compute_total_weight(product)
-    return "#{ product.quantity * self.quantity } #{product.unit}"
+  def compute_weight_in_kg
+    product = self.product
+    product.convert_quantity_in_kg * self.quantity
   end
 
-  def compute_total_price(product)
+  def compute_total_price_and_currency
+    product = self.product
     "#{product.price * self.quantity}€"
+  end
+
+  def compute_total_price
+    product = self.product
+    product.price * self.quantity
   end
 end

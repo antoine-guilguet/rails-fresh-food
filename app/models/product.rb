@@ -33,4 +33,13 @@ class Product < ApplicationRecord
     "#{self.price} €"
   end
 
+  def convert_quantity_in_kg
+    if self.unit == "g"
+      return self.quantity / 1000
+    elsif self.unit == "kg"
+      return self.quantity
+    else
+      return 0
+    end
+  end
 end
