@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col s12">
       <div class="producer-btn-wrapper">
-        <%= link_to 'Retour', producers_path, class:"btn btn-back" %>
-        <% if @producer.provides?(current_user) %>
+        <%= link_to 'Tous les Producteurs', producers_path, class:"btn btn-back" %>
+        <% if current_user && @producer.provides?(current_user) %>
             <%= link_to 'Retirer des Favoris', add_producer_to_favorites_path(producer_id: @producer.id, redirection: true), method: :post, class:"btn btn-warning" %>
         <% else %>
             <%= link_to 'Ajouter aux Favoris', add_producer_to_favorites_path(producer_id: @producer.id, redirection: true), method: :post, class:"btn" %>

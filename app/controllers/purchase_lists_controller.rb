@@ -71,21 +71,25 @@ class PurchaseListsController < ApplicationController
     @purchase_product = PurchaseProduct.new(product_id: @product.id, purchase_list_id: @purchase_list.id, quantity: params[:number])
     if @purchase_product.save
       redirect_to producer_purchase_list_path(@producer, @purchase_list)
-      flash[:notice] = "#{@product.name} ajouté"
+      flash[:notice] = "#{@product.name.split.first } ajouté"
     else
       redirect_to producer_purchase_list_path(@producer, @purchase_list)
-      flash[:notice] = "Le Produit n'a pas pu être ajouté"
+      flash[:alert] = "Le Produit n'a pas pu être ajouté"
     end
   end
 
   def remove_product_from_list
     @purchase_product = PurchaseProduct.find(params[:purchase_product_id])
     if @purchase_product
+      purchase_product_id = @purchase_product.id
+      @purchase_product.destroy
       render json: {
         message: "Produit enlevé de la liste",
-        purchase_product_id: @purchase_product.id
+        purchase_product_id: purchase_product_id,
+        total_items: @purchase_list.compute_total_items,
+        total_weight: @purchase_list.compute_total_weight,
+        total_price: @purchase_list.compute_total_expense
       }
-      @purchase_product.destroy
     else
       render json: {
           message: "Suppression a échoué"

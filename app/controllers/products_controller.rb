@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only:[:show, :add_product_to_list]
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @subcategories = Subcategory.all

@@ -1,5 +1,6 @@
 class ProducersController < ApplicationController
   before_action :find_producer, only:[:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @categories = Category.all
@@ -7,6 +8,10 @@ class ProducersController < ApplicationController
     if params[:query].present? && !params.has_value?("on")
       sql_query = "name ILIKE :query OR description ILIKE :query"
       @producers = Producer.where(sql_query, query: "%#{params[:query]}%")
+      if @producers.empty?
+        @producers = Producer.all
+        flash[:alert] = "Aucun Producteur trouvé"
+      end
     elsif params.has_value?("on")
       if params[:query].present?
         producer_ids = filter_producers_by_category(params, @categories.ids).pluck(:id)
@@ -14,6 +19,10 @@ class ProducersController < ApplicationController
         @producers = Producer.where(sql_query, query: "%#{params[:query]}%").select { |producer| producer_ids.include?(producer.id) }
       else
         @producers = filter_producers_by_category(params, @categories.ids)
+      end
+      if @producers.empty?
+        @producers = Producer.all
+        flash[:alert] = "Aucun Producteur ne correspond à la recherche"
       end
     else
       @producers = Producer.all

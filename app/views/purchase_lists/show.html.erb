@@ -57,9 +57,9 @@
         </div>
         <div class="purchase-list-total-wrapper">
           <h6 class="purchase-list-total-title">Total</h6>
-          <p><%= @purchase_list.compute_total_items %> items</p>
-          <p><%= @purchase_list.compute_total_weight %> kg</p>
-          <p><%= @purchase_list.compute_total_expense %> €</p>
+          <p class="total-items"><%= @purchase_list.compute_total_items %> items</p>
+          <p class="total-weight"><%= @purchase_list.compute_total_weight %> kg</p>
+          <p class="total-price"><%= @purchase_list.compute_total_expense %> €</p>
         </div>
       </div>
     </div>
@@ -96,8 +96,14 @@
               data: { purchase_product_id: purchase_product_id },
               success: function(data){
                   var purchase_product = "#purchase_product_" + data.purchase_product_id;
-                  $(purchase_product).slideUp();
-                    $(purchase_product).remove();
+                  $(purchase_product).remove();
+                  var total_items= data.total_items + "items";
+                  var total_weight = data.total_weight + "kg";
+                  var total_price= data.total_price + "€";
+                    console.log(total_items, total_price, total_weight);
+                  $('.total-items').text(total_items);
+                  $('.total-weight').text(total_weight);
+                  $('.total-price').text(total_price);
               },
               error: function(jqXHR) {
               console.error(jqXHR.responseText);
