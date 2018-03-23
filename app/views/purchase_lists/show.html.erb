@@ -89,7 +89,6 @@
         $('.purchase-btn-delete').on("click", function(){
             alert('Êtes-vous sûr de vouloir retire ce produit de votre liste?');
             var purchase_product_id = $(this).attr('purchase_product_id');
-            console.log("Hello");
             $.ajax({
               type: "POST",
               url: "<%= remove_product_from_list_producer_purchase_list_path(@producer, @purchase_list) %>",
@@ -100,7 +99,6 @@
                   var total_items= data.total_items + "items";
                   var total_weight = data.total_weight + "kg";
                   var total_price= data.total_price + "€";
-                    console.log(total_items, total_price, total_weight);
                   $('.total-items').text(total_items);
                   $('.total-weight').text(total_weight);
                   $('.total-price').text(total_price);
