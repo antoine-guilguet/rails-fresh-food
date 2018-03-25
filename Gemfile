@@ -34,6 +34,7 @@ gem 'simple_form'
 gem 'devise'
 gem "administrate"
 gem 'cloudinary'
+gem 'best_in_place', '~> 3.0.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

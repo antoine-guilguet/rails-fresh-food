@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :purchase_products, only: [:new, :create, :edit, :update, :show]
+
   # Onboarding
   get 'onboarding_step_1', to: "producers#select_producer", as: "select_producer"
   get 'onboarding_step_2', to: "producers#upload_producer", as: "upload_producer"
