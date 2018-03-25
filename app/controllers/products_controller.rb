@@ -8,13 +8,16 @@ class ProductsController < ApplicationController
     if params[:query].present? && !params.has_value?("on")
       sql_query = "name ILIKE :query OR description ILIKE :query"
       @products = Product.where(sql_query, query: "%#{params[:query]}%")
+      check_empty_search
     elsif params.has_value?("on")
       if params[:query].present?
         product_ids = filter_products_by_subcategory(params, @subcategories.ids).pluck(:id).uniq
         sql_query = "name ILIKE :query OR description ILIKE :query"
         @products = Product.where(sql_query, query: "%#{params[:query]}%").select { |product| product_ids.include?(product.id) }
+        check_empty_search
       else
         @products = filter_products_by_subcategory(params, @subcategories.ids)
+        check_empty_search
       end
     else
       @products = Product.all
@@ -57,6 +60,13 @@ class ProductsController < ApplicationController
       end
     end
     array_products
+  end
+
+  def check_empty_search
+    if @products.empty?
+      @products = Product.all
+      flash[:alert] = "Aucun Produit trouvé"
+    end
   end
 
 end
