@@ -19,13 +19,9 @@
 .dashboard-title-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 20px;
   color: $secondary-color;
-}
-
-.dashboard-producer-name {
-  text-align: center;
 }
 
 .dashboard-producer-name > h6 > a {

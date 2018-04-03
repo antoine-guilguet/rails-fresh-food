@@ -8,7 +8,7 @@
     <% @producers.each do |producer | %>
         <div class="row">
           <div class="col l3 s6">
-            <div class="dashboard-producer-name">
+            <div class="center dashboard-producer-name">
               <h6><%= link_to producer.name, producer_path(producer) %></h6>
               <%= image_tag 'user.png', class: "picto-big" %>
               <p><%= producer.render_full_name %></p>
@@ -49,10 +49,4 @@
         </div>
     <% end %>
   </div>
-</div>
-
-
-
-
-
 </div>

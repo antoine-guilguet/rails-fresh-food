@@ -30,6 +30,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @producers = current_user.producers
+    @products = current_user.get_all_products
   end
 
   private

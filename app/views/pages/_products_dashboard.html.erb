@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="dashboard-title-wrapper">
+    <h4>Vos Produits</h4>
+    <%= link_to 'Rechercher un Produit', products_path, class: "btn" %>
+  </div>
+
+  <div class="dashboard-container">
+    <ul class="collapsible expandable">
+      <% @producers.each do |producer | %>
+          <li>
+            <div class="collapsible-header"><%= producer.name %></div>
+            <div class="collapsible-body">
+              <span>
+                <ul>
+                  <% producer.get_all_products_registered_with(current_user).each do |product| %>
+                    <li><%= product.name %></li>
+                  <% end %>
+                </ul>
+              </span>
+            </div>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $(document).ready(function(){
+            $('.collapsible').collapsible({
+                accordion: false
+            });
+        });
+    <% end %>
+<% end %>

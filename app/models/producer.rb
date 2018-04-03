@@ -34,4 +34,11 @@ class Producer < ApplicationRecord
     self.users.pluck(:user_id).include?(user.id)
   end
 
+  def get_all_products_registered_with(user)
+    products = Array.new
+    self.purchase_lists.select { |purchase_list| purchase_list.user_id == user.id }.each do |purchase_list|
+      products << purchase_list.products
+    end
+    return products.first
+  end
 end
