@@ -57,9 +57,9 @@
         </div>
         <div class="purchase-list-total-wrapper">
           <h6 class="purchase-list-total-title">Total</h6>
-          <p class="total-items"><%= @purchase_list.compute_total_items %> items</p>
-          <p class="total-weight"><%= @purchase_list.compute_total_weight %> kg</p>
-          <p class="total-price"><%= @purchase_list.compute_total_expense %> €</p>
+          <p class="total-items"><%= @purchase_list.compute_total_items %>  items</p>
+          <p class="total-weight"><%= @purchase_list.compute_total_weight %>  kg</p>
+          <p class="total-price"><%= @purchase_list.compute_total_expense %>  €</p>
         </div>
       </div>
     </div>
@@ -87,7 +87,7 @@
             jQuery(".best_in_place").best_in_place();
         });
 
-        $('.purchase-btn-delete').on("click", function(){
+        $('.purchase-list-btn-delete').on("click", function(){
             alert('Êtes-vous sûr de vouloir retire ce produit de votre liste?');
             var purchase_product_id = $(this).attr('purchase_product_id');
             $.ajax({
