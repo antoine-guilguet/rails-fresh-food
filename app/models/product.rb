@@ -42,7 +42,6 @@ class Product < ApplicationRecord
   end
 
   def get_product_purchase_lists(user)
-    self.purchase_lists.select { |purchase_list| purchase_list.user_id == user.id }
+    self.purchase_lists.select { |purchase_list| purchase_list.user_id == user.id }.uniq { |e| e.id }
   end
-
 end

@@ -12,7 +12,6 @@
       <tr>
         <th>Produits</th>
         <th>Producteur</th>
-        <th>Origine</th>
         <th>Prix par kg</th>
         <th>Catégorie</th>
         <th>Listes d'achat</th>
@@ -27,9 +26,6 @@
             </td>
             <td>
               <%= link_to product.producer.name, producer_path(product.producer) %>
-            </td>
-            <td>
-              <%= product.origin %>
             </td>
             <td>
               <%= product.compute_price_per_kg %>
