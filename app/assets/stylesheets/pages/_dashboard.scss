@@ -16,11 +16,17 @@
   margin-top: 5px;
 }
 
+.dashboard-container {
+  width: 90%;
+  margin: auto;
+}
+
 .dashboard-title-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   color: $secondary-color;
 }
 

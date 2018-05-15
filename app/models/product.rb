@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   # RELATIONS
   belongs_to :producer
   belongs_to :subcategory
-  has_many :purchase_products
+  has_many :purchase_products, dependent: :destroy
   has_many :purchase_lists, through: :purchase_products
 
   # VALIDATIONS
@@ -40,4 +40,9 @@ class Product < ApplicationRecord
       self.quantity
     end
   end
+
+  def get_product_purchase_lists(user)
+    self.purchase_lists.select { |purchase_list| purchase_list.user_id == user.id }
+  end
+
 end

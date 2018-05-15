@@ -30,7 +30,6 @@ class PurchaseListsController < ApplicationController
     if @purchase_list.save
       redirect_to producer_purchase_list_path(@producer, @purchase_list)
     else
-      raise
       @products = @producer.products
       @frequencies = [[0, "Une seule fois"], [1, "1 fois par semaine"], [2, "2 fois par mois"], [3, "3 fois par mois"], [4, "4 fois par mois"]]
       render 'new'

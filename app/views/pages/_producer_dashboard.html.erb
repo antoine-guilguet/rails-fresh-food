@@ -1,7 +1,9 @@
 <div class="row">
-  <div class="dashboard-title-wrapper">
-    <h4>Vos Producteurs</h4>
-    <%= link_to 'Rechercher un Producteur', producers_path, class: "btn" %>
+  <div class="dashboard-container">
+    <div class="dashboard-title-wrapper">
+      <h4>Vos Producteurs</h4>
+      <%= link_to 'Rechercher un Producteur', producers_path, class: "btn" %>
+    </div>
   </div>
 
   <div class="dashboard-container">
@@ -40,10 +42,12 @@
                   <p>Vous n'avez pas encore de liste d'achat avec ce producteur</p>
               <% else %>
                   <% producer.purchase_lists.each do |purchase_list| %>
-                      <%= link_to purchase_list.name, producer_purchase_list_path(producer, purchase_list), class:"btn btn-back dashboard-list-btn" %>
+                      <%= link_to producer_purchase_list_path(producer, purchase_list), class:"purchase-list-button" do %>
+                          <i class="material-icons">shopping_cart</i>
+                          <p class="purchase-list-button-title"><%= purchase_list.name %></p>
+                      <% end %>
                   <% end %>
               <% end %>
-
             </div>
           </div>
         </div>

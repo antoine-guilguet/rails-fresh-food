@@ -7,7 +7,7 @@ class Producer < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :categories, through: :activities
   belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
-  has_many :purchase_lists
+  has_many :purchase_lists, dependent: :destroy
   has_many :schedules
 
   # VALIDATIONS
@@ -40,5 +40,10 @@ class Producer < ApplicationRecord
       products << purchase_list.products
     end
     return products.first
+  end
+
+  def get_all_subcategories_registered_with(user)
+    products = self.get_all_products_registered_with(user)
+    products.map { |product| product.subcategory.name }.uniq
   end
 end

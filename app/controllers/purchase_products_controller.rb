@@ -17,7 +17,10 @@ class PurchaseProductsController < ApplicationController
     @purchase_product = PurchaseProduct.find(params[:id])
     respond_to do |format|
       if @purchase_product.update(purchase_product_params)
-        format.html { redirect_to(producer_purchase_list_path(@purchase_product.purchase_list.producer), :notice => 'User was successfully updated.') }
+        format.html {
+          redirect_to(producer_purchase_list_path(@purchase_product.purchase_list.producer),
+          :notice => 'User was successfully updated.')
+        }
         format.json { respond_with_bip(@purchase_product) }
       else
         format.html { render :action => "edit" }

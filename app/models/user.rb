@@ -29,9 +29,11 @@ class User < ApplicationRecord
   def get_all_products
     products = Array.new
     self.purchase_lists.each do |purchase_list|
-      products << purchase_list.products
+      purchase_list.products.each do |product|
+        products << product
+      end
     end
-    return products
+    return products.uniq { |product| product.id }
   end
 
   def get_products_hash_sort_by_producer
