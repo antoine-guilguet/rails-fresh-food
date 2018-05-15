@@ -46,4 +46,8 @@ class Producer < ApplicationRecord
     products = self.get_all_products_registered_with(user)
     products.map { |product| product.subcategory.name }.uniq
   end
+
+  def get_all_purchase_lists_registered_with(user)
+    self.purchase_lists.select { |purchase_list| purchase_list.user_id == user.id }
+  end
 end

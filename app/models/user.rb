@@ -43,5 +43,4 @@ class User < ApplicationRecord
     end
     return hash
   end
-
 end

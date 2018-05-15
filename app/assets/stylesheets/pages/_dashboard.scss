@@ -31,13 +31,14 @@
 }
 
 .dashboard-producer-name > h6 > a {
-  color: #E67E22;
+  color: $primary-color;
+  font-weight: bold;
 }
 
 .dashboard-status-wrapper {
   display: flex;
   align-items:center;
-  height: 120px;
+  height: 50px;
 }
 
 .dashboard-producer-status {

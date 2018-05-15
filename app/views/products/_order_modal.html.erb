@@ -1,0 +1,35 @@
+<div id="order-modal" class="modal">
+  <div class="form-container" style="margin-top: 0px; border-top-left-radius: Opx; border-top-right-radius: 0px;">
+    <div class="form-header">
+      <h4 class="center">Commander des <%= @product.name %> !</h4>
+    </div>
+    <div class="form-body">
+      <% producer = @product.producer %>
+      <% if producer.provides?(current_user) %>
+        <p>Choisissez la liste d'achat dans laquelle vous souhaitez ajouter votre produit.</p>
+          <ul>
+            <% producer.get_all_purchase_lists_registered_with(current_user).each do |purchase_list| %>
+                <%= link_to purchase_list.name, add_product_to_list_product_path(@product, purchase_list: purchase_list) %>
+            <% end %>
+          </ul>
+      <% end %>
+      <div class="form-actions">
+        <%= link_to 'Passer cette étape', upload_producer_path, class: "btn btn-warning" %>
+        <!--<%= link_to 'Commander', add_product_to_list_product_path(@product), class:'btn' %>-->
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Ok</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $('#order-button').on("click", function(e) {
+            $('#order-modal').modal('show');
+        });
+
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+    <% end %>
+<% end %>
