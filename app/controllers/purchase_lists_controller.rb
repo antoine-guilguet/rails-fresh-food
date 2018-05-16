@@ -15,6 +15,7 @@ class PurchaseListsController < ApplicationController
 
   def create
     @purchase_list = PurchaseList.new(purchase_list_params)
+    @product = Product.find(params[:product_id])
     frequency = params[:frequency_list]
     if params_is_number?(frequency)
       frequency = frequency.to_i
@@ -28,6 +29,9 @@ class PurchaseListsController < ApplicationController
     @purchase_list.user = current_user
     @purchase_list.producer = @producer
     if @purchase_list.save
+      if @product
+        PurchaseProduct.create(product_id: @product.id, purchase_list_id: @purchase_list.id, quantity: 1)
+      end
       redirect_to producer_purchase_list_path(@producer, @purchase_list)
     else
       @products = @producer.products

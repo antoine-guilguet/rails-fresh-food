@@ -1,18 +1,4 @@
 class PurchaseProductsController < ApplicationController
-  def new
-  end
-
-  def create
-  end
-
-  def show
-    @purchase_product = PurchaseProduct.find(params[:id])
-  end
-
-  def edit
-    @purchase_product = PurchaseProduct.find(params[:id])
-  end
-
   def update
     @purchase_product = PurchaseProduct.find(params[:id])
     respond_to do |format|

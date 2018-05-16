@@ -66,3 +66,22 @@
   height: 100% !important;
   width: 100% !important;
 }
+
+.form-input-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.form-purchase-list-input-field {
+  width: 48%;
+}
+
+.form-customized-label {
+  color: #9e9e9e;
+  height: 100%;
+  font-size: 0.8rem;
+  line-height: 0.5;
+  cursor: text;
+  text-align: initial;
+}

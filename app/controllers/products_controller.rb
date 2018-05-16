@@ -27,6 +27,8 @@ class ProductsController < ApplicationController
   def show
     @producer = @product.producer
     @products = @producer.products.reject{ |product| product.id == @product.id }
+    @purchase_list = PurchaseList.new
+    @frequencies = [[0, "Une seule fois"], [1, "1 fois par semaine"], [2, "2 fois par mois"], [3, "3 fois par mois"], [4, "4 fois par mois"]]
   end
 
   def add_product_to_list
