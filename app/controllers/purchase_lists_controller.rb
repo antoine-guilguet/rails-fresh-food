@@ -15,7 +15,7 @@ class PurchaseListsController < ApplicationController
 
   def create
     @purchase_list = PurchaseList.new(purchase_list_params)
-    @product = Product.find(params[:product_id])
+    @product = Product.find(params[:product_id]) if params[:product_id]
     frequency = params[:frequency_list]
     if params_is_number?(frequency)
       frequency = frequency.to_i
