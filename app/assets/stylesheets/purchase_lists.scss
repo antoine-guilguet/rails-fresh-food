@@ -52,3 +52,9 @@
   cursor: pointer;
   color: #E67E22;
 }
+
+.purchase_list_quantity_wrapper {
+  &:hover{
+    cursor: pointer;
+  }
+}

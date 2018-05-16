@@ -44,7 +44,9 @@
               <tr id="purchase_product_<%= purchase_product.id %>">
                 <td><%= product.name %></td>
                 <td><%= "#{product.quantity} #{product.unit}" %></td>
-                <td><%= best_in_place purchase_product, :quantity %></td>
+                <td class="purchase_list_quantity_wrapper tooltipped" data-position="top" data-tooltip="Choisir la quantité">
+                  <%= best_in_place purchase_product, :quantity, class:"" %>
+                </td>
                 <td><%= product.compute_price_per_kg %></td>
                 <td><%= purchase_product.compute_total_price_and_currency %></td>
                 <td class="purchase-list-btn-delete"purchase_product_id="<%= purchase_product.id %>">
