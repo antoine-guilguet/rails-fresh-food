@@ -29,9 +29,8 @@ class PurchaseListsController < ApplicationController
     @purchase_list.user = current_user
     @purchase_list.producer = @producer
     if @purchase_list.save
-      if @product
-        PurchaseProduct.create(product_id: @product.id, purchase_list_id: @purchase_list.id, quantity: 1)
-      end
+      PurchaseProduct.create(product_id: @product.id, purchase_list_id: @purchase_list.id, quantity: 1) if @product
+      Supplier.create(user_id: current_user.id, producer_id: @producer.id) if !@producer.provides?(current_user)
       redirect_to producer_purchase_list_path(@producer, @purchase_list)
     else
       @products = @producer.products

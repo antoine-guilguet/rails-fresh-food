@@ -40,6 +40,33 @@
               </div>
           <% end %>
         </div>
+
+      <% else %>
+          <p>Créez une nouvelle liste d'achat ci-après:</p>
+          <div class="form-modal-order">
+            <%= simple_form_for [@producer, @purchase_list] do |f| %>
+                <div class="form-input-wrapper">
+                  <%= f.input :name, label:"Nom de la Liste d'Achat", wrapper_html: { class: "form-purchase-list-input-field"} %>
+                  <div class="input-field form-purchase-list-input-field">
+                    <p class="form-customized-label">Date de Livraison</p>
+                    <%= f.text_field :delivery_date, class: "datepicker delivery_date", id: "delivery_date_picker" %>
+                  </div>
+                </div>
+
+                <div class="form-select">
+                  <label class="form-label" for="frequency-dropdown">Souhaitez-vous répéter cette commande?</label>
+                  <br>
+                  <select name="frequency_list" id="frequency-dropdown">
+                    <% @frequencies.each do |frequency| %>
+                        <option value="<%= frequency[0] %>"><%= frequency[1] %></option>
+                    <% end %>
+                  </select>
+                </div>
+                <%= hidden_field_tag :product_id, @product.id %>
+                <div class="form-actions">
+                  <%= f.submit 'Créer', class: "waves-effect waves-light btn" %>
+                </div>
+            <% end %>
       <% end %>
     </div>
   </div>
