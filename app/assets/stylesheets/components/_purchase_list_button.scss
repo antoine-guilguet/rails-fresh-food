@@ -1,0 +1,27 @@
+.purchase-list-button {
+  display: flex;
+  color: white;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: $dark-blue;
+  height: 40px;
+  &:hover {
+    opacity: 0.8;
+    transition-property: opacity;
+    transition-duration: 300ms;
+  }
+}
+
+.purchase-list-button-title {
+  margin-left: 8px;
+}
+
+.purchase-list-button-modal-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

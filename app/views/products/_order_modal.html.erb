@@ -1,0 +1,62 @@
+<div id="order-modal" class="modal">
+  <div class="form-container" style="margin-top: 0px; border-top-left-radius: Opx; border-top-right-radius: 0px;">
+    <div class="form-header">
+      <h4 class="center">Commander du <%= @product.name %> !</h4>
+    </div>
+    <div class="form-body">
+      <% if @producer.provides?(current_user) %>
+        <p>Choisissez la liste d'achat dans laquelle vous souhaitez ajouter votre produit.</p>
+        <div class="purchase-list-button-modal-wrapper">
+          <% @producer.get_all_purchase_lists_registered_with(current_user).each do |purchase_list| %>
+              <%= link_to add_product_to_list_product_path(@product, purchase_list: purchase_list), class:"purchase-list-button" do %>
+                  <i class="material-icons">shopping_cart</i>
+                  <p class="purchase-list-button-title"><%= purchase_list.name %></p>
+              <% end %>
+          <% end %>
+        </div>
+        <p>Ou créez une nouvelle liste d'achat ci-après:</p>
+        <div class="form-modal-order">
+          <%= simple_form_for [@producer, @purchase_list] do |f| %>
+              <div class="form-input-wrapper">
+                <%= f.input :name, label:"Nom de la Liste d'Achat", wrapper_html: { class: "form-purchase-list-input-field"} %>
+                <div class="input-field form-purchase-list-input-field">
+                  <p class="form-customized-label">Date de Livraison</p>
+                  <%= f.text_field :delivery_date, class: "datepicker delivery_date", id: "delivery_date_picker" %>
+                </div>
+              </div>
+
+              <div class="form-select">
+                <label class="form-label" for="frequency-dropdown">Souhaitez-vous répéter cette commande?</label>
+                <br>
+                <select name="frequency_list" id="frequency-dropdown">
+                  <% @frequencies.each do |frequency| %>
+                      <option value="<%= frequency[0] %>"><%= frequency[1] %></option>
+                  <% end %>
+                </select>
+              </div>
+              <%= hidden_field_tag :product_id, @product.id %>
+              <div class="form-actions">
+                <%= f.submit 'Créer', class: "waves-effect waves-light btn" %>
+              </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= content_for :js do %>
+    <%= javascript_tag do %>
+        $('#order-button').on("click", function(e) {
+            $('#order-modal').modal('show');
+        });
+
+        $(document).ready(function(){
+            $('.modal').modal();
+            activateDatePicker();
+            var delivery_date = nextFridayDate(new Date());
+            var delivery_date_picker = $('#delivery_date_picker').pickadate('picker');
+            delivery_date_picker.set ('select', delivery_date);
+        });
+    <% end %>
+<% end %>

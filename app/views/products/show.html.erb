@@ -43,7 +43,12 @@
                 <div class="card-category card-subcategory"><%= @product.subcategory.name %></div>
               </div>
               <div class="product-detail-wrapper" style="margin-top: 10px;">
-                <%= link_to 'Commander', add_product_to_list_product_path(@product), class:'btn' %>
+                <a class="waves-effect waves-light btn modal-trigger" id="order-button" href="#order-modal">
+                  <div class="product-detail-wrapper">
+                    <i class="material-icons" style="margin-right: 5px;">add_shopping_cart</i>
+                    Commander
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -69,4 +74,6 @@
         </div>
     <% end %>
   </div>
+
+  <%= render 'order_modal' %>
 </div>

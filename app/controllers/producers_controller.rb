@@ -96,6 +96,7 @@ class ProducersController < ApplicationController
       end
     else
       Supplier.find_by(user_id: current_user.id, producer_id: @producer.id).destroy
+      PurchaseList.find_by(user_id: current_user.id, producer_id: @producer.id).destroy
       if params[:redirection]
         flash[:alert] = "Retirer des favoris"
         redirect_to dashboard_path

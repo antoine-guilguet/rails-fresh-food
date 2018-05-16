@@ -44,10 +44,12 @@
               <tr id="purchase_product_<%= purchase_product.id %>">
                 <td><%= product.name %></td>
                 <td><%= "#{product.quantity} #{product.unit}" %></td>
-                <td><%= best_in_place purchase_product, :quantity %></td>
+                <td class="purchase_list_quantity_wrapper tooltipped" data-position="top" data-tooltip="Choisir la quantité">
+                  <%= best_in_place purchase_product, :quantity, class:"" %>
+                </td>
                 <td><%= product.compute_price_per_kg %></td>
                 <td><%= purchase_product.compute_total_price_and_currency %></td>
-                <td class="purchase-btn-delete"purchase_product_id="<%= purchase_product.id %>">
+                <td class="purchase-list-btn-delete"purchase_product_id="<%= purchase_product.id %>">
                   <i class="material-icons">delete</i>
                 </td>
               </tr>
@@ -57,9 +59,9 @@
         </div>
         <div class="purchase-list-total-wrapper">
           <h6 class="purchase-list-total-title">Total</h6>
-          <p class="total-items"><%= @purchase_list.compute_total_items %> items</p>
-          <p class="total-weight"><%= @purchase_list.compute_total_weight %> kg</p>
-          <p class="total-price"><%= @purchase_list.compute_total_expense %> €</p>
+          <p class="total-items"><%= @purchase_list.compute_total_items %>  items</p>
+          <p class="total-weight"><%= @purchase_list.compute_total_weight %>  kg</p>
+          <p class="total-price"><%= @purchase_list.compute_total_expense %>  €</p>
         </div>
       </div>
     </div>
@@ -87,7 +89,7 @@
             jQuery(".best_in_place").best_in_place();
         });
 
-        $('.purchase-btn-delete').on("click", function(){
+        $('.purchase-list-btn-delete').on("click", function(){
             alert('Êtes-vous sûr de vouloir retire ce produit de votre liste?');
             var purchase_product_id = $(this).attr('purchase_product_id');
             $.ajax({

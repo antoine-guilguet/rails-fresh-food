@@ -16,26 +16,29 @@
   margin-top: 5px;
 }
 
+.dashboard-container {
+  width: 90%;
+  margin: auto;
+}
+
 .dashboard-title-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 20px;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
   color: $secondary-color;
 }
 
-.dashboard-producer-name {
-  text-align: center;
-}
-
 .dashboard-producer-name > h6 > a {
-  color: #E67E22;
+  color: $primary-color;
+  font-weight: bold;
 }
 
 .dashboard-status-wrapper {
   display: flex;
   align-items:center;
-  height: 120px;
+  height: 50px;
 }
 
 .dashboard-producer-status {

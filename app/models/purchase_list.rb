@@ -35,6 +35,6 @@ class PurchaseList < ApplicationRecord
     purchase_products.each do |purchase_product|
       sum += purchase_product.compute_weight_in_kg
     end
-    return sum
+    return sum.round(1)
   end
 end

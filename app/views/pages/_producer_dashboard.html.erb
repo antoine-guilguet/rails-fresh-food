@@ -1,17 +1,17 @@
 <div class="row">
-  <div class="dashboard-title-wrapper">
-    <h4>Vos Producteurs</h4>
-    <%= link_to 'Rechercher un Producteur', producers_path, class: "btn" %>
+  <div class="dashboard-container">
+    <div class="dashboard-title-wrapper">
+      <h4>Vos Producteurs</h4>
+      <%= link_to 'Rechercher un Producteur', producers_path, class: "btn" %>
+    </div>
   </div>
 
   <div class="dashboard-container">
     <% @producers.each do |producer | %>
         <div class="row">
           <div class="col l3 s6">
-            <div class="dashboard-producer-name">
+            <div class="center dashboard-producer-name dashboard-status-wrapper">
               <h6><%= link_to producer.name, producer_path(producer) %></h6>
-              <%= image_tag 'user.png', class: "picto-big" %>
-              <p><%= producer.render_full_name %></p>
             </div>
           </div>
           <div class="col l2 s6">
@@ -40,19 +40,15 @@
                   <p>Vous n'avez pas encore de liste d'achat avec ce producteur</p>
               <% else %>
                   <% producer.purchase_lists.each do |purchase_list| %>
-                      <%= link_to purchase_list.name, producer_purchase_list_path(producer, purchase_list), class:"btn btn-back dashboard-list-btn" %>
+                      <%= link_to producer_purchase_list_path(producer, purchase_list), class:"purchase-list-button" do %>
+                          <i class="material-icons">shopping_cart</i>
+                          <p class="purchase-list-button-title"><%= purchase_list.name %></p>
+                      <% end %>
                   <% end %>
               <% end %>
-
             </div>
           </div>
         </div>
     <% end %>
   </div>
-</div>
-
-
-
-
-
 </div>

@@ -27,19 +27,21 @@ class ProductsController < ApplicationController
   def show
     @producer = @product.producer
     @products = @producer.products.reject{ |product| product.id == @product.id }
+    @purchase_list = PurchaseList.new
+    @frequencies = [[0, "Une seule fois"], [1, "1 fois par semaine"], [2, "2 fois par mois"], [3, "3 fois par mois"], [4, "4 fois par mois"]]
   end
 
   def add_product_to_list
+    purchase_list = PurchaseList.find(params[:purchase_list])
     @producer = @product.producer
-    @purchase_lists = PurchaseList.where(producer_id: @producer.id, user_id: current_user.id)
-    if @purchase_lists.empty?
-      @purchase_list = PurchaseList.create(name: @product.name, producer_id: @producer.id, user_id: current_user.id, frequency: 0, recurrence: false, delivery_date: Date.today)
-      @purchase_product = PurchaseProduct.create(purchase_list_id: @purchase_list.id, product_id: @product.id, quantity: 1)
-      redirect_to producer_purchase_list_path(@producer, @purchase_list)
+
+    if purchase_list
+      PurchaseProduct.create(purchase_list_id: purchase_list.id, product_id: @product.id, quantity: 1)
+      redirect_to producer_purchase_list_path(@producer, purchase_list)
     else
-      @purchase_list = @purchase_lists.first
-      @purchase_product = PurchaseProduct.create(purchase_list_id: @purchase_list.id, product_id: @product.id, quantity: 1)
-      redirect_to producer_purchase_list_path(@producer, @purchase_list)
+      purchase_list = PurchaseList.create(name: @product.name, producer_id: @producer.id, user_id: current_user.id, frequency: 0, recurrence: false, delivery_date: Date.today)
+      PurchaseProduct.create(purchase_list_id: purchase_list.id, product_id: @product.id, quantity: 1)
+      redirect_to producer_purchase_list_path(@producer, purchase_list)
     end
   end
 

@@ -26,4 +26,21 @@ class User < ApplicationRecord
     !self.first_name.nil? ? self.first_name + " " + self.last_name : self.email
   end
 
+  def get_all_products
+    products = Array.new
+    self.purchase_lists.each do |purchase_list|
+      purchase_list.products.each do |product|
+        products << product
+      end
+    end
+    return products.uniq { |product| product.id }
+  end
+
+  def get_products_hash_sort_by_producer
+    hash = Hash.new
+    self.purchase_lists.each do |purchase_list|
+      hash[purchase_list.producer.name] = purchase_list.products
+    end
+    return hash
+  end
 end
