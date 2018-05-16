@@ -19,6 +19,7 @@ class PurchaseProduct < ApplicationRecord
 
   def compute_total_price
     product = self.product
-    product.price * self.quantity
+    (product.price * self.quantity).round(1)
+
   end
 end

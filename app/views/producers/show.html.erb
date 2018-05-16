@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col s12 m6">
+    <div class="col s12 m5">
       <div class="producer-wrapper">
         <div class="producer-name-banner">
           <h4><%= @producer.name %></h4>
@@ -20,30 +20,28 @@
           <p><%= @producer.render_full_name %></p>
         </div>
 
-        <div class="producer-detail-banner">
-          <div class="producer-detail-wrapper">
-            <i class="material-icons">location_on</i>
-            <p><%= @producer.address %></p>
-          </div>
-          <% if !@producer.categories.empty? %>
-              <div class="producer-detail-wrapper">
-                <% @producer.categories.each do |category| %>
-                    <div class="card-category"><%= category.name %></div>
-                <% end %>
-              </div>
-          <% end %>
-          <% if !@producer.find_subcategories.empty? %>
-              <div class="producer-detail-wrapper">
-                <% @producer.find_subcategories.each do |subcategory| %>
-                    <div class="card-category card-subcategory"><%= subcategory %></div>
-                <% end %>
-              </div>
-          <% end %>
+        <div class="producer-detail-wrapper">
+          <i class="material-icons">location_on</i>
+          <p><%= @producer.address %></p>
         </div>
+        <% if !@producer.categories.empty? %>
+            <div class="producer-detail-wrapper">
+              <% @producer.categories.each do |category| %>
+                  <div class="card-category"><%= category.name %></div>
+              <% end %>
+            </div>
+        <% end %>
+        <% if !@producer.find_subcategories.empty? %>
+            <div class="producer-detail-wrapper">
+              <% @producer.find_subcategories.each do |subcategory| %>
+                  <div class="card-category card-subcategory"><%= subcategory %></div>
+              <% end %>
+            </div>
+        <% end %>
 
       </div>
     </div>
-    <div class="col s12 m6">
+    <div class="col s12 m7">
       <div class="producer-wrapper">
         <div class="producer-wrapper-image" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)),
             url('<%= @producer.photo %>')">

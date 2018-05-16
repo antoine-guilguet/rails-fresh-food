@@ -3,6 +3,19 @@
   margin-top: 20px;
 }
 
+.product-wrapper {
+  border: 1px solid $dark-blue;
+  border-radius: 4px;
+  height: 400px;
+  margin-top: 10px;
+  color: $dark-blue;
+}
+
+.product-description-wrapper {
+  overflow: scroll;
+  height: 398px;
+}
+
 .products-table-wrapper {
   display: flex;
   justify-content: center;

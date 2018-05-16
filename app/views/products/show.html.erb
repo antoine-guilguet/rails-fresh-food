@@ -9,15 +9,17 @@
 
   <div class="row">
     <div class="col s12 m8">
-      <div class="producer-wrapper">
+      <div class="product-wrapper">
         <div class="row">
           <div class="col s12 m6">
-            <div class="product-wrapper-image" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)),
-                url('<%= @product.photo %>')">
-            </div>
-            <div class="producer-wrapper-description">
-              <h5>Description</h5>
-              <p><%= @product.description %></p>
+            <div class="product-description-wrapper ">
+              <div class="product-wrapper-image" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)),
+                  url('<%= @product.photo %>')">
+              </div>
+              <div class="producer-wrapper-description">
+                <h5>Description</h5>
+                <p><%= @product.description %></p>
+              </div>
             </div>
           </div>
           <div class="col s12 m6">
@@ -67,13 +69,15 @@
     <hr class="team-line producer-title-line">
   </div>
 
-  <div class="row">
-    <% @products.each do |product| %>
-        <div class="col s12 m4 l3">
-          <%= render 'products/product_card', product: product %>
-        </div>
-    <% end %>
-  </div>
+  <% if @products %>
+    <div class="row">
+      <% @products.each do |product| %>
+          <div class="col s12 m4 l3">
+            <%= render 'products/product_card', product: product %>
+          </div>
+      <% end %>
+    </div>
+  <% end %>
 
   <%= render 'order_modal' %>
 </div>
