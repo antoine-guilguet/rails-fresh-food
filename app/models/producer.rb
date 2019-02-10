@@ -31,7 +31,7 @@ class Producer < ApplicationRecord
   end
 
   def provides?(user)
-    self.users.pluck(:user_id).include?(user.id)
+    self.users.pluck(:user_id).include?(user.id) if user
   end
 
   def get_all_products_registered_with(user)
